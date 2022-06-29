@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 어떤 DAO에서 사용하는지를 적어주기 -->
+<mapper namespace="LandmarkDAO">
+
+	<select id="viewLM" resultType="LandmarkVO">
+		<!-- 입력하는 값이 하나인 경우에는 parameterType 를 적어 주지 않아도 된다. -->
+		select * 
+		from landmark
+		where xr_cnt = #{xr_cnt}
+	</select>
+	
+
+</mapper>

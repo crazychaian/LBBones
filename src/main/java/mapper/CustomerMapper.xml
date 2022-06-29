@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 어떤 DAO에서 사용하는지를 적어주기 -->
+<mapper namespace="CustomerDAO">
+
+	<insert id="cusJoin" parameterType="CustomerVO">
+		insert into customer
+		values(
+			cus_cnt_seq.nextval,
+			#{doc_cnt},
+			sysdate,
+			#{cus_name},
+			#{cus_birth},
+			#{cus_mw}
+		)
+	</insert>
+	
+	<select id="cusSearch" resultType="CustomerVO">
+		select * 
+		from customer
+		where
+		cus_name like #{search}
+		or cus_birth like #{search}
+	</select>
+	
+	<update id="cusUpdate" parameterType="CustomerVO">
+		update customer
+		set cus_name = #{cus_name},
+			cus_birth = #{cus_birth},
+			cus_mw = #{cus_mw}
+		where cus_cnt = #{cus_cnt}
+	</update>
+
+	<delete id="cusDelete" parameterType="CustomerVO">
+		delete 
+		from customer 
+			where cus_cnt = #{cus_cnt}
+	</delete>
+	
+	<select id="cusList" resultType="CustomerVO">
+		select * 
+		from customer
+		order by cus_name asc
+	</select>
+	
+
+
+
+</mapper>

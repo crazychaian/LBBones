@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 어떤 DAO에서 사용하는지를 적어주기 -->
+<mapper namespace="XrayCommentDAO">
+
+	<insert id="insertCom" parameterType="XrayCommentVO">
+		insert into x_ray_comment
+		values(
+			xr_com_cnt_seq.nextval,
+			sysdate,
+			#{xr_cnt},
+			#{xr_com}
+		)
+	</insert>
+	
+	<select id="selectXrayCom" resultType="XrayCommentVO">
+		select * 
+		from x_ray_comment
+		where xr_cnt like #{xr_cnt}
+	</select>
+
+</mapper>

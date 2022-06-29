@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 어떤 DAO에서 사용하는지를 적어주기 -->
+<mapper namespace="DoctorDAO">
+
+	<insert id="join" parameterType="DoctorVO">
+		insert into doctor
+		values(
+			doc_cnt_seq.nextval,
+			sysdate,
+			#{hos_name},
+			#{doc_name},
+			#{doc_id},
+			#{doc_pw}
+		)
+	</insert>
+
+	<select id="login" parameterType="DoctorVO"
+		resultType="DoctorVO">
+		select *
+		from doctor
+			where doc_id = #{doc_id}
+			and doc_pw = #{doc_pw}
+	</select>
+
+	<select id="idCheck" resultType="DoctorVO">
+		select * 
+		from doctor
+			where doc_id = #{doc_id}
+	</select>
+	
+	<select id="docList" resultType="DoctorVO">
+		select * 
+		from doctor
+		order by doc_name asc
+	</select>
+	
+		<select id="docSearch" resultType="DoctorVO">
+		select * 
+		from doctor
+		where
+		doc_name like #{search}
+		order by doc_name asc
+	</select>
+	
+	
+
+
+</mapper>
