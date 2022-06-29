@@ -26,7 +26,11 @@ public class CustomerDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	// =================================================================================
+=======
+	// ===============================================================================
+>>>>>>> branch 'master' of https://github.com/crazychaian/LBBones.git
 
 	
 	public int cusJoin(CustomerVO vo) {
