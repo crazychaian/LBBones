@@ -28,7 +28,7 @@ create table CUSTOMER
 	
 	constraint cus_cnt_pk primary key (cus_cnt),
 	constraint cus_doc_cnt_fk foreign key (doc_cnt) references DOCTOR(doc_cnt),
-	ADD CONSTRAINT check_cus_mw CHECK (cus_mw IN ('man', 'woman'))
+	CONSTRAINT check_cus_mw CHECK (cus_mw IN ('man', 'woman'))
 )
 
 create sequence cus_cnt_seq
@@ -63,11 +63,9 @@ create table X_RAY_COMMENT
 	xr_com_cnt NUMBER(30) not null, 
 	xr_com_date DATE,
 	xr_cnt NUMBER(30) not null,
-	xr_com VARCHAR2(20000) not null,
+	xr_com VARCHAR2(2000) not null,
 	
-	constraint xrayc_xr_cnt_fk foreign key (xr_cnt) references X_RAY(xr_cnt),
-	constraint xrayc_doc_cnt_fk foreign key (doc_cnt) references DOCTOR(doc_cnt),
-	constraint xrayc_cus_cnt_fk foreign key (cus_cnt) references CUSTOMER(cus_cnt)
+	constraint xrayc_xr_cnt_fk foreign key (xr_cnt) references X_RAY(xr_cnt)
 )
 
 create sequence xr_com_cnt_seq
