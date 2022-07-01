@@ -91,8 +91,8 @@
 					
 						tr=`
 							<tr>
-								<td><a onclick="Xray.jsp?cus_cnt=`+cus_cnt+`">`+cus_cnt+`</a></td>
-								<td><a onclick="Xray.jsp?cus_cnt=`+cus_cnt+`">`+cus_name+`</a></td>
+								<td><a href="Xray.jsp?cus_cnt=`+cus_cnt+`">`+cus_cnt+`</a></td>
+								<td><a href="Xray.jsp?cus_cnt=`+cus_cnt+`">`+cus_name+`</a></td>
 								<td>`+cus_birth+`</td>
 								<td>`+cus_mw+`</td>
 								<td name="cus_cnt" value=`+cus_cnt+`><a onclick=cusDataList()>보기</a></td>
@@ -100,7 +100,7 @@
 							</tr>
 							`;
 					
-					$(".list tbody").append(tr);
+					$('.list tbody').append(tr);
 					}
 	
 

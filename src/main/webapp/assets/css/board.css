@@ -1,0 +1,81 @@
+@charset "EUC-KR";
+
+#board {
+	width: 80% !important;
+	margin: 0px auto !important;
+	text-align: center !important;
+	margin-top: 100px !important;
+	margin-bottom: 100px !important;
+}
+
+#cuslist {
+	margin: 0px auto !important;
+}
+
+#writer {
+	margin-top: 50px !important;
+}
+
+a {
+	text-decoration: none !important;
+	color: black;
+}
+
+a:link {
+  color : black;
+}
+a:visited {
+  color : black;
+}
+a:hover {
+  color : black;
+}
+a:active {
+  color : black;
+}
+
+div.cusSearch {
+	display: flex;
+}
+
+.search {
+	float: left;
+	text-align: center;
+	font-weight: bold;
+}
+
+.cusSearchBtn {
+	float: left;
+	margin-left: 10px;
+}
+
+.newCusJoinBtn {
+	float: left;
+	margin-left: 10px;
+}
+
+table.list {
+	display: table;
+	width: 100%;
+	border-spacing: 5px;
+	border-color: black;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+}
+
+.listTh{
+    border-bottom-style: solid;
+    vertical-align: inherit;
+    border-color: inherit;
+	
+}
+
+.list tbody td{
+	border-bottom-style: dotted;
+	border-bottom-color: gray;
+}
+
+
+
+
