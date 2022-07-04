@@ -23,7 +23,7 @@
 		from customer
 		where
 		cus_name like #{search}
-		or cus_birth like #{search}
+		or cus_cnt like #{search}
 	</select>
 	
 	<update id="cusUpdate" parameterType="CustomerVO">
@@ -43,6 +43,7 @@
 	<select id="cusList" resultType="CustomerVO">
 		select * 
 		from customer
+		where doc_cnt = #{doc_cnt}
 		order by cus_name asc
 	</select>
 	

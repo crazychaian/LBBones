@@ -70,4 +70,16 @@ public class XrayDAO {
 
 	}
 	
+	public List<XrayVO> xrayDateList(int cus_cnt) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		List<XrayVO> xrayDateList = session.selectList("xrayDateList",cus_cnt);
+
+		session.close();
+
+		return xrayDateList;
+
+	}
+	
 }

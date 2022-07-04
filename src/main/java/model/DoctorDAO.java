@@ -57,11 +57,11 @@ public class DoctorDAO {
 
 	}
 	
-	public DoctorVO idCheck(String id) {
+	public DoctorVO idCheck(String doc_id) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		DoctorVO dvo = session.selectOne("idCheck", id);
+		DoctorVO dvo = session.selectOne("idCheck", doc_id);
 
 		session.close();
 
@@ -91,6 +91,18 @@ public class DoctorDAO {
 		
 		return list;
 		
+	}
+	
+	public DoctorVO doccntFind(String doc_id) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		DoctorVO dvo = session.selectOne("doccntFind", doc_id);
+
+		session.close();
+
+		return dvo;
+
 	}
 
 }

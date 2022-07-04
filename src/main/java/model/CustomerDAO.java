@@ -96,16 +96,15 @@ public class CustomerDAO {
 
 	}
 	
-	public List<CustomerVO> cusList() {
+	public List<CustomerVO> cusList(int doc_cnt) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<CustomerVO> list = session.selectList("cusList");
+		List<CustomerVO> cusList = session.selectList("cusList", doc_cnt);
 
 		session.close();
 
-		return list;
+		return cusList;
 
 	}
-
 }

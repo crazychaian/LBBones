@@ -18,23 +18,18 @@ public class idcheckService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("euc-kr");
-		// 1. 파라미터 수집
+		request.setCharacterEncoding("utf-8");
+
 		String doc_id = request.getParameter("doc_id");
 
-		// 2. DAO 메서드 사용
 		DoctorDAO dao = new DoctorDAO();
-		DoctorVO vo = dao.idCheck(doc_id);
+		DoctorVO dvo = dao.idCheck(doc_id);
 
-		// 3. 결과 응답
-		// 응답 형식 지정
 		response.setContentType("text/html; charset = utf-8");
 
-		// out 객체 만들기
 		PrintWriter out = response.getWriter();
 
-		// 응답
-		out.print(vo == null);
+		out.print(dvo == null);
 	
 	}
 

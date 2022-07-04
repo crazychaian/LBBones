@@ -9,24 +9,32 @@
 	<insert id="xrayJoin" parameterType="XrayVO">
 		insert into X_RAY
 		values(
-			xr_cnt_seq.nextval,
-			#{doc_cnt},
-			sysdate,
-			#{cus_cnt},
-			#{xr_name}
+		xr_cnt_seq.nextval,
+		#{doc_cnt},
+		sysdate,
+		#{cus_cnt},
+		#{xr_name}
 		)
 	</insert>
-	
+
 	<select id="selectXray" parameterType="XrayVO"
 		resultType="XrayVO">
-		select * 
+		select *
 		from x_ray
 		where cus_cnt = #{cus_cnt}
-			and doc_cnt = #{doc_cnt}
+		and doc_cnt = #{doc_cnt}
 		order by que_num desc
 	</select>
-	
-	
+
+	<select id="xrayDateList" parameterType="XrayVO"
+		resultType="XrayVO">
+		select *
+		from x_ray
+		where cus_cnt = #{cus_cnt}
+		order by xr_date desc
+	</select>
+
+
 
 
 

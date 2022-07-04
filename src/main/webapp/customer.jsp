@@ -1,3 +1,6 @@
+<%@page import="model.CustomerVO"%>
+<%@page import="java.util.List"%>
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -9,8 +12,15 @@
 </head>
 <body>
 
-	<div id="board">
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	List<CustomerVO> cusList = (List<CustomerVO>) session.getAttribute("cusList");
+	%>
 
+
+
+	<div id="board">
+		<input type="hidden" name="doc_cnt" value="<%=vo.getDoc_cnt()%>"></input>
 		<div class="cusSearch">
 			<input class="search" name="search" type="text">
 			<button class="cusSearchBtn" onclick="cusSearch()">검색</button>
@@ -30,15 +40,31 @@
 			</thead>
 
 			<tbody class="cuslist">
-			
+
+				<%
+				if (cusList != null) {
+				%>
+				<%
+				for (CustomerVO cvo : cusList) {
+				%>
 				<tr>
-					<td class="listTh">1</td>
-					<td class="listTh">심가령</td>
-					<td class="listTh">1111</td>
-					<td class="listTh">여</td>
-					<td class="listTh">보기</td>
+					<td class="listTh"><%= cvo.getCus_cnt() %></td>
+					<td class="listTh"><%= cvo.getCus_name() %></td>
+					<td class="listTh"><%= cvo.getCus_birth() %></td>
+					<td class="listTh"><%= cvo.getCus_mw() %></td>
+					<td class="listTh"><a onclick="cusDateList()">보기</a></td>
 					<td class="listTh"></td>
 				</tr>
+				<%
+				}
+				%>
+				<%
+				} else if (cusList == null) {
+				%>
+				<%
+				}
+				%>
+
 
 			</tbody>
 
@@ -57,10 +83,17 @@
 //			$(".cuslist").hide()
 //		});
 		
+		var onennewCusJoin
 		function newCusJoin() {
-			window.open("http://localhost:8081/LBBTEST/login.jsp", "a",
-					"width=400, height=300, left=100, top=50");
-		}
+			let inputDoc_cnt = $('input[name=doc_cnt]');
+			let doc_cnt = $(inputDoc_cnt[0]).val();
+			console.log(doc_cnt);
+			onennewCusJoin = window.open("http://localhost:8081/LBBTEST/cusJoin.jsp", "환자 등록",
+					"width=600, height=700, left=400, top=50");
+			onennewCusJoin.document.getElementById("doc_cnt").value = doc_cnt;
+				}
+			
+			
 
 		function cusSearch() {
 			// 1. 데이터 수집
@@ -114,7 +147,7 @@
 		
 		
 		
-		function cusDataList() {
+		function cusDateList() {
 			
 			window.open("http://localhost:8081/LBBTEST/xrayDateList.jsp", "a",
 			"width=400, height=300, left=100, top=50");

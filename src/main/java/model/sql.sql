@@ -28,7 +28,7 @@ create table CUSTOMER
 	
 	constraint cus_cnt_pk primary key (cus_cnt),
 	constraint cus_doc_cnt_fk foreign key (doc_cnt) references DOCTOR(doc_cnt),
-	CONSTRAINT check_cus_mw CHECK (cus_mw IN ('man', 'woman'))
+	CONSTRAINT check_cus_mw CHECK (cus_mw IN ('남성', '여성'))
 )
 
 create sequence cus_cnt_seq
@@ -111,15 +111,19 @@ create table LANDMARKRESULT
 )
 
 
+select * from doctor
 
+insert into doctor 
+values (1, '20220701', '조대', '테스터', 'test', 'test')
 
+insert into CUSTOMER 
+values (1, 1, '20220701', '최재황', '901107', 'man')
+insert into CUSTOMER 
+values (2, 1, '20220701', '김서진', '000101', 'woman')
+insert into CUSTOMER 
+values (3, 1, '20220701', '심가령', '950101', 'woman')
 
-
-
-
-
-
-
+select * from CUSTOMER 
 
 
 

@@ -10,27 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.CustomerDAO;
-import model.CustomerVO;
-import model.DoctorVO;
 
-@WebServlet("/cusListService")
-public class cusListService extends HttpServlet {
+import model.XrayDAO;
+import model.XrayVO;
+
+@WebServlet("/XrayDateListService")
+public class XrayDateListService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		DoctorVO ndvo = new DoctorVO();
-		int doc_cnt = ndvo.getDoc_cnt();
 		
-		CustomerDAO dao = new CustomerDAO();
-		List<CustomerVO> cusList = dao.cusList(doc_cnt);
+		request.setCharacterEncoding("euc-kr");
+		
+		int cus_cnt = Integer.parseInt(request.getParameter("cus_cnt"));
+		
+		XrayDAO dao = new XrayDAO();
+		List<XrayVO> xrayDateList = dao.xrayDateList(cus_cnt);
+		
+		request.setAttribute("xrayDateList", xrayDateList);
 
-		request.setAttribute("cusList", cusList);
-
-		RequestDispatcher rd = request.getRequestDispatcher("");
+		RequestDispatcher rd = request.getRequestDispatcher("xrayDateList.jsp");
 		rd.forward(request, response);
-	
+		
 	}
 
 }

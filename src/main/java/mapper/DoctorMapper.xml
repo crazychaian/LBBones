@@ -46,6 +46,12 @@
 		order by doc_name asc
 	</select>
 	
+		<select id="doccntFind" resultType="DoctorVO">
+		select * 
+		from doctor
+			where doc_id = #{doc_id}
+	</select>
+	
 	
 
 
