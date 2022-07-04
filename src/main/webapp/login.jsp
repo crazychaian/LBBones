@@ -52,62 +52,6 @@
 
 	
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-	<script type="text/javascript">
-	
-		function checkId() {
-			// 1. 데이터 수집
-			// $. $('input[name=email]') --> 2개, 배열
-			// 배열[index]을 접근할 때는,
-			// $(배열[index])로 다시 넣어줘야 한다.
-			let inputs = $('input[name=join_doc_id]');
-			let doc_id = $(inputs[0]).val();
-			console.log(doc_id);
-
-			// 2. ajax 통신
-			$.ajax({
-				url : 'idcheckService',
-				type : 'post',
-				data : {
-					"doc_id" : doc_id
-				},
-				success : function(res) {
-					console.log(res);
-					// 결과를 html에 출력
-					if (res == "true") {
-						$('#resultId').html('사용가능한 닉네임입니다.').css('color',
-								'green');
-						// join 버튼의 disabled 속성을 제거
-						$('#joinBtn').removeAttr('disabled');
-
-					} else {
-						$('#resultId').html('중복된 닉네임입니다.')
-								.css('color', 'red');
-					}
-
-				},
-				error : function() {
-					alert('error!');
-				}
-
-			});
-
-		}
-	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
