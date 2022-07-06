@@ -1,0 +1,23 @@
+@charset "EUC-KR";
+
+.title{
+	text-align:center;
+	height:65px;
+	font-size:x-large;
+
+	
+}
+tr{
+	 
+	 background-color:#87cefa;
+}
+table{
+	 width:300px;
+	 height:450px;
+	 border-collapse:collapse;
+	 
+}
+.style{
+	width:80%;
+	padding : 5px;
+}

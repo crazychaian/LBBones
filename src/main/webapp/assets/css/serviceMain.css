@@ -1,0 +1,54 @@
+@charset "EUC-KR";
+
+.wrap{
+	width:100%;
+}
+.find{
+	float:left;
+	padding:20px;
+	 width:auto; 
+	 border:none;
+	 margin-bottom:70px;
+	 
+	 
+}
+.table_head{
+	font-size: x-large;
+}
+
+.btnNew {
+	
+  padding:3px;
+  background:#1E90FF;
+  border:none;
+  background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+}
+.btnNew:hover {
+  background: 	#4682B4;
+  border: none;
+  
+}
+
+.info{
+	width:80%;
+	padding: 15px;
+	margin:auto;
+	text-align:center;	
+    border: 1px solid #444444;
+    border-collapse: collapse;
+	
+}
+th, td {
+  border: 1px solid #444444;
+  padding: 10px;
+}
+
+.borno{
+	border: 0px;
+	padding: 0px;
+}
+
+
+
+
+
