@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./CSS/serviceMain.css"/>
+<link rel="stylesheet" href="assets/css/serviceMain.css"/>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>

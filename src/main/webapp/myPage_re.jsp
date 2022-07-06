@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" href="./CSS/myPage_re.css"/>
+<link rel="stylesheet" href="assets/css/myPage_re.css"/>
 
 <title>Insert title here</title>
 </head>

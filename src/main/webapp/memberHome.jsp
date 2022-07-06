@@ -5,7 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 	
-<link rel="stylesheet" href="./CSS/memberHome.css"/>
+<link rel="stylesheet" href="assets/css/memberHome.css"/>
 <title>Insert title here</title>
 </head>
 <body>
