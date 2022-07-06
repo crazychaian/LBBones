@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="./CSS/newHistory.css"/>
+<link rel="stylesheet" href="assets/css/newHistory.css"/>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* 신규회원 등록 버튼 눌렀을때 */
+
+/* 팝업 스타일 */
+.modal-bg {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 999;
+}
+
+.modal-wrap {
+	    display: none;
+    position: fixed;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    height: 464px;
+    background: #fff;
+    z-index: 1000;
+    width: 327px;
+}
+
+
+.add-member{
+position: relative;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.ip-bd .m-name{
+
+    width: 79%;
+    position: absolute;
+}
+
+.person-info-form{
+	    list-style: none;
+    padding: 0px;
+    margin: 0 auto;
+    width: 244px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+.form-title{
+	margin-bottom: 37px;
+}
+
+
+
+
+.form-btn{
+	width: 200px;
+}
+
+.m-name{
+	padding: 0px;
+	    width: 200px;
+	    height: 30px;
+	
+}
+.ip-bd{
+	padding: 0px;
+	    width: 200px;
+	    height: 30px;
+	
+}
+
+
+.ttt{
+	margin-bottom: 10px
+	
+}
+.nnn{
+	margin-bottom: 25px
+	
+	
+}
+
+
+
+
+

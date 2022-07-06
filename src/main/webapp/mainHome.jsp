@@ -30,12 +30,20 @@
 			<ul class="menuList2">
 				<li class="s-btn"><label class="switch s-btn"> <input type="checkbox"> <span class="slider round"></span>
 				</label></li>
-				<li class="home"><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
 			</ul>
 			<nav class="main-nav">
 				<ul class="menuList">
+					<li class="home"><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
+					
+					<!-- 비회원일때 -->
 					<li><a href="#" class="btn-open signin" id="p01" onclick="javascript:popOpen();">Sign in</a></li>
 					<li><a class="signup" href="#" id="p02" onclick="javascript:popOpen2();">Sign up</a></li>
+					
+						<!-- 회원일떄 -->
+				<!--	<li><a href="#" class="">Tutorial</a></li>
+						<li><a class="" href="#"  onclick="">Price</a></li>
+						<li><a class="" href="#" onclick="">Logout</a></li>			 -->
+						
 				</ul>
 			</nav>
 
@@ -69,7 +77,7 @@
 							<input type="password" placeholder="Password" id="password" class="account">
 
 							<div class="btn-holder">
-								<button class="btn btn-5 hover-border-11" id="login-btn">
+								<button type="submit" class="btn btn-5 hover-border-11" id="login-btn">
 									<span>l o g i n</span>
 								</button>
 							</div>

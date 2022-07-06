@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+
+
+/* 회원 정보 수정 버튼 눌렀을때 */
+
+
+
+/* 팝업 스타일 */
+.modal-bg2 {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 999;
+}
+
+.modal-wrap2 {
+display: none;
+    position: fixed;
+    /* transform: translate(21%, 82%); */
+    transform: translate(12.5%, 71%);
+    height: 40%;
+    background: #fff;
+    z-index: 1000;
+    width: 80%;
+}
+
+
+.add-member2{
+position: relative;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.ip-bd2 .m-name2{
+
+    width: 79%;
+    position: absolute;
+}
+
+.person-info-form2{
+	    list-style: none;
+    padding: 0px;
+    margin: 0 auto;
+    width: 244px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+.form-title2{
+	margin-bottom: 37px;
+}
+
+
+
+
+.form-btn2{
+	width: 200px;
+}
+
+.m-name2{
+	padding: 0px;
+	    width: 200px;
+	    height: 30px;
+	
+}
+.ip-bd2{
+	padding: 0px;
+	    width: 200px;
+	    height: 30px;
+	
+}
+
+
+.ttt2 {
+	margin-bottom: 10px
+	
+}
+.nnn2{
+	margin-bottom: 25px
+	
+	
+}
+
+
+
+
+
+
+
+
+
+/* 팝업창 내부----------------------------- */
+
+
+.form-title3{
+	margin: 0;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.title-list{
+
+margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.css3{
+    width: 100%;
+	
+}
+
+
+.cont-ul{
+	
+list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-sub{
+	    display: flex;
+    justify-content: center;
+}
+
+
+
