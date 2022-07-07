@@ -1,0 +1,115 @@
+@charset "EUC-KR";
+
+.name{
+  
+  background-color:gray;
+  text-align:center;
+  height: 80px;
+  width: 20%;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100px;
+  background-color: #ddd;
+  
+}
+.input{
+	display:grid;
+}
+
+
+.topper{
+  position: fixed;
+  top: 0; left: 0;
+  
+  width: 100%;
+  display:flex;
+ 
+}
+.top_right{
+	 
+     height: 100px;
+	background-color: gray;
+	display: flex;
+	
+
+}
+#top_r_r{
+	
+	margin-left:602px;
+	
+	
+}
+
+
+#btn_bundle{
+	padding: 25px;
+}
+.top_left{
+	 width: 20.6%;
+     height: 100px;
+	background-color: #ddd;
+	text-align:center;
+}
+
+.input{
+	display:grid;
+}
+
+
+#btn1{
+	
+	width: 100px;
+    height: 50px;
+}
+
+#btn2{
+	width: 70px;
+	height:50px;
+}
+
+
+#btn_bundle1, #btn_bundle2{
+	padding: 25px;
+}
+
+.photo1, .photo2{
+	width:100px;
+	height:200px;
+	
+}
+
+.photo1, .photo2{
+	margin-left:40px;
+}
+.side{
+	display:flex;
+}
+
+.middle{
+	width:100%;
+	margin-top:46px;
+	display:flex;
+	position: fixed;
+}
+
+.mid_left{
+	
+  height: 774px;
+  width: 20.18%;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  
+}
+.mid_mid{
+	flex:1;
+	
+	height:80%;
+	
+}
+.middle_right{
+	position:sticky;
+	width:100%;
+}
+
+
+

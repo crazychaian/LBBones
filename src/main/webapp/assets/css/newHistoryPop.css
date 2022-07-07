@@ -1,0 +1,39 @@
+@charset "EUC-KR";
+
+.box{
+	border:solid 3px;
+	background:blue;
+	width:500px;
+	height:400px;
+	padding:20px;
+	
+	
+}
+.pop{
+	width:200px;;
+	margin:auto;
+	text-align: center;
+	
+	
+}
+
+.find{
+	display:flex;
+	width:auto;
+	
+}
+
+.btnNew {
+
+  margin-top: 50px;
+  padding:8px;
+  background:#1E90FF;
+  border:none;
+  background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+}
+.btnNew:hover {
+  background: 	#4682B4;
+  border: none;
+  
+  
+}
