@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="assets/css/header2.css" />
 <link rel="stylesheet" href="assets/css/idHistoryList.css" />
 <link rel="stylesheet" href="assets/css/addMemberPop.css" />
-<link rel="stylesheet" href="assets/css/idHistoryUpdatePop.css" />
+<link rel="stylesheet" href="assets/css/imagesPop.css" />
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>Insert title here</title>
@@ -72,7 +72,8 @@
 						<span>신규환자등록</span>
 					</button>
 					<!-- 진료등록버튼 -->
-					<button type="button" class="" id="" onclick="">
+					<button type="button" class="" id=""
+						onclick="window.open('newHistory.jsp','name','resizable=no width=1500 height=900');return false">
 						<span>진료등록</span>
 					</button>
 
@@ -100,16 +101,37 @@
 				</ul>
 			</div>
 
-			<!-- 환자 진료기록 업데이트 추가될부분 -->
+			<!-- 환자 진료기록 업데이트 추가될 부분 -->
 			<div class="info-cont">
 				<ul class="info-cont-rp">
 					<li><span>2018-10-10</span></li>
-					<li><img alt="img" src="images/3.png"> <img alt="img"
-						src="images/3.png"></li>
-					<li><span>x축 : ~~~~~~~~~~~</span></li>
-					<li><span>무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</span></li>
+					<li id="imglistLi">
+						
+						
+						
+						<!-- 클릭할 이미지 리스트  -->
+						<div class="imgList">
+							<div class="imgC" style="cursor : zoom-in">
+								<img src="images/1.png" alt="모달할 이미지">
+								<p>이미지 1</p>
+							</div>
+							<div class="imgC" style="cursor : zoom-in">
+								<img src="images/4.png" alt="모달할 이미지">
+								<p>이미지 2</p>
+							</div>
+
+						</div>
+
+
+					</li>
+					<li><textarea name="randmark-view" cols="30" rows="10"
+							readonly>여기서는 수정 안되용~~~~~~~~</textarea></li>
+					<li><textarea name="today-chart-view" cols="30" rows="10"
+							readonly>여기서는 수정 안되용~~~~~~~~</textarea></li>
 					<li><span>
-							<button type="button" href="" onclick="javascript:popOpen2();">수정</button>
+							<button type="button" href=""
+								onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=900');return false">진료
+								내용 추가</button>
 
 					</span></li>
 
@@ -117,16 +139,12 @@
 			</div>
 
 
-
-
-
-
-
-
-
 		</div>
 
 	</div>
+
+
+
 
 
 
@@ -166,48 +184,17 @@
 	<!-- //modal 영역 -->
 
 
-	<!-- modal 환자진료내용 수정 영역 -->
-	<div class="modal-bg2" onclick="javascript:popClose2();"></div>
-	<div class="modal-wrap2">
-		<div class="add-member2">
-
-			<span class="form-title3">환자 정보 수정</span>
-
-			<form action="" name="person-info2 css3">
-
-
-				<ul class="title-list">
-					<li><span>visit date</span></li>
-					<li><span>X-ray 이미지</span></li>
-					<li><span>랜드마크 정보</span></li>
-					<li><span>진료 기록</span></li>
-
-				</ul>
-				<div class="">
-					<ul class="cont-ul">
-						<li><span>2018-10-10</span></li>
-						<li><img alt="img" src="images/3.png"> <img alt="img"
-							src="images/3.png"></li>
-						<li><textarea id="rm-mark" name="randmark" rows="5" cols="33">x축은 1321324 y축은 15468432121</textarea></li>
-						<li><textarea id="today-chart" name="chart" rows="5"
-								cols="33">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea></li>
-
-					</ul>
-					<div class="btn-sub">
-						<button type="submit" href="">수정완료</button>
-
-					</div>
-				</div>
-
-			</form>
-
-
-
+	<!-- modal   이미지확대 영역 -->
+	<!-- 팝업 될 곳 -->
+	<div class="modal">
+		<button>&times;</button>
+		<div class="modalBox">
+			<img src="" alt="">
+			<p></p>
 		</div>
-
-
 	</div>
-	<!-- //modal 영역 -->
+</body>
+<!-- //modal 영역 -->
 
 
 
@@ -219,7 +206,8 @@
 
 
 
-	<script type="text/javascript">
+
+<script type="text/javascript">
 		function popOpen() {
 
 			var modalPop = $('.modal-wrap');
@@ -272,14 +260,58 @@
 			}
 
 		}
+
+		
+		
+	
+		
+		
+		
+		
+		const modal = document.querySelector(".modal");
+		const img = document.querySelector(".imgimg");
+		const modal_img = document.querySelector(".modal_content");
+		const span = document.querySelector(".close");
+
+		img.addEventListener('click', ()=>{
+		  modalDisplay("block");
+		  modal_img.src = img.src;
+		});
+		span.addEventListener('click', ()=>{
+		  modalDisplay("none");
+		});
+		modal.addEventListener('click', ()=>{
+		  modalDisplay("none");
+		});
+		function modalDisplay(text){
+		  modal.style.display = text;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
+<!--js -->
+<script type="text/javascript" src="assets/js/imgmodal.js"></script>
 
 
-
-	<script type="module"
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule=""
-		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module"
+	src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule=""
+	src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
 </body>
