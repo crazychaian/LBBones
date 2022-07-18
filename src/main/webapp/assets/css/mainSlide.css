@@ -10,7 +10,7 @@ body{
 .outer {
        border: 6px solid royalblue;
     width: 99%;
-    height: 845px;
+    height: 790px;
     margin: 0 auto;
     margin-top: 95px;
     overflow-x: hidden;
@@ -25,16 +25,37 @@ body{
 .inner {
   border: 6px solid olive;
   padding: 0 16px;
-  
+      position: relative;
   
       display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 .button-list {
   text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /* 버튼 */
@@ -94,7 +115,6 @@ body{
 #btn2::after {
   content: '';
   position: absolute;
-  top: 50%;
   left: 50%;
   margin: -20px 0 0 -20px;
   width: 20px;
@@ -151,3 +171,15 @@ body{
 .b1 span{
 	    transform: rotate( 180deg );
 }
+
+
+
+
+
+
+
+
+
+
+
+

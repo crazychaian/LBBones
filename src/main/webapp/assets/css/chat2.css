@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+
+@font-face {
+	font-family: "Monument";
+	src:
+		url("https://res.cloudinary.com/holatresveces/raw/upload/v1573001944/MonumentExtended-Ultrabold_clzvv7.otf");
+}
+
+
+
 .chatbox {
 	width: 50px;
 	height: 50px;
@@ -53,7 +62,6 @@ input[id="chaticon"]:checked+label+div {
 
 
 .btn-chat {
-	
 	position: fixed;
     top: 94%;
     right: 54px;
@@ -63,6 +71,7 @@ input[id="chaticon"]:checked+label+div {
     color: pink;
     cursor: pointer;
     z-index: 50;
+        
 }
 
 .modal {
@@ -78,7 +87,7 @@ input[id="chaticon"]:checked+label+div {
 }
 
 .modal_content {
-	z-index: 501;
+z-index: 501;
     display: none;
     width: 325px;
     height: 325px;

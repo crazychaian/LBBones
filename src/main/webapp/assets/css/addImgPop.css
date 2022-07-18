@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/* 신규회원 등록 버튼 눌렀을때 */
+
+/* 팝업 스타일 */
+.modal-bg {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 999;
+}
+
+.modal-wrap {
+	display: none;
+    position: fixed;
+    top: 25%;
+    right: 35%;
+    /* transform: translate(-25%, -10%); */
+    height: 464px;
+    background: #fff;
+    z-index: 1000;
+    width: 581px;
+}
+
+
+.add-member{
+position: relative;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+

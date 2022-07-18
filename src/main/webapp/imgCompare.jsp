@@ -45,18 +45,21 @@
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
 							<div>
+							<span>2018-10-18</span>
 								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
 							<div>
+							<span>2018-11-18</span>
 								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
 							<div>
+							<span>2018-12-18</span>
 								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>

@@ -14,7 +14,7 @@
 <title>새로운 진료 등록 창~~~</title>
 </head>
 <body>
-	<form action="">
+	<div>
 		<div class="div-top">
 			<div>
 				<span>환자이름 : 생년월일</span>
@@ -32,7 +32,7 @@
 				</button>
 
 				<button type="button" class="" id=""
-					onclick="window.open('imgCompare.jsp','name','resizable=no width=1500 height=900');return false">
+					onclick="window.open('imgCompare.jsp','imgcompare','resizable=no width=1600 height=1000');return false "target="_blank">
 					<span>사진비교</span>
 				</button>
 			</div>
@@ -48,36 +48,37 @@
 					<div id="myDIV">
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
-							<div >
-								<img class="day-img simg"  alt="오늘진료이미지등록"	src="images/1.png"   >
+							<div>
+								<span>2018-10-18</span>
+								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
 							<div>
-								<img class="day-img simg" alt="오늘진료이미지등록" src="images/2.png">
+								<span>2018-11-18</span>
+								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>
 						<!-- 사진등록하면 추가되는 부분 -->
 						<div class="plus-img">
 							<div>
-								<img class="day-img simg" alt="오늘진료이미지등록" src="images/3.png">
+								<span>2018-12-18</span>
+								<img class="day-img" alt="오늘진료이미지등록" src="images/1.png">
 							</div>
 						</div>
 					</div></li>
 
 				<li style="width: 100%">
 					<div class="div-main-middle">
-						<div id="cframe"  class="bigImgBox"
-							style="width: 100%; height: 900px; overflow: hidden; display: flex; border: 1px solid black; filter: contrast(100%); justify-content: center;">
-							<canvas id="canvas"  width="400%" height=" 900px"
-								style="filter: brightness(100%); padding: 10px; filter: contrast(100%); transform: scale(1); transform-origin: 0% 0%;"></canvas>
+						<div id="cframe">
+							<canvas id="canvas" ></canvas>
 						</div>
 
 						<button id="btn1">밝기 원래대로</button>
 						<button id="btn2">대비 원래대로</button>
 						<button id="btn3">크기 반배</button>
-						<button id="btn4">크기 원래대로</button>
+						<button id="btn4">크기 1배</button>
 						<button id="btn5">크기 2배</button>
 						<div class="Container">
 							&nbsp; <font size="2" id="value_view1">100</font> &nbsp;&nbsp; <input
@@ -91,6 +92,9 @@
 								style="width: 80%;" id="slider2" type="range" value="100"
 								min="0" max="200">
 						</div>
+
+
+
 					</div>
 				</li>
 
@@ -130,7 +134,7 @@
 
 
 
-	</form>
+	</div>
 
 
 
@@ -146,7 +150,7 @@
 				</button>
 			</form>
 		</div>
-	</div>  -->
+	</div> -->
 
 
 
@@ -173,7 +177,7 @@
 	</script>
 
 
-	<script >
+	<script type="text/javascript">
 		var bDisplay = true;
 		function doDisplay() {
 			var con = document.getElementById("myDIV");
@@ -195,25 +199,6 @@
 
 
 
-<script type="text/javascript">
-	var bigImg = document.querySelector('#canvas');
-	var sImg = document.querySelectorAll('.simg');
-	
-	for(var i=0; i<sImg.length; i++){
-		sImg[i].onclick = showImg;
-	}
-	
-	
-	
-	function showImg(){
-		var newImg = this.src;
-		bigImg.setAttribute('src', newImg);
-	}
-	
-	
-	
-	
-</script>
 
 
 
@@ -225,11 +210,9 @@
 
 
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
 
     var scale = 1;
     
@@ -301,7 +284,7 @@
     var ctx = canvas.getContext('2d');
 
     function drawImageData(image) {
-        image.height *= canvas.offsetWidth / image.width ;
+        image.height *= canvas.offsetWidth / image.width;
         image.width = canvas.offsetWidth;
 
         if(image.height > canvas.offsetHeight){
@@ -330,9 +313,6 @@
     });
 
     </script>
-
-
-
 
 
 

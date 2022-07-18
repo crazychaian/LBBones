@@ -35,8 +35,8 @@
 			<nav class="main-nav">
 				<ul class="menuList">
 					<li class=""><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
-					<li><a href="#" href="memberHome.jsp" class="">Tutorial</a></li>
-					<li><a class="" href="#" onclick="">Price</a></li>
+					<li><a href="memberHome.jsp" class="">Tutorial</a></li>
+					<li><a class="" href="memberHome.jsp#price" onclick="">Price</a></li>
 					<li><a class="" href="mainHome.jsp" onclick="">Logout</a></li>
 				</ul>
 			</nav>
@@ -56,35 +56,48 @@
 	<div class="allMain">
 
 
-		<div class="serch-btn">
-			<form class="container-sm">
-				<span>환자검색</span> <input type="text" placeholder="caseID 또는 환자이름"
-					id="" class="">
 
-				<div class="btn-holder">
-					<!-- 검색버튼 -->
-					<button type="submit" class="" id="">
-						<span>serch</span>
-					</button>
-					<!-- 신규환자등록버튼 -->
-					<button type="button" class="" id=""
-						onclick="javascript:popOpen();">
-						<span>신규환자등록</span>
-					</button>
-					<!-- 진료등록버튼 -->
-					<button type="button" class="" id=""
-						onclick="window.open('newHistory.jsp','name','resizable=no width=1500 height=900');return false">
-						<span>진료등록</span>
-					</button>
+<div class="container-sm">
 
-					<span>김가나</span> <span>1999-07-03</span> <span>a0001</span>
+
+			<div id="container-btn">
+
+				<input type="text" placeholder="caseID 또는 환자이름을 검색하세요"
+					id="serch-pati" class="serch-patient ">
+
+				<div class="button-main ser-main" type="submit">
+					<div class="button-inside ser-inside">
+						<h1 class="btn-name">SERCH</h1>
+					</div>
 				</div>
 
-			</form>
-
+				<div class="button-main new-main" onclick="javascript:popOpen();">
+					<div class="button-inside new-inside">
+						<h1 class="btn-name">NEW PATIENT REGISTRATION</h1>
+					</div>
+				</div>
+				
+				<div class="button-main record-main" 
+				onclick="window.open('newHistory.jsp','newhistroy','resizable=no width=1500 height=900');return false">
+					<div class="button-inside record-inside">
+						<h1 class="btn-name">ADD MEDICAL RECORDS</h1>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+			<!-- 클릭하고 들어온 환자 정보  //  환자코드 / 생년월일 / 이름 /  -->
+				<div class="clickMem-div">
+				<span class="clickMem">a0001</span>  <span class="clickMem">1999-07-03</span>  <span class="clickMem">김가나</span> 
+				</div>
 
 
 		</div>
+
+
+
+		
 
 
 		<div class="wrap">
@@ -92,10 +105,10 @@
 			<!-- 목록 이름 -->
 			<div class="info-listname">
 				<ul class="info-listname-rp">
-					<li><span>visit date</span></li>
-					<li><span>X-ray 이미지</span></li>
-					<li><span>랜드마크 정보</span></li>
-					<li><span>진료 기록</span></li>
+					<li><span>VISIT DATE</span></li>
+					<li><span>X-ray</span></li>
+					<li><span>RANDMARK INFO</span></li>
+					<li><span>RECORD</span></li>
 					<li><span>수정 / 삭제</span></li>
 
 				</ul>
@@ -124,64 +137,122 @@
 
 
 					</li>
-					<li><textarea name="randmark-view" cols="30" rows="10"
-							readonly>여기서는 수정 안되용~~~~~~~~</textarea></li>
-					<li><textarea name="today-chart-view" cols="30" rows="10"
-							readonly>여기서는 수정 안되용~~~~~~~~</textarea></li>
-					<li><span>
-							<button type="button" href=""
-								onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=900');return false">진료
-								내용 추가</button>
+					<li><textarea  class="txtarea" name="randmark-view" cols="30" rows="10"
+							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+					<li><textarea class="txtarea" name="today-chart-view" cols="30" rows="10"
+							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+					<li>
+							<div class="btn btn__secondary" type="button" href=""onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
+							<span>진료 내용 추가</span></div>
 
-					</span></li>
+					</li>
 
 				</ul>
 			</div>
 
 
+
+
+<!-- 환자 진료기록 업데이트 추가될 부분 -->
+			<div class="info-cont">
+				<ul class="info-cont-rp">
+					<li><span>2018-10-10</span></li>
+					<li id="imglistLi">
+						
+						
+						
+						<!-- 클릭할 이미지 리스트  -->
+						<div class="imgList">
+							<div class="imgC" style="cursor : zoom-in">
+								<img src="images/1.png" alt="모달할 이미지">
+								<p>이미지 1</p>
+							</div>
+							<div class="imgC" style="cursor : zoom-in">
+								<img src="images/4.png" alt="모달할 이미지">
+								<p>이미지 2</p>
+							</div>
+
+						</div>
+
+
+					</li>
+					<li><textarea class="txtarea" name="randmark-view" cols="30" rows="10"
+							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+					<li><textarea class="txtarea" name="today-chart-view" cols="30" rows="10"
+							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+					<li>
+							<div class="btn btn__secondary" type="button" href=""onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
+							<span>진료 내용 추가</span></div>
+
+					</li>
+
+				</ul>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 
 	</div>
-
-
 
 
 
 
 	<!-- modal   신규환자등록 영역 -->
 	<div class="modal-bg" onclick="javascript:popClose();"></div>
+
 	<div class="modal-wrap">
-		<div class="add-member">
-
-			<span class="form-title">신규 환자 등록</span>
-
-			<form action="" name="person-info">
-				<ul class="person-info-form">
-					<li class="ttt">birthdate</li>
-					<li><input type="date" name="startday" class="ip-bd nnn">
-					</li>
-					<li class="ttt">name</li>
-					<li><input type="text" name="membername" class="m-name nnn"
-						placeholder="환자 이름을 입력해주세요."></li>
-					<li class="ttt">sexual selection</li>
-					<li class="nnn"><input type="radio" name="gender" value="man">남
-						<input type="radio" name="gender" value="woman">여</li>
-					<li>
-						<button type="submit" class="form-btn" id="">
-							<span>등록</span>
-						</button>
-					</li>
-
-				</ul>
-			</form>
 
 
 
-		</div>
+		
+			<div class="button-inside-pop ">
+				<h1 class="btn-name-pop form-title">NEW PATIENT REGISTRATION</h1>
+				<div class="add-member">
+
+
+					<form action="" name="person-info">
+						<ul class="person-info-form">
+							<li class="ttt">birthdate</li>
+							<li><input type="date" name="startday" class="ip-bd nnn">
+							</li>
+							<li class="ttt">name</li>
+							<li><input type="text" name="membername" class="m-name nnn"
+								placeholder="환자 이름을 입력해주세요."></li>
+							<li class="ttt">sexual selection</li>
+							<li class="nnn"><input class="r-btn" type="radio" name="gender"
+								value="man"><span class="r-txt">남</span><input class="r-btn" type="radio" name="gender"
+								value="woman"><span  class="r-txt">여</span></li>
+							<li>
+								<button type="submit" class="form-btn" id="">
+									<span class="sub-btn-txt">SUBMIT</span>
+								</button>
+							</li>
+
+						</ul>
+					</form>
+				</div>
+			</div>
 
 
 	</div>
 	<!-- //modal 영역 -->
+
+
+
+
+
+
 
 
 	<!-- modal   이미지확대 영역 -->
