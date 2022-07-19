@@ -1,3 +1,7 @@
+<%@page import="model.XrayVO"%>
+<%@page import="java.util.List"%>
+<%@page import="model.CustomerVO"%>
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +19,11 @@
 </head>
 <body>
 
-
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
+	List<XrayVO> xrayList = (List<XrayVO>) request.getAttribute("xrayList");
+	%>
 
 
 	<!-- 프로그램 시작 버튼 누르면 보이는 페이지 입니다~~ (기존 회원리스트들)  -->
@@ -34,10 +42,11 @@
 			</ul>
 			<nav class="main-nav">
 				<ul class="menuList">
-					<li class=""><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
+					<li class="home"><a style="cursor: pointer"
+						href="mainHome.jsp">Home</a></li>
 					<li><a href="memberHome.jsp" class="">Tutorial</a></li>
 					<li><a class="" href="memberHome.jsp#price" onclick="">Price</a></li>
-					<li><a class="" href="mainHome.jsp" onclick="">Logout</a></li>
+					<li><a class="" href="logoutService" onclick="">Logout</a></li>
 				</ul>
 			</nav>
 
@@ -78,7 +87,7 @@
 				</div>
 				
 				<div class="button-main record-main" 
-				onclick="window.open('newHistory.jsp','newhistroy','resizable=no width=1500 height=900');return false">
+				onclick="window.open('newHistory-2.jsp','newhistroy','resizable=no width=1500 height=900');return false">
 					<div class="button-inside record-inside">
 						<h1 class="btn-name">ADD MEDICAL RECORDS</h1>
 					</div>
@@ -89,7 +98,7 @@
 			</div>
 			<!-- 클릭하고 들어온 환자 정보  //  환자코드 / 생년월일 / 이름 /  -->
 				<div class="clickMem-div">
-				<span class="clickMem">a0001</span>  <span class="clickMem">1999-07-03</span>  <span class="clickMem">김가나</span> 
+				<span class="clickMem"><%= pvo.getP_seq() %></span>  <span class="clickMem"><%=pvo.getP_name() %></span>  <span class="clickMem"><%= pvo.getP_gender() %></span>  <span class="clickMem"><%= pvo.getP_date() %></span> 
 				</div>
 
 
@@ -115,48 +124,25 @@
 			</div>
 
 			<!-- 환자 진료기록 업데이트 추가될 부분 -->
+<%
+			if (xrayList == null) {
+			%>
 			<div class="info-cont">
-				<ul class="info-cont-rp">
-					<li><span>2018-10-10</span></li>
-					<li id="imglistLi">
-						
-						
-						
-						<!-- 클릭할 이미지 리스트  -->
-						<div class="imgList">
-							<div class="imgC" style="cursor : zoom-in">
-								<img src="images/1.png" alt="모달할 이미지">
-								<p>이미지 1</p>
-							</div>
-							<div class="imgC" style="cursor : zoom-in">
-								<img src="images/4.png" alt="모달할 이미지">
-								<p>이미지 2</p>
-							</div>
-
-						</div>
-
-
-					</li>
-					<li><textarea  class="txtarea" name="randmark-view" cols="30" rows="10"
-							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
-					<li><textarea class="txtarea" name="today-chart-view" cols="30" rows="10"
-							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
-					<li>
-							<div class="btn btn__secondary" type="button" href=""onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
-							<span>진료 내용 추가</span></div>
-
-					</li>
-
-				</ul>
+		
 			</div>
 
-
+<%
+			} else {
+			%>
 
 
 <!-- 환자 진료기록 업데이트 추가될 부분 -->
 			<div class="info-cont">
+				<%
+				for (XrayVO xvo : xrayList) {
+				%>
 				<ul class="info-cont-rp">
-					<li><span>2018-10-10</span></li>
+					<li><span><%= xvo.getXray_date() %></span></li>
 					<li id="imglistLi">
 						
 						
@@ -165,11 +151,14 @@
 						<div class="imgList">
 							<div class="imgC" style="cursor : zoom-in">
 								<img src="images/1.png" alt="모달할 이미지">
+								<%=xvo.getXray_img() %>
 								<p>이미지 1</p>
 							</div>
-							<div class="imgC" style="cursor : zoom-in">
-								<img src="images/4.png" alt="모달할 이미지">
-								<p>이미지 2</p>
+							<input type="hidden" name="XraySeq" value="<%= xvo.getXray_seq()%>">
+							<div class="lmC" style="cursor : zoom-in">
+							<img src="images/1.png" alt="모달할 이미지">
+								<%=xvo.getXray_img() %>
+								<p>이미지 1</p>
 							</div>
 
 						</div>
@@ -177,17 +166,27 @@
 
 					</li>
 					<li><textarea class="txtarea" name="randmark-view" cols="30" rows="10"
-							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+							readonly  disabled>대퇴골의 길이 : <br>
+							경골의 길이 : <br>
+							다리 전체의 길이 : 
+							</textarea></li>
 					<li><textarea class="txtarea" name="today-chart-view" cols="30" rows="10"
-							readonly  disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+							readonly  disabled></textarea></li>
 					<li>
-							<div class="btn btn__secondary" type="button" href=""onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
+							<div class="btn btn__secondary" onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
 							<span>진료 내용 추가</span></div>
 
 					</li>
 
 				</ul>
+				<%
+				}
+				%>
 			</div>
+			
+				<%
+			}
+			%>
 
 
 
@@ -360,6 +359,76 @@
 		
 		
 		
+		
+		$(".info-cont-rp").onload=function(){
+			let a = 0;
+			let inpiXraySeq = $('input[name=XraySeq]');
+			let XraySeq = $(inpiXraySeq[0]).val();
+			
+			$.ajax({
+				url : 'landmarkViewService',
+				type : 'post',
+				dataType : 'json',
+				data : {
+					"XraySeq" :XraySeq
+				},
+				success : function(data) {
+					$('div.lmC').eq(a).html("");
+		
+						let landmark_seq = data.landmark_seq;
+						let xray_seq = data.xray_seq;
+						let l_top_x = data.l_top_x;
+						let l_top_y = data.l_top_y;
+						let l_mid_x = data.l_mid_x;
+						let l_mid_y = data.l_mid_y;
+						let l_bot_x = data.l_bot_x;
+						let l_bot_y = data.l_bot_y;
+						let r_top_x = data.r_top_x;
+						let r_top_y = data.r_top_y;
+						let r_mid_x = data.r_mid_x;
+						let r_mid_y = data.r_mid_y;
+						let r_bot_x = data.r_bot_x;
+						let r_bot_y = data.r_bot_y;
+						let l_femur_len = data.l_femur_len;
+						let l_tibia_len = data.l_tibia_len;
+						let l_total_len = data.l_total_len;
+						let r_femur_len = data.r_femur_len;
+						let r_tibia_len = data.r_tibia_len;
+						let r_total_len = data.r_total_len;
+						let lr_femur_gap = data.lr_femur_gap;
+						let lr_tibia_gap = data.lr_tibia_gap;
+						let lr_total_gap= data.lr_total_gap;
+						let landmark_date = data.landmark_date;
+						
+						
+						<img src="images/4.png" alt="모달할 이미지">
+						<p>이미지 2</p>
+
+						ul=
+							`<img src="landmark/4.png" alt="모달할 이미지">
+						
+								<p>이미지 2</p>
+							`;
+							
+							
+					
+					$('div.lmC').append(ul);
+					
+					
+
+				},
+				error : function() {
+					alert("에러 발생")
+				}
+
+			});
+			
+			a++;
+		}
+			
+			
+			
+			
 		
 		
 		

@@ -2,17 +2,15 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.CustomerDAO;
-import model.CustomerVO;
+import com.google.gson.Gson;
+
 import model.DoctorDAO;
 import model.DoctorVO;
 
@@ -33,29 +31,15 @@ public class loginService extends HttpServlet {
 		DoctorDAO dao = new DoctorDAO();
 		DoctorVO vo = dao.login(dvo);
 		
-		DoctorVO ndvo = dao.doccntFind(doc_id);
-		int doc_cnt = ndvo.getDoc_cnt();
+		Gson gson = new Gson();
 		
-		CustomerDAO cdao = new CustomerDAO();
-		List<CustomerVO> cusList = cdao.cusList(doc_cnt);
+		String jsonvo = gson.toJson(vo);
 
-		request.setAttribute("cusList", cusList);
+		response.setContentType("text/html; charset=utf-8");
 
-		if (vo == null) {
-			response.sendRedirect("customer.jsp");
-			System.out.println("½ÇÆÐ");
+		PrintWriter out = response.getWriter();
 
-		} else {
-
-			HttpSession session1 = request.getSession();
-			session1.setAttribute("vo", vo);
-			
-			HttpSession session2 = request.getSession();
-			session2.setAttribute("cusList", cusList);
-			
-			response.sendRedirect("customer.jsp");
-		}
+		out.print(jsonvo);
 
 	}
-
 }

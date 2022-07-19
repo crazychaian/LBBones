@@ -19,17 +19,19 @@ public class xrayComService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 
-		int xr_cnt = Integer.parseInt(request.getParameter("xr_cnt"));
-		String xr_com = request.getParameter("xr_com");
+		int xray_seq = Integer.parseInt(request.getParameter("xray_seq"));
+		String doc_id = request.getParameter("doc_id");
+		String cmt_content = request.getParameter("cmt_content");
 
-		XrayCommentVO cvo = new XrayCommentVO();
-		cvo.setXr_cnt(xr_cnt);
-		cvo.setXr_com(xr_com);
+		XrayCommentVO xcvo = new XrayCommentVO();
+		xcvo.setXray_seq(xray_seq);
+		xcvo.setDoc_id(doc_id);
+		xcvo.setCmt_content(cmt_content);
 
-		XrayCommentDAO qcdao = new XrayCommentDAO();
-		int cnt = qcdao.insertCom(cvo);
+		XrayCommentDAO xcdao = new XrayCommentDAO();
+		int cnt = xcdao.insertCom(xcvo);
 
 		if (cnt > 0) {
 
@@ -39,7 +41,7 @@ public class xrayComService extends HttpServlet {
 			PrintWriter out = response.getWriter();
 
 			// ¿¿¥‰
-			out.print(cvo == null);
+			out.print(xcvo == null);
 
 		} else {
 

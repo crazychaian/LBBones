@@ -27,7 +27,7 @@ public class cusSearchService extends HttpServlet {
 		String search = request.getParameter("search");
 
 		CustomerDAO dao = new CustomerDAO();
-		List<CustomerVO> cuslist = dao.cusSearch("%" + search + "%");
+		List<CustomerVO> cuslist = dao.pSearch("%" + search + "%");
 		
 		Gson gson = new Gson();
 		

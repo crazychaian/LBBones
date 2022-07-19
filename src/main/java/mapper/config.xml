@@ -9,6 +9,7 @@
 	<typeAliases>
 		<!-- 데이터 타입 별 alias 설정 -->
 		<typeAlias type="model.DoctorVO" alias="DoctorVO" />
+		<typeAlias type="model.DoctorVO2" alias="DoctorVO2" />
 		<typeAlias type="model.DoctorDAO" alias="DoctorDAO" />
 		<typeAlias type="model.CustomerVO" alias="CustomerVO" />
 		<typeAlias type="model.CustomerDAO" alias="CustomerDAO" />
@@ -18,8 +19,6 @@
 		<typeAlias type="model.LandmarkDAO" alias="LandmarkDAO" />
 		<typeAlias type="model.XrayCommentVO" alias="XrayCommentVO" />
 		<typeAlias type="model.XrayCommentDAO" alias="XrayCommentDAO" />
-		<typeAlias type="model.LandmarkResultVO" alias="LandmarkResultVO" />
-		<typeAlias type="model.LandmarkResultDAO" alias="LandmarkResultDAO" />
 
 	</typeAliases>
 
@@ -41,7 +40,6 @@
 		<mapper resource="mapper/XrayMapper.xml" />
 		<mapper resource="mapper/LandmarkMapper.xml" />
 		<mapper resource="mapper/XrayCommentMapper.xml" />
-		<mapper resource="mapper/LandmarkResultMapper.xml" />
 
 	</mappers>
 </configuration>

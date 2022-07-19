@@ -21,12 +21,12 @@
 
 .info-listname-rp {
 	margin: 0px;
-    margin-bottom: 28px;
-    height: 42px;
-    list-style: none;
-    align-items: center;
-    padding: 0px;
-    display: flex;
+	margin-bottom: 28px;
+	height: 42px;
+	list-style: none;
+	align-items: center;
+	padding: 0px;
+	display: flex;
 }
 
 .info-listname-rp li {
@@ -44,11 +44,7 @@
 	color: white;
 }
 
-
-
-
-
-
+/* 
 .info-cont{
 	display: flex;
     height: 57px;
@@ -56,28 +52,28 @@
     position: relative;
     border: 0.1px solid;
     color: white;
-    /* margin: 0px; */
+    margin: 0px;
     margin-bottom: 16px;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
 }
-
-
-.info-cont:hover{
+ */
+.info-cont:hover {
 	background-color: #85858554;
 }
 
-
-
 .info-cont-rp {
+	margin-bottom: 16px;
+	border: 0.1px solid;
+	border-radius: 10px;
+	color: white;
 	list-style: none;
-    display: flex;
-    align-items: center;
-    padding: 10px 0px;
-    margin: 0;
-    width: 100%;
-    height: 85%;
+	display: flex;
+	align-items: center;
+	padding: 10px 0px;
+	width: 100%;
+	height: 85%;
 }
 
 .info-cont-rp li {
@@ -87,153 +83,101 @@
 	width: 100%;
 }
 
-
-
-
-
 /* 표 */
-
-
-.wrap{
-	    padding: 30px;
-    background-color: #c0c0c01c;
-    border-radius: 12px;
-    margin-top: 20px;
-    box-shadow: 0.8rem 0.8rem 1.4rem #0a0b0e, -0.2rem -0.2rem 1.8rem #000000;
+.wrap {
+	padding: 30px;
+	background-color: #c0c0c01c;
+	border-radius: 12px;
+	margin-top: 20px;
+	box-shadow: 0.8rem 0.8rem 1.4rem #0a0b0e, -0.2rem -0.2rem 1.8rem #000000;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 버튼 */
-
-
-.serch-patient{
+.serch-patient {
 	width: 250px;
-    height: 25px;
-    border-radius: 9px;
-    margin-right: 10px;
-    left: 9px;
-    top: 16.5px;
-    position: absolute;
+	height: 25px;
+	border-radius: 9px;
+	margin-right: 10px;
+	left: 9px;
+	top: 16.5px;
+	position: absolute;
 }
-
-
-
-
 
 /* 버튼 */
-
-
-
 #container-btn {
- 
- 
+	
 }
 
-.ser-main{
+.ser-main {
 	width: 363px;
-    margin: 9px 0px;
+	margin: 9px 0px;
 }
 
-.ser-inside{
+.ser-inside {
 	width: 78px;
-    left: 277px;
-    position: absolute;
+	left: 277px;
+	position: absolute;
 }
 
-
-.new-main{
+.new-main {
 	width: 305px;
-	    margin: 9px 12px;
+	margin: 9px 12px;
 }
 
-
-
-.new-inside{
+.new-inside {
 	width: 275px;
 }
 
-
 .button-main {
 	cursor: pointer;
-    height: 2.6em;
-    background-color: #999;
-    background-image: linear-gradient(180deg, #ccc, #999);
-    border-top: 3px solid #ccc;
-    border-right: 3px solid #ccc;
-    border-left: 4px solid #666;
-    border-bottom: 4px solid #666;
-    border-radius: 1em;
-    float: left;
-    text-decoration: none;
-   /*  box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a; */
-    transition: box-shadow 0.3s, border-top 0.3s, border-right 0.3s;
+	height: 2.6em;
+	background-color: #999;
+	background-image: linear-gradient(180deg, #ccc, #999);
+	border-top: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	border-left: 4px solid #666;
+	border-bottom: 4px solid #666;
+	border-radius: 1em;
+	float: left;
+	text-decoration: none;
+	/*  box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a; */
+	transition: box-shadow 0.3s, border-top 0.3s, border-right 0.3s;
 }
 
 .button-main:hover {
-  box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0 #333,
-    -0.2em 0.2em 0 #333, -0.3em 0.3em 0 #333, inset -0.1em -0.1em 2em #fff,
-    -0.1em -0.1em 2em #666;
-  border-top: 5px solid #666;
-  border-right:5px solid #666;
+	box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0
+		#333, -0.2em 0.2em 0 #333, -0.3em 0.3em 0 #333, inset -0.1em -0.1em
+		2em #fff, -0.1em -0.1em 2em #666;
+	border-top: 5px solid #666;
+	border-right: 5px solid #666;
 }
 
 .button-main:focus {
-  box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0 #333,
-    -0.2em 0.2em 0 #333, -0.3em 0.3em 0 #333, inset -0.1em -0.1em 2em #fff,
-    -0.1em -0.1em 2em #666;
-  border-top: 5px solid #666;
-  border-right: 5px solid #666;
+	box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0
+		#333, -0.2em 0.2em 0 #333, -0.3em 0.3em 0 #333, inset -0.1em -0.1em
+		2em #fff, -0.1em -0.1em 2em #666;
+	border-top: 5px solid #666;
+	border-right: 5px solid #666;
 }
 
 .button-inside {
- 
-    height: 1.9em;
-    margin: 0.3em auto;
-    border-radius: 0.7em;
-    background-color: #ccc;
-    background-image: linear-gradient(30deg, #ccc, #999);
-    box-shadow: inset -0.15em 0.15em #2d2e2e, inset 0.2em -0.2em 0 #ccc;
- 
- }
+	height: 1.9em;
+	margin: 0.3em auto;
+	border-radius: 0.7em;
+	background-color: #ccc;
+	background-image: linear-gradient(30deg, #ccc, #999);
+	box-shadow: inset -0.15em 0.15em #2d2e2e, inset 0.2em -0.2em 0 #ccc;
+}
 
 .btn-name {
-
-	
-font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1em;
-    color: #f2f2f2;
-    text-align: center;
-    line-height: 1.8em;
-    margin: 0 auto;
-    text-shadow: -0.02em 0.02em 0 #666, -0.05em 0.05em 0 #666, -0.1em 0.1em 0 #666, -0.04em 0.04em 0 #666, -0.05em 0.05em 0 #666, -0.06em 0.06em 0 #999, -0.07em 0.07em 0 #999, -0.08em 0.08em 0 #999, -0.09em 0.09em 0 #999, -0.1em 0.1em 0 #999, -0.11em 0.11em 0 #999;
-  
-  }
-
-	
-
-
-
-
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	color: #f2f2f2;
+	text-align: center;
+	line-height: 1.8em;
+	margin: 0 auto;
+	text-shadow: -0.02em 0.02em 0 #666, -0.05em 0.05em 0 #666, -0.1em 0.1em
+		0 #666, -0.04em 0.04em 0 #666, -0.05em 0.05em 0 #666, -0.06em 0.06em 0
+		#999, -0.07em 0.07em 0 #999, -0.08em 0.08em 0 #999, -0.09em 0.09em 0
+		#999, -0.1em 0.1em 0 #999, -0.11em 0.11em 0 #999;
+}

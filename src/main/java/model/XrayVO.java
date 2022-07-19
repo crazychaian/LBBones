@@ -12,12 +12,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class XrayVO {
 	
-	private int xr_cnt;
+	private int xray_seq;
 	@NonNull
-	private int doc_cnt;
-	private String xr_date;
-	@NonNull
-	private int cus_cnt;
-	private String xr_name;
+	private int p_seq;
+	private String xray_img;
+	private String xray_date;
 
 }

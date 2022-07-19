@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.CustomerDAO;
-import model.CustomerVO;
+import model.XrayDAO;
+import model.XrayVO;
 
-@WebServlet("/cusJoinService")
-public class cusJoinService extends HttpServlet {
+@WebServlet("/xraySearchService")
+public class xraySearchService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -21,25 +22,16 @@ public class cusJoinService extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 
-		String doc_id = request.getParameter("doc_id");
-		String p_name = request.getParameter("p_name");
-		String p_birth = request.getParameter("p_birth");
-		String p_gender = request.getParameter("p_gender");
+		int cus_cnt = Integer.parseInt(request.getParameter("cus_cnt"));
 
-		CustomerVO cvo = new CustomerVO();
-		cvo.setDoc_id(doc_id);
-		cvo.setP_name(p_name);
-		cvo.setP_birth(p_birth);
-		cvo.setP_gender(p_gender);
-
-		CustomerDAO dao = new CustomerDAO();
-		int cnt = dao.pJoin(cvo);
+		XrayDAO dao = new XrayDAO();
+		List<XrayVO> xraySearchList = dao.xraySearchList(cus_cnt);
 
 		response.setContentType("text/html; charset = utf-8");
 
 		PrintWriter out = response.getWriter();
 
-		out.print(cnt);
+		out.print(xraySearchList);
 
 	}
 

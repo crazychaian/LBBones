@@ -1,12 +1,14 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 @WebServlet("/logoutService")
 public class logoutService extends HttpServlet {
@@ -19,7 +21,8 @@ public class logoutService extends HttpServlet {
 
 		session.removeAttribute("vo");
 
-		response.sendRedirect("intro.jsp");
+		response.sendRedirect("mainHome.jsp");
+		
 
 	}
 

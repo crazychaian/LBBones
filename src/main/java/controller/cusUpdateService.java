@@ -16,33 +16,27 @@ import model.CustomerVO;
 public class cusUpdateService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 
-		int cus_cnt = Integer.parseInt(request.getParameter("cus_cnt"));
-		String cus_name = request.getParameter("cus_name");
-		String cus_birth = request.getParameter("cus_birth");
-		String cus_mw = request.getParameter("cus_mw");
-		
-		CustomerVO cvo = new CustomerVO(cus_cnt, cus_name,cus_birth,cus_mw);
-		
+		int p_seq = Integer.parseInt(request.getParameter("p_seq"));
+		String p_name = request.getParameter("p_name");
+		String p_birth = request.getParameter("p_birth");
+		String p_gender = request.getParameter("p_gender");
+
+		CustomerVO cvo = new CustomerVO(p_seq, p_name, p_birth, p_gender);
+
 		CustomerDAO dao = new CustomerDAO();
-		int cnt = dao.cusUpdate(cvo);
-		
+		int cnt = dao.pUpdate(cvo);
+
 		response.setContentType("text/html; charset = utf-8");
 
 		PrintWriter out = response.getWriter();
 
 		out.print(cnt);
-	
-	
-	
-	
-	
-	
-	
-	
+
 	}
 
 }

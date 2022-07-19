@@ -45,6 +45,18 @@ public class DoctorDAO {
 
 	}
 
+	public DoctorVO idCheck(String doc_id) {
+		
+		SqlSession session = sqlSessionFactory.openSession(true);
+		
+		DoctorVO dvo = session.selectOne("idCheck", doc_id);
+		
+		session.close();
+		
+		return dvo;
+		
+	}
+	
 	public DoctorVO login(DoctorVO vo) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
@@ -57,11 +69,11 @@ public class DoctorDAO {
 
 	}
 	
-	public DoctorVO idCheck(String doc_id) {
+	public DoctorVO docvo(String doc_id) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		DoctorVO dvo = session.selectOne("idCheck", doc_id);
+		DoctorVO dvo = session.selectOne("docvo", doc_id);
 
 		session.close();
 
@@ -69,40 +81,22 @@ public class DoctorDAO {
 
 	}
 	
-	public List<DoctorVO> docList() {
+	public int docUpdate(DoctorVO2 vo) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<DoctorVO> list = session.selectList("docList");
+		int cnt = 0;
+		try {
+			cnt = session.insert("docUpdate", vo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		session.close();
 
-		return list;
+		return cnt;
 
 	}
 	
-	public List<DoctorVO> docSearch(String search) {
-		
-		SqlSession session = sqlSessionFactory.openSession(true);
-		
-		List<DoctorVO> list = session.selectList("docSearch", search);
-		
-		session.close();
-		
-		return list;
-		
-	}
-	
-	public DoctorVO doccntFind(String doc_id) {
-
-		SqlSession session = sqlSessionFactory.openSession(true);
-
-		DoctorVO dvo = session.selectOne("doccntFind", doc_id);
-
-		session.close();
-
-		return dvo;
-
-	}
-
 }

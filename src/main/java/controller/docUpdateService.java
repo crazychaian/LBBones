@@ -8,20 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.google.gson.Gson;
 
 import model.DoctorDAO;
-import model.DoctorVO;
+import model.DoctorVO2;
 
-@WebServlet("/joinService")
-public class joinService extends HttpServlet {
+@WebServlet("/docUpdateService")
+public class docUpdateService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		request.setCharacterEncoding("utf-8");
 
 		String doc_id = request.getParameter("doc_id");
@@ -29,26 +25,17 @@ public class joinService extends HttpServlet {
 		String doc_name = request.getParameter("doc_name");
 		String doc_hospital = request.getParameter("doc_hospital");
 
-		DoctorVO dvo = new DoctorVO();
-		dvo.setDoc_id(doc_id);
-		dvo.setDoc_pw(doc_pw);
-		dvo.setDoc_name(doc_name);
-		if (doc_hospital.equals("")) {
-			dvo.setDoc_hospital("소속병원 없음");
-		} else {
-			dvo.setDoc_hospital(doc_hospital);
-		}
-		dvo.setMem_type("D");
+		DoctorVO2 dvo = new DoctorVO2(doc_id, doc_pw, doc_name, doc_hospital);
 
 		DoctorDAO dao = new DoctorDAO();
-		int cnt = dao.join(dvo);
+		int cnt = dao.docUpdate(dvo);
 
-		response.setContentType("text/html; charset=utf-8");
+		response.setContentType("text/html; charset = utf-8");
 
 		PrintWriter out = response.getWriter();
 
 		out.print(cnt);
-
+		
 	}
 
 }

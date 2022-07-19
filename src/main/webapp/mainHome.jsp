@@ -1,3 +1,4 @@
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,8 @@
 
 
 
-<link rel="stylesheet"	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 <!-- 마우스 -->
@@ -31,6 +33,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	%>
 
 
 	<!-- 상단 고정 header -->
@@ -50,16 +56,23 @@
 					<li class="home"><a style="cursor: pointer"
 						href="mainHome.jsp">Home</a></li>
 
-					<!-- 비회원일때 -->
-					<li><a href="#" class="btn-open signin" id="p01"
-						onclick="javascript:popOpen();">Sign in</a></li>
-					<li><a class="signup" href="#" id="p02"
-						onclick="javascript:popOpen2();">Sign up</a></li>
-
+					<%
+					if (vo == null) {
+					%>
+					<li><a type="button" class="btn-open signin" id="p01"
+						onclick="popOpen1()">Sign in</a></li>
+					<li><a type="button" class="signup" id="p02"
+						onclick="popOpen2()">Sign up</a></li>
+					<%
+					} else {
+					%>
 					<!-- 회원일떄 -->
-					<!--	<li><a href="#" class="">Tutorial</a></li>
-						<li><a class="" href="#"  onclick="">Price</a></li>
-						<li><a class="" href="#" onclick="">Logout</a></li>			 -->
+					<li><a class="" href="#">Tutorial</a></li>
+					<li><a class="" href="#">Price</a></li>
+					<li><a class="" href="logoutService" onclick="">Logout</a></li>
+					<%
+					}
+					%>
 
 				</ul>
 			</nav>
@@ -79,14 +92,14 @@
 
 
 	<!-- modal 영역 -->
-	<div class="modal-bg" onclick="javascript:popClose();"></div>
+	<div class="modal-bg" onclick="popClose()"></div>
 	<div class="modal-wrap">
 		<div class="main-login">
 			<div id="tab-menu">
 				<div id="tab-btn">
 					<ul>
-						<li class="" id="ro1"><a href="#">s i g n i n</a></li>
-						<li class="" id="ro2"><a href="#">s i g n u p</a></li>
+						<li class="" id="ro1"><a type="button" onclick="popOpen1()">s i g n i n</a></li>
+						<li class="" id="ro2"><a type="button" onclick="popOpen2()">s i g n u p</a></li>
 					</ul>
 				</div>
 				<div id="tab-cont">
@@ -94,13 +107,13 @@
 					<div class="btnrange" id="ro11">
 						<h1 class="logo-login">Sign in</h1>
 						<form class="container">
-							<input type="text" placeholder="ID" id="id" class="account">
+							<input type="text" placeholder="ID" id="id" class="account" name="id">
 							<input type="password" placeholder="Password" id="password"
-								class="account">
+								class="account" name="pw">
 
 							<div class="btn-holder">
-								<button type="submit" class="btn btn-5 hover-border-11"
-									id="login-btn">
+								<button type="button" class="btn btn-5 hover-border-11"
+									id="login-btn" onclick="login()">
 									<span>l o g i n</span>
 								</button>
 							</div>
@@ -114,16 +127,20 @@
 					<div class="btnrange" id="ro22">
 						<h1 class="logo-login">Sign up</h1>
 						<form class="container">
-							<input type="text" placeholder="ID" id="id" class="account">
+							<input type="text" placeholder="ID" id="id" class="account" name="joindocid">
+							<!--id="id"  -->
+							<p id="resultId"></p>
+							<button type="button" onclick="idCheck()">중복 확인</button>
 							<input type="password" placeholder="Password" id="password"
-								class="account"> <input type="text"
-								placeholder="Nick Name" id="nickName" class="account"> <input
+								class="account" name="joindocpw"> <input type="text"
+								placeholder="Nick Name" id="nickName" class="account" name="joindocname"> <input
 								type="text" placeholder="Hospital Name" id="hosName"
-								class="account">
+								class="account" name="joindochospital">
 
 
 							<div class="btn-holder">
-								<button class="btn btn-5 hover-border-11" id="login-btn">
+								<button type="button" class="btn btn-5 hover-border-11" id="join-btn" onclick="singUp()">
+								<!-- id="login-btn" -->
 									<span>S i g n U p</span>
 								</button>
 							</div>
@@ -146,7 +163,7 @@
 	<!-- 상담 연결 채팅 -->
 
 	<div>
-	<span class="btn-chat chatfont">CONNECT</span>
+		<span class="btn-chat chatfont">CONNECT</span>
 		<!-- <ion-icon class="btn-chat" name="chatbubble-ellipses-outline"></ion-icon> -->
 	</div>
 
@@ -184,91 +201,100 @@
 
 	<!-- 슬라이드쇼 컨테이너 -->
 	<div class="slideshow-container ">
-			
-			
-			
-			
-			<div class=" mySlides fade" >
-				
-
-						<!-- 페이지 sss01 -->
-
-						<div class="bodyy">
-
-							<div id="container">
-								<div id="message">
-									<span id="animate" > <span class="txtxt">딥러닝 기반 X-ray 활용 의사를 위한 하지부동 진단 보조 서비스</span></span>
-								</div>
-							</div>
-
-						</div>
 
 
+
+
+		<div class=" mySlides fade">
+
+
+			<!-- 페이지 sss01 -->
+
+			<div class="bodyy">
+
+				<div id="container">
+					<div id="message">
+						<span id="animate"> <span class="txtxt">딥러닝 기반 X-ray
+								활용 의사를 위한 하지부동 진단 보조 서비스</span></span>
+					</div>
+				</div>
 
 			</div>
-			
-			<div class="mySlides fade" >
 
-						<!-- 페이지 sss02 -->
 
-						<div class="bodyy">
 
-							<div id="container2">
-								<div id="message2">
-									<span class="animate2" > <span class="txtxt2">딥러닝 기반 X-ray 활용 의사를 위한 하지부동 진단 보조 서비스  _  제 품 설 명</span></span>
-									
-								</div>
-								<div class="ultext">
-								<ul class="ultextpart">
-										<li class="textpart"> <span class="spantxt">딥러닝 학습된 AI가 측정에 필요한 LandMark자동 특정</span> </li>
-										<li class="textpart"> <span class="spantxt">측정에 필요한 LandMark를 임의로 수정하기 편리</span> </li>
-										<li class="textpart"> <span class="spantxt">측정에 필요한 기준점을 찾은 뒤 자동으로 점과 점 사이의 거리 자동 측정</span> </li>
-										<li class="textpart"> <span class="spantxt">객관적인 결과 도출</span> </li>
-									</ul>
-								</div>
-								
-								
-								
-							</div>
+		</div>
 
-						</div>
+		<div class="mySlides fade">
+
+			<!-- 페이지 sss02 -->
+
+			<div class="bodyy">
+
+				<div id="container2">
+					<div id="message2">
+						<span class="animate2"> <span class="txtxt2">딥러닝 기반
+								X-ray 활용 의사를 위한 하지부동 진단 보조 서비스 _ 제 품 설 명</span></span>
+
+					</div>
+					<div class="ultext">
+						<ul class="ultextpart">
+							<li class="textpart"><span class="spantxt">딥러닝 학습된
+									AI가 측정에 필요한 LandMark자동 특정</span></li>
+							<li class="textpart"><span class="spantxt">측정에 필요한
+									LandMark를 임의로 수정하기 편리</span></li>
+							<li class="textpart"><span class="spantxt">측정에 필요한
+									기준점을 찾은 뒤 자동으로 점과 점 사이의 거리 자동 측정</span></li>
+							<li class="textpart"><span class="spantxt">객관적인 결과 도출</span>
+							</li>
+						</ul>
+					</div>
+
+
+
+				</div>
+
 			</div>
-			
-			
-			
-			<div class="mySlides fade" >
+		</div>
+
+
+
+		<div class="mySlides fade">
 
 
 			<!-- 페이지 sss03 -->
-						<div class="bodyy">
+			<div class="bodyy">
 
-							<div id="container3">
-								<div id="message3">
-									<span class="animate3" > <span class="txtxt3">딥러닝 기반 X-ray 활용 의사를 위한 하지부동 진단 보조 서비스  _  작 동 원 리</span></span>
-									
-								</div>
-								<div class="ultext">
-								<ul class="ultextpart">
-										<li class="textpart"> <span class="spantxt">딥러닝 학습된 AI가 측정에 필요한 LandMark자동 특정</span> </li>
-										<li class="textpart"> <span class="spantxt">측정에 필요한 LandMark를 임의로 수정하기 편리</span> </li>
-									</ul>
-								</div>
-								
-								
-								
-							</div>
+				<div id="container3">
+					<div id="message3">
+						<span class="animate3"> <span class="txtxt3">딥러닝 기반
+								X-ray 활용 의사를 위한 하지부동 진단 보조 서비스 _ 작 동 원 리</span></span>
 
-						</div>
-			
-			
+					</div>
+					<div class="ultext">
+						<ul class="ultextpart">
+							<li class="textpart"><span class="spantxt">딥러닝 학습된
+									AI가 측정에 필요한 LandMark자동 특정</span></li>
+							<li class="textpart"><span class="spantxt">측정에 필요한
+									LandMark를 임의로 수정하기 편리</span></li>
+						</ul>
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+
 		</div>
-		
-		</div>
+
+	</div>
 
 
 
 
-<!-- 
+	<!-- 
 	<div class="btnbtn button-list">
 		<div id="btn1" class="btn b1 button-left">
 			<span>Hover me!</span>
@@ -284,10 +310,12 @@
 
 
 	<!-- 현재 이미지를 알려주는 하단의 점 -->
-	<div  class="dotset">
-		<span class="dot" onclick="currentSlide(1)">  <span class="dottxt">1</span> </span> 
-		<span			class="dot animate2" id=""  onclick="currentSlide(2)"><span class="dottxt">2</span></span> 
-			<span class="dot animate3"onclick="currentSlide(3)"><span  class="dottxt">3</span></span>
+	<div class="dotset">
+		<span class="dot" onclick="currentSlide(1)"> <span
+			class="dottxt">1</span>
+		</span> <span class="dot animate2" id="" onclick="currentSlide(2)"><span
+			class="dottxt">2</span></span> <span class="dot animate3"
+			onclick="currentSlide(3)"><span class="dottxt">3</span></span>
 	</div>
 
 
@@ -325,188 +353,155 @@ $(function(){
 
 	<script type="text/javascript">
 	
-
-	
-
 	/* 로그인 회원가입 팝업뜨는 js */
-	function popOpen() {
+	function popOpen1() {
+		$('.modal-wrap').show();
 
-	    var modalPop = $('.modal-wrap');
-	    var modalBg = $('.modal-bg'); 
-	   
-	    $(modalPop).show();
-	    $(modalBg).show();
-	    
-	    
-	    /* 로그인 회원가입 버튼 */	  
-	    var tabBtn = $("#tab-btn > ul > li");     //각각의 버튼을 변수에 저장
-	    var tabCont = $("#tab-cont > div");       //각각의 콘텐츠를 변수에 저장
-
-	    //컨텐츠 내용을 숨겨주세요!
-	    tabCont.hide().eq(0).show();
-	    tabBtn.eq(0).addClass("active");
-	    tabBtn.eq(1).removeClass("active");
-	    
-	    //
-	    tabBtn.eq(1).click(
-	    	
-	      function(){
-	    	  tabBtn.eq(0).removeClass("active");       //타겟의 클래스를 추가1
-	    	  
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(1).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
-	    //
-	    tabBtn.eq(0).click(
-	    		
-	      function(){
-	    	  
-	    	  tabBtn.eq(1).removeClass("active");
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(0).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
-
-	   
-
+		$("#tab-cont > div").hide().eq(0).show();
+		$("#tab-btn > ul > li").eq(0).addClass("active");
+		$("#tab-btn > ul > li").eq(1).removeClass("active");
 	}
-	/* 로그인 회원가입 팝업뜨는 js */
+
 	function popOpen2() {
+		$('.modal-wrap').show();
 
-	    var modalPop = $('.modal-wrap');
-	    var modalBg = $('.modal-bg'); 
-	   
-	    $(modalPop).show();
-	    $(modalBg).show();
-	    var tabBtn = $("#tab-btn > ul > li");     //각각의 버튼을 변수에 저장
-	    var tabCont = $("#tab-cont > div");       //각각의 콘텐츠를 변수에 저장
-	    
-	    
-	    /* 로그인 회원가입 버튼 */	  
+		$("#tab-cont > div").hide().eq(1).show();
+		$("#tab-btn > ul > li").eq(1).addClass("active");
+		$("#tab-btn > ul > li").eq(0).removeClass("active");
+	}
 
-	    //컨텐츠 내용을 숨겨주세요!
-	    tabCont.hide().eq(1).show();
-	    tabBtn.eq(1).addClass("active");
-	    tabBtn.eq(0).removeClass("active");
-	   
-	    
-	    
-	    //
-	    tabBtn.eq(0).click(
-	      function(){
-	    	  tabBtn.eq(1).removeClass("active");       //타겟의 클래스를 추가1
-	    	  
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(0).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
-	    //
-	    tabBtn.eq(1).click(
-	    		
-	      function(){
-	    	  
-	    	  tabBtn.eq(0).removeClass("active");
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(1).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
+	$(document).mouseup(function(e) {
+		var modalwrap = $(".modal-wrap");
+		if (modalwrap.has(e.target).length === 0) {
+			modalwrap.hide();
+		}
+	});
 
-	   
+	function idCheck() {
+		let input_id = $('input[name=joindocid]');
+		let doc_id = $(input_id[0]).val();
+
+		// 2. ajax 통신
+		$.ajax({
+			url : 'idcheckService',
+			type : 'post',
+			data : {
+				"doc_id" : doc_id
+			},
+			success : function(res) {
+
+				if (res == "true") {
+					$('#resultId').html('')
+					$('#resultId').html('사용가능한 아이디입니다.').css('color',
+							'green');
+					// join 버튼의 disabled 속성을 제거
+					$('#join-btn').removeAttr('disabled');
+				} else {
+					$('#resultId').html('')
+					$('#resultId').html('중복된 아이디입니다.').css('color', 'red');
+				}
+
+			},
+			error : function() {
+				alert('에러발생');
+			}
+
+		});
 
 	}
-	
-	
 
+	function singUp() {
 
-	 function popClose() {
-	   var modalPop = $('.modal-wrap');
-	   var modalBg = $('.modal-bg');
+		let joindocid = $('input[name=joindocid]');
+		let doc_id = $(joindocid[0]).val();
+		let joindocpw = $('input[name=joindocpw]');
+		let doc_pw = $(joindocpw[0]).val();
+		let joindocname = $('input[name=joindocname]');
+		let doc_name = $(joindocname[0]).val();
+		let joindochospital = $('input[name=joindochospital]');
+		let doc_hospital = $(joindochospital[0]).val();
 
-	   $(modalPop).hide();
-	   $(modalBg).hide();
+		// 2. ajax 통신
+		$.ajax({
+			url : 'joinService',
+			type : 'post',
+			data : {
+				"doc_id" : doc_id,
+				"doc_pw" : doc_pw,
+				"doc_name" : doc_name,
+				"doc_hospital" : doc_hospital
+			},
+			success : function(cnt) {
 
+				if (cnt > 0) {
+					$('.modal-wrap').show();
+
+					$("#tab-cont > div").hide().eq(0).show();
+					$("#tab-btn > ul > li").eq(0).addClass("active");
+					$("#tab-btn > ul > li").eq(1).removeClass("active");
+
+					$('.loginResult').html('')
+					$('.loginResult').html('회원가입에 성공하였습니다.').css('color',
+							'red');
+				} else {
+					$('.modal-wrap').show();
+
+					$("#tab-cont > div").hide().eq(1).show();
+					$("#tab-btn > ul > li").eq(1).addClass("active");
+					$("#tab-btn > ul > li").eq(0).removeClass("active");
+
+					$('.joinResult').html('')
+					$('.joinResult').html('회원가입에 실패하였습니다..').css('color',
+							'red');
+				}
+
+			},
+			error : function() {
+				alert("에러 발생")
+			}
+
+		});
 	}
-	 /*// 로그인 회원가입 팝업뜨는 js */ 
-	
-	 
-	 
-	 
-	 
-	 
-	 
- 
-	 
-	 
-	 
-	 
-	
 
+	function login() {
 
+		let docid = $('input[name=id]');
+		let doc_id = $(docid[0]).val();
+		let docpw = $('input[name=pw]');
+		let doc_pw = $(docpw[0]).val();
 
-	  
-	  
-	 
-	 
-	 
-	 
-	 
-	 /* 로그인 성공 실패 alert창 */
-	 const id = document.getElementById('id')
-	 const password = document.getElementById('password')
-	 const login = document.getElementById('login-btn')
-	 let errStack = 0;
+		// 2. ajax 통신
+		$.ajax({
+			url : 'loginService',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"doc_id" : doc_id,
+				"doc_pw" : doc_pw
+			},
+			success : function(data) {
+				if (!data) {
+					$('.modal-wrap').show();
 
-	 login.addEventListener('click', () => {
-	     if (id.value == 'acid') {
-	         if (password.value == '0000') {
-	             alert('로그인 되었습니다!')
-	         }
-	         else {
-	             alert('아이디와 비밀번호를 다시 한 번 확인해주세요!')
-	             errStack ++;
-	         }
-	     }
-	     else {
-	         alert('존재하지 않는 계정입니다.')
-	     }
+					$("#tab-cont > div").hide().eq(0).show();
+					$("#tab-btn > ul > li").eq(0).addClass("active");
+					$("#tab-btn > ul > li").eq(1).removeClass("active");
 
-	     if (errStack >= 5) {
-	         alert('비밀번호를 5회 이상 틀리셨습니다. 비밀번호 찾기를 권장드립니다.')
-	     }
-	 })
-	  /*  //로그인 성공 실패 alert창 */
-	 
-	  
-	  
+					$('.loginResult').html('')
+					$('.loginResult').html('로그인에 실패하였습니다..').css('color',
+							'red');
+				} else {
+					let doc_id = data.doc_id;
+					location.href = "docInfoService?doc_id="+doc_id;
+				}
+
+			},
+			error : function() {
+				alert("에러 발생")
+			}
+
+		});
+	}
 	
 
 	  

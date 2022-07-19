@@ -12,13 +12,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 public class DoctorVO {
-	private int doc_cnt;
-	private String doc_date;
-	private String hos_name;
-	private String doc_name;
 	@NonNull
 	private String doc_id;
 	@NonNull
 	private String doc_pw;
+	private String doc_name;
+	private String doc_hospital;
+	private String doc_date;
+	private String mem_type;
 
 }

@@ -46,11 +46,11 @@ public class XrayDAO {
 		return cnt;
 	}
 	
-	public List<XrayVO> selectXray(XrayVO vo) {
+	public List<XrayVO> selectXray(int p_seq) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<XrayVO> xrayList = session.selectList("selectXray",vo);
+		List<XrayVO> xrayList = session.selectList("selectXray",p_seq);
 
 		session.close();
 
@@ -58,11 +58,11 @@ public class XrayDAO {
 
 	}
 	
-	public XrayVO viewXray(int xr_cnt) {
+	public XrayVO viewXray(int xray_seq) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		XrayVO xvo = session.selectOne("viewXray", xr_cnt);
+		XrayVO xvo = session.selectOne("viewXray", xray_seq);
 
 		session.close();
 
@@ -70,11 +70,11 @@ public class XrayDAO {
 
 	}
 	
-	public List<XrayVO> xrayDateList(int cus_cnt) {
+	public List<XrayVO> xrayDateList(int p_seq) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<XrayVO> xrayDateList = session.selectList("xrayDateList",cus_cnt);
+		List<XrayVO> xrayDateList = session.selectList("xrayDateList",p_seq);
 
 		session.close();
 
@@ -82,4 +82,17 @@ public class XrayDAO {
 
 	}
 	
+	public List<XrayVO> xraySearchList(int p_seq) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		List<XrayVO> xraySearchList = session.selectList("xraySearchList",p_seq);
+
+		session.close();
+		
+		return xraySearchList;
+
+	}
+	
+
 }

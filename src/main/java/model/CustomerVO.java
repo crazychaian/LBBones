@@ -12,14 +12,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CustomerVO {
 	@NonNull
-	private int cus_cnt;
-	private int doc_cnt;
-	private String cus_date;
+	private int p_seq;
+	private String doc_id;
+	private String p_date;
 	@NonNull
-	private String cus_name;
+	private String p_name;
 	@NonNull
-	private String cus_birth;
+	private String p_birth;
 	@NonNull
-	private String cus_mw;
+	private String p_gender;
 
 }

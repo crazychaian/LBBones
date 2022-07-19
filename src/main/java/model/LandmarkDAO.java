@@ -26,20 +26,35 @@ public class LandmarkDAO {
 
 	// =============================================================================
 	
-	public LandmarkVO viewLM(int lm_cnt) {
+	public int lmjoin(LandmarkVO vo) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		LandmarkVO bvo = session.selectOne("viewLM", lm_cnt);
+		int cnt = 0;
+		try {
+			cnt = session.insert("lmjoin", vo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		session.close();
 
-		return bvo;
+		return cnt;
 
 	}
 	
-	
-	
-	
+	public LandmarkVO lmview(int xray_seq) {
+		
+		SqlSession session = sqlSessionFactory.openSession(true);
 
+		LandmarkVO lmview = session.selectOne("lmview", xray_seq);
+
+		session.close();
+
+		return lmview;
+
+		
+	}
+	
 }

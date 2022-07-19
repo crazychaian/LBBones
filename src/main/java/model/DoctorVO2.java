@@ -10,13 +10,18 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class XrayCommentVO {
 
-	private int cmt_seq;
+public class DoctorVO2 {
+	
 	@NonNull
-	private int xray_seq;
 	private String doc_id;
-	private String cmt_content;
-	private String cmt_date;
+	@NonNull
+	private String doc_pw;
+	@NonNull
+	private String doc_name;
+	@NonNull
+	private String doc_hospital;
+	private String doc_date;
+	private String mem_type;
 
 }

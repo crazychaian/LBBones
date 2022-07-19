@@ -45,11 +45,11 @@ public class XrayCommentDAO {
 
 	}
 	
-	public List<XrayCommentVO> selectXrayCom(int xr_cnt) {
+	public List<XrayCommentVO> selectXrayCom(int xray_seq) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<XrayCommentVO> list = session.selectList("selectXrayCom", xr_cnt);
+		List<XrayCommentVO> list = session.selectList("selectXrayCom", xray_seq);
 
 		session.close();
 

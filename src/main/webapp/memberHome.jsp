@@ -1,3 +1,4 @@
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,31 +8,21 @@
 
 <link rel="stylesheet" href="assets/css/header2.css" />
 <link rel="stylesheet" href="assets/css/memberHome.css" />
-
 <link rel="stylesheet" href="assets/css/updateMemPop.css" />
-
-
 <link rel="stylesheet" href="assets/css/chat2.css" />
-
-
 <link rel="stylesheet" href="assets/css/sss01.css">
-
-
-
-
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
 <!-- 마우스 -->
 <link rel="stylesheet" href="assets/css/style.css">
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	%>
 
 
 	<div class="maintop">
@@ -43,17 +34,17 @@
 					<img id="LBBimg" src="images/LBB01.png" alt="Logo">
 				</div>
 				<ul class="menuList2">
-					<li class="s-btn"><label class="switch s-btn">
-							<input type="checkbox"> <span class="slider round"></span>
+					<li class="s-btn"><label class="switch s-btn"> <input
+							type="checkbox"> <span class="slider round"></span>
 					</label></li>
 				</ul>
 				<nav class="main-nav">
 					<ul class="menuList">
 						<li class=""><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
-						<li><a  href="memberHome.jsp" class="">Tutorial</a></li>
-						<li><a class="" href="#price">Price</a></li>
+						<li><a class="" href="memberHome.jsp">Tutorial</a></li>
+						<li><a class="" href="">Price</a></li>
 						<!-- 로그아웃되고 시작홈으로  -->
-						<li><a class="" href="mainHome.jsp" onclick="">Logout</a></li>
+						<li><a class="" href="logoutService">Logout</a></li>
 					</ul>
 				</nav>
 
@@ -72,20 +63,29 @@
 
 			<div id="container-btn">
 
-				<div class="button-main" onClick="location.href='serviceMain.jsp'">
+				<%
+				if (vo == null) {
+				%>
+				<%
+				} else {
+				%>
+
+				<div class="button-main" onclick="location.href='cusListService?doc_id=<%=vo.getDoc_id()%>'">
 					<div class="button-inside">
 						<h1 class="btn-name">SERVICE RUNNING</h1>
 					</div>
 				</div>
 
-				<div class="button-main" onclick="javascript:popOpen3();">
+				<div class="button-main" onclick="popOpen3()">
 					<div class="button-inside">
 						<h1 class="btn-name">ACCOUNT MANAGEMENT</h1>
 					</div>
 				</div>
+				<%
+				}
+				%>
 
 			</div>
-
 
 
 
@@ -103,8 +103,8 @@
 			<div id="tab-menu">
 				<div id="tab-btn">
 					<ul>
-						<li class="" id="ro1"><a href="#">Profile</a></li>
-						<li class="" id="ro2"><a href="#">Edit</a></li>
+						<li class="" id="ro1"><a type="button" onclick="popOpen3()">Profile</a></li>
+						<li class="" id="ro2"><a type="button" onclick="popOpen4()">Edit</a></li>
 					</ul>
 				</div>
 				<div id="tab-cont">
@@ -112,11 +112,16 @@
 					<div class="btnrange" id="ro11">
 						<h1 class="logo-login">Profile</h1>
 						<form class="container">
-							<input type="text" placeholder="회원이름 : 김가나" id="username-mp" class="account" readonly>
-							<input type="text" placeholder="병원이름 : 대한병원" id="hospiname-mp" class="account" readonly>
-							<input type="text" placeholder="아이디 : kkk" id="id-mp" class="account" readonly>
-							<input type="text" placeholder="비밀번호 : 1234" id="pw-mp" class="account" readonly>
-							<input type="text" placeholder="가입날짜 : 2022.07.13" id="indate-mp" class="account" readonly>
+							<input type="text" placeholder="회원이름 : <%=vo.getDoc_name()%>"
+								id="username-mp" class="account" readonly> <input
+								type="text" placeholder="병원이름 : <%=vo.getDoc_hospital()%>"
+								id="hospiname-mp" class="account" readonly> <input
+								type="text" placeholder="아이디 : <%=vo.getDoc_id()%>" id="id-mp"
+								class="account" readonly> <input type="text"
+								placeholder="비밀번호 : <%=vo.getDoc_pw()%>" id="pw-mp"
+								class="account" readonly> <input type="text"
+								placeholder="가입날짜 : <%=vo.getDoc_date()%>" id="indate-mp"
+								class="account" readonly>
 
 							<p id="alert" class="account"></p>
 						</form>
@@ -127,15 +132,20 @@
 					<div class="btnrange" id="ro22">
 						<h1 class="logo-login">Edit</h1>
 						<form class="container">
-						
-						<input type="text" placeholder="변경할 회원 이름" id="hosName" class="account ccolor" name="updatedocname">
-						<input type="text" placeholder="변경할 병원 이름" id="hosName" class="account ccolor" name="updatedochospital">
-						<input type="text" placeholder="변경할 비밀번호" id="password" class="account ccolor" name="updatedocpw">
-							
+							<input type="hidden" id="hosName" class="account ccolor"
+								name="updatedocid" value="<%=vo.getDoc_id()%>"> <input
+								type="text" placeholder="변경할 회원 이름" id="docName"
+								class="account ccolor" name="updatedocname"> <input
+								type="text" placeholder="변경할 병원 이름" id="hosName"
+								class="account ccolor" name="updatedochospital"> <input
+								type="text" placeholder="변경할 비밀번호" id="password"
+								class="account ccolor" name="updatedocpw">
+
 
 
 							<div class="btn-holder">
-								<button class="btn btn-5 hover-border-11" id="login-btn">
+								<button type="button" class="btn btn-5 hover-border-11" id="login-btn"
+									onclick="updateDoc()">
 									<span>정보수정</span>
 								</button>
 							</div>
@@ -206,7 +216,7 @@
 
 			<h1 class="fontColor">TUTORIAL</h1>
 
-			<div  id='article'>
+			<div id='article'>
 				<div class='img'>
 					<img class='otani' alt=""
 						src="https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/29/62813426-6496-4aee-b90b-55adbbfc25a0.jpg">
@@ -277,112 +287,82 @@
 
 
 
-
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
-	
+		/* 로그인 회원가입 팝업뜨는 js */
 
-	
+		function popOpen3() {
+			$('.modal-wrap3').show();
 
-	/* 로그인 회원가입 팝업뜨는 js */
-	function popOpen3() {
+			$("#tab-cont > div").hide().eq(0).show();
+			$("#tab-btn > ul > li").eq(0).addClass("active");
+			$("#tab-btn > ul > li").eq(1).removeClass("active");
+		}
 
-	    var modalPop = $('.modal-wrap3');
-	    var modalBg = $('.modal-bg3'); 
-	   
-	    $(modalPop).show();
-	    $(modalBg).show();
-	    
-	    
-	    /* 로그인 회원가입 버튼 */	  
-	    var tabBtn = $("#tab-btn > ul > li");     //각각의 버튼을 변수에 저장
-	    var tabCont = $("#tab-cont > div");       //각각의 콘텐츠를 변수에 저장
+		function popOpen4() {
+			$('.modal-wrap').show();
 
-	    //컨텐츠 내용을 숨겨주세요!
-	    tabCont.hide().eq(0).show();
-	    tabBtn.eq(0).addClass("active");
-	    tabBtn.eq(1).removeClass("active");
-	    
-	    //
-	    tabBtn.eq(1).click(
-	    	
-	      function(){
-	    	  tabBtn.eq(0).removeClass("active");       //타겟의 클래스를 추가1
-	    	  
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(1).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
-	    //
-	    tabBtn.eq(0).click(
-	    		
-	      function(){
-	    	  
-	    	  tabBtn.eq(1).removeClass("active");
-	    	  var target = $(this);         //버튼의 타겟(순서)을 변수에 저장
-	    	  var index = target.index();   //버튼의 순서를 변수에 저장
-	  			
-	    	  tabBtn.eq(0).addClass("active");       //타겟의 클래스를 추가1
-	    	  tabCont.removeClass("active");       //타겟의 클래스를 추가
-	    	  tabCont.css("display","none");
-	    	  tabCont.eq(index).css("display","flex");
-	    	  
-	    	  
-	    	  
-	    });
+			$("#tab-cont > div").hide().eq(1).show();
+			$("#tab-btn > ul > li").eq(1).addClass("active");
+			$("#tab-btn > ul > li").eq(0).removeClass("active");
+		}
 
-	   
+		$(document).mouseup(function(e) {
+			var modalwrap = $(".modal-wrap3");
+			if (modalwrap.has(e.target).length === 0) {
+				modalwrap.hide();
+			}
+		});
+		/*// 로그인 회원가입 팝업뜨는 js */
 
-	}
-	
-	
-	
+		function updateDoc() {
 
+			let updatedocid = $('input[name=updatedocid]');
+			let doc_id = $(updatedocid[0]).val();
+			let updatedocpw = $('input[name=updatedocpw]');
+			let doc_pw = $(updatedocpw[0]).val();
+			let updatedocname = $('input[name=updatedocname]');
+			let doc_name = $(updatedocname[0]).val();
+			let updatedochospital = $('input[name=updatedochospital]');
+			let doc_hospital = $(updatedochospital[0]).val();
+			console.log(doc_id);
+			console.log(doc_pw);
+			console.log(doc_name);
+			console.log(doc_hospital);
 
-	 function popClose3() {
-	   var modalPop = $('.modal-wrap3');
-	   var modalBg = $('.modal-bg3');
+			$.ajax({
+				url : 'docUpdateService',
+				type : 'post',
+				dataType : 'json',
+				data : {
+					"doc_id" : doc_id,
+					"doc_pw" : doc_pw,
+					"doc_name" : doc_name,
+					"doc_hospital" : doc_hospital
+				},
+				success : function(cnt) {
+					if (cnt > 0) {
+						$('.modal-wrap3').hide();
+						alert("회원 정보 수정 성공하였습니다.")
+					} else {
+						$('.modal-wrap3').show();
 
-	   $(modalPop).hide();
-	   $(modalBg).hide();
+						$("#tab-cont > div").hide().eq(1).show();
+						$("#tab-btn > ul > li").eq(1).addClass("active");
+						$("#tab-btn > ul > li").eq(0).removeClass("active");
+						alert("회원 정보 수정 실패하였습니다.")
+					}
 
-	}
-	 /*// 로그인 회원가입 팝업뜨는 js */ 
-	
-	 
-	 
-	 
-	 
-	 
-	 
-		</script>
- 
-	 
-	 
+				},
+				error : function() {
+					alert("에러 발생")
+				}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<script type="text/javascript">
+			});
+		}
+		
+		
+		
 		/*  채팅창 보이는 기능 */
 
 		$(function() {
@@ -398,18 +378,11 @@
 			});
 
 		});
-
-		/* 버튼 누르면 원하는 div로 이동 */
+		
+		function serviceStart(a) {
+			location.href = "cusListService?doc_id="+a;
+		}
 	</script>
-
-
-
-
-
-
-
-
-
 
 	<script src="assets/js/script.js"></script>
 

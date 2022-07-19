@@ -6,11 +6,42 @@
 <!-- 어떤 DAO에서 사용하는지를 적어주기 -->
 <mapper namespace="LandmarkDAO">
 
-	<select id="viewLM" resultType="LandmarkVO">
-		<!-- 입력하는 값이 하나인 경우에는 parameterType 를 적어 주지 않아도 된다. -->
+	<insert id="lmjoin" parameterType="LandmarkVO">
+		INSERT INTO tbl_landmark
+		values(
+		TBL_LANDMARK_SEQ.NEXTVAL,
+		#{xray_seq},
+		#{l_top_x},
+		#{l_top_y},
+		#{l_mid_x},
+		#{l_mid_y},
+		#{l_bot_x},
+		#{l_bot_y},
+		#{r_top_x},
+		#{r_top_y},
+		#{r_mid_x},
+		#{r_mid_y},
+		#{r_bot_x},
+		#{r_bot_y},
+		#{l_femur_len},
+		#{l_tibia_len},
+		#{l_total_len},
+		#{r_femur_len},
+		#{r_tibia_len},
+		#{r_total_len},
+		#{lr_femur_gap},
+		#{lr_tibia_gap},
+		#{lr_total_gap},
+		sysdate
+		)
+	</insert>
+
+	<select id="lmview" resultType="LandmarkVO">
 		select * 
-		from landmark
-		where xr_cnt = #{xr_cnt}
+		from tbl_landmark
+		where xray_seq = #{xray_seq}
+		ORDER  BY landmark_seq DESC
+		LIMIT  1
 	</select>
 	
 

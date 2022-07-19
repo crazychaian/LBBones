@@ -1,18 +1,19 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.CustomerDAO;
+import model.DoctorDAO;
+import model.DoctorVO;
 
-@WebServlet("/cusDelService")
-public class cusDelService extends HttpServlet {
+@WebServlet("/docInfoService")
+public class docInfoService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -20,16 +21,14 @@ public class cusDelService extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 
-		int p_seq = Integer.parseInt(request.getParameter("p_seq"));
+		String doc_id = request.getParameter("doc_id");
 
-		CustomerDAO dao = new CustomerDAO();
-		int cnt = dao.pDelete(p_seq);
+		DoctorDAO dao = new DoctorDAO();
+		DoctorVO vo = dao.docvo(doc_id);
 
-		response.setContentType("text/html; charset = utf-8");
-
-		PrintWriter out = response.getWriter();
-
-		out.print(cnt);
+		HttpSession session = request.getSession();
+		session.setAttribute("vo", vo);
+		response.sendRedirect("memberHome.jsp");
 
 	}
 

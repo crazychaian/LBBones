@@ -1,3 +1,5 @@
+<%@page import="model.CustomerVO"%>
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,67 +15,68 @@
 
 <title>새로운 진료 등록 창~~~</title>
 <style>
-			#image {
-				position: absolute;
-			}
-			#minimap {
-				position: absolute;
-			}
+#image {
+	position: absolute;
+}
 
-			.lineContainer {
-				position: absolute;
-			}
-			
-			.lineContainermini {
-				position: absolute;
-			}
+#minimap {
+	position: absolute;
+}
 
-			.line {
-				position: absolute;
-				height: 10px;
-				transform-origin: top left;
-				background-color: yellow;
-			}
+.lineContainer {
+	position: absolute;
+}
 
-			.frame1 {
-				background-color: black;
-				width: 800px;
-				height: 774px;
-				border: black 5px solid;
-				overflow-y: auto;
-				overflow-x: auto;
-				position: relative;
-			}
+.lineContainermini {
+	position: absolute;
+}
 
-			.frame2 {
-				position: relative;
-				transform-origin: 0% 0%;
-				transform: scale(1);
-			}
-			.miniframe1 {
-				background-color: black;
-				width: 315px;
-				height: 774px;
-				border: black 5px solid;
-				overflow:hidden
-				position: relative;
-			}
+.line {
+	position: absolute;
+	height: 10px;
+	transform-origin: top left;
+	background-color: yellow;
+}
 
-			.miniframe2 {
-				position: relative;
-				transform-origin: 0% 0%;
-				transform: scale(1);
-			}
+.frame1 {
+	background-color: black;
+	width: 800px;
+	height: 774px;
+	border: black 5px solid;
+	overflow-y: auto;
+	overflow-x: auto;
+	position: relative;
+}
 
-			.point {
-				width: 80px;
-				height: 80px;
-				position: absolute;
-				z-index: 5;
-				display: none;
-			}
+.frame2 {
+	position: relative;
+	transform-origin: 0% 0%;
+	transform: scale(1);
+}
 
-			/* #point0 {
+.miniframe1 {
+	background-color: black;
+	width: 315px;
+	height: 774px;
+	border: black 5px solid;
+	overflow: hidden position: relative;
+}
+
+.miniframe2 {
+	position: relative;
+	transform-origin: 0% 0%;
+	transform: scale(1);
+}
+
+.point {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	z-index: 5;
+	display: none;
+}
+
+/* #point0 {
 			left: 921px;
 			top: 1346px;
 		}
@@ -102,15 +105,20 @@
 			left: 1759px;
 			top: 7772px;
 		} */
-			.pointsvg {
-				left: -40px;
-				top: -40px;
-			}
-		</style>
+.pointsvg {
+	left: -40px;
+	top: -40px;
+}
+</style>
 </head>
 
 
 <body>
+
+<%
+DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
+%>
 
 
 	<div>
@@ -121,6 +129,11 @@
 
 
 		<div class="underview">
+		
+		
+<%-- 	
+없애지 말아줭~
+	<input type="text" name="p_seq" value="<%= pvo.getP_seq() %>"></input> --%>
 
 
 
@@ -270,7 +283,13 @@
 				<button id="btn4">크기 반배</button>
 				<button id="btn5">크기 2배</button>
 				<button id="btn6">랜드마크 토글</button>
-				<input id='first' type='button' value='1번' onclick="first()" />
+				<input id='first' type='button' value='1번' onclick="first()" /> <input
+					id='second' type='button' value='2번' onclick="second()" /> <input
+					id='third' type='button' value='3번' onclick="third()" /> <input
+					id='fourth' type='button' value='4번' onclick="fourth()" /> <input
+					id='fifth' type='button' value='5번' onclick="fifth()" /> <input
+					id='sixth' type='button' value='6번' onclick="sixth()" /><input
+					id='finish' type='button' value='종료' onclick="finishevent()" />
 				<div class="Container">
 					  <font size=2 id="value_view1">100</font>    <input
 						style="width: 80%;" id="slider1" type="range" value="100" min="0"
@@ -291,33 +310,29 @@
 
 			<div id="myDIV2">
 				<div class="div-lm">
+					<div class="nnn">
+					</div>
 					<table>
 
 						<tr>
 							<td>허벅</td>
-							<td><input type="text" class="class0 x" id="test1"></td>
-							<td><input type="text" class="class0 y"></td>
+							<td><input type="text" class="class0 xy" id="test1"></td>
 
-							<td><input type="text" class="class1 x"></td>
-							<td><input type="text" class="class1 y"></td>
+							<td><input type="text" class="class1 xy"></td>
 						</tr>
 
 						<tr>
 							<td>무릎</td>
-							<td><input type="text" class="class2 x"></td>
-							<td><input type="text" class="class2 y"></td>
+							<td><input type="text" class="class2 xy"></td>
 
-							<td><input type="text" class="class3 x"></td>
-							<td><input type="text" class="class3 y"></td>
+							<td><input type="text" class="class3 xy"></td>
 						</tr>
 
 						<tr>
 							<td>발목</td>
-							<td><input type="text" class="class4 x"></td>
-							<td><input type="text" class="class4 y"></td>
+							<td><input type="text" class="class4 xy"></td>
 
-							<td><input type="text" class="class5 x"></td>
-							<td><input type="text" class="class5 y"></td>
+							<td><input type="text" class="class5 xy"></td>
 						</tr>
 						<tr>
 							<td>Top</td>
@@ -382,6 +397,7 @@
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript">
+	
 
 			// 초기변수셋
 
@@ -420,9 +436,6 @@
 			// xmlhttp.open("GET", url, true);
 			// xmlhttp.send();
 
-
-			var input_x = document.querySelector(".class0.x")
-			// console.log("value:",input_x.value)
 			var calcScale = 1
 			var calcminiScale = 1
 
@@ -459,8 +472,6 @@
 
 			// 좌표 재설정
 
-			var test = document.querySelector(".class0.x").value
-			// console.log("디버그",test)
 			var src = $('#image').attr('src')
 			var img = new Image();
 			img.src = src;
@@ -695,35 +706,32 @@
 
 			btnSend.disabled = true;  // send 버튼 초기 비활성화
 
-			
-			// 이미지 업로드
 			btnSend_img.addEventListener("click", function () {
 
-				//			openLoading();
 				document.getElementById('loading').style.display = "inline";
-				// console.log(input.files[0]);
 
 				let formData = new FormData();
+				
+				let inputp_seq = $('input[name=p_seq]');
+				let p_seq = $(inputp_seq[0]).val();
 
 				formData.append('file', input.files[0]);
 				formData.append('name', 'file')
+				formData.append('p_seq', p_seq)
+				
 
 				fetch("uploadService", {
 					method: "POST",
 					body: formData
 				}).then((response) => response.json())
 					.then((data) => {
-						// console.log('성공:', data);
-						// console.log('성공:', data.name, data.height, data.width);
 						btnSend.disabled = false;
-						//				  closeLoading();
 						document.getElementById('loading').style.display = "none";
 						$('#image').attr('src', "./img/" + data.name);
 						$('#minimap').attr('src', "./img/" + data.name);
 						const line = $(".line");
 						line.remove();
 						LMtoggle = 0;
-						// 기준너비 재설정
 
 						calcScale = 800 / data.width  // (액자프레임 너비 / 이미지크기)
 						calcminiScale = 774 / data.height
@@ -751,6 +759,7 @@
 			});
 
 			//	파일분석 전송
+				
 			btnSend.addEventListener("click", function () {
 
 				btnSend.disabled = true;
@@ -790,6 +799,10 @@
 			// db에서 수신한 데이터 처리
 
 			function dataprc(data) {
+				
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
 				// 기본변수처리
 				l_top_x = data[0].x
 				l_top_y = data[0].y
@@ -810,14 +823,12 @@
 				l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
 				r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
 				for (var i = 0; i < data.length; i++) {
-					var input_x = document.querySelector(".class" + i + ".x")
-					input_x.value = data[i].x;
+					var input_xy = document.querySelector(".class" + i + ".xy")
+					input_xy.value = data[i].x + "," +data[i].y;
 					// console.log(input_x.value)
 					document.querySelector("#point" + i).style.left = parseInt(data[i].x) + "px";
-					document.querySelector("#pointm" + i).style.left = parseInt(data[i].x) + "px";
-					var input_y = document.querySelector(".class" + i + ".y")
-					input_y.value = data[i].y;
 					document.querySelector("#point" + i).style.top = parseInt(data[i].y) + "px";
+					document.querySelector("#pointm" + i).style.left = parseInt(data[i].x) + "px";
 					document.querySelector("#pointm" + i).style.top = parseInt(data[i].y) + "px";
 				}
 				setframe()
@@ -825,16 +836,16 @@
 
 				//			console.log(dist(arr2[0],arr2[1],arr2[4],arr2[5]))
 				// console.log($(".class0.x").val())
-				$(".class6.l").val(l_femur_len)
-				$(".class6.r").val(r_femur_len)
-				$(".class7.l").val(l_tibia_len)
-				$(".class7.r").val(r_tibia_len)
-				$(".class8.l").val(l_total_len)
-				$(".class8.r").val(r_total_len)
+				$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+				$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+				$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+				$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+				$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+				$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
 
-				$(".class6.d").val(Math.abs($(".class6.l").val() - $(".class6.r").val()))
-				$(".class7.d").val(Math.abs($(".class7.l").val() - $(".class7.r").val()))
-				$(".class8.d").val(Math.abs($(".class8.l").val() - $(".class8.r").val()))
+				$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+				$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+				$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
 			}
 
 
@@ -880,7 +891,7 @@
 			function dist(x1, y1, x2, y2) {
 				var x3 = Math.abs(x1 - x2)
 				var y3 = Math.abs(y1 - y2)
-				var c = Math.sqrt((x3 * x3) + (y3 * y3)) * 0.14
+				var c = Math.sqrt((x3 * x3) + (y3 * y3))
 				return c
 			}
 
@@ -895,6 +906,477 @@
 				$('.frame1').css('overflow-x', 'hidden')										// 액자프레임 가로스크롤 숨기기
 				// document.querySelector('.frame1').style.width = img.width * calcScale + "px"; //액자프레임 1배크기기준으로
 			}
+			
+			
+			
+			///////////////////////////////////////////////////////////////////////////////
+			
+			
+			const firstevent = (e) => {
+				
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+					
+					$('.lineContainermini').html('');
+					$('.lineContainer').html('');
+					$('#point0').html('');
+					$('#pointm0').html('');
+					
+					point0 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+						style="position: relative;">
+						<circle r="20" fill="red" stroke="white" stroke-width="5" />
+					</svg>`
+					
+					$('#point0').append(point0)
+					$('#pointm0').append(point0)
+					
+					
+			
+					var input0_xy = document.querySelector(".class0.xy") // 객체인식 x 값 
+						document.querySelector("#point0").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+						document.querySelector("#point0").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+						
+						document.querySelector("#pointm0").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+						document.querySelector("#pointm0").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+						
+						input0_xy.value = e.offsetX +","+e.offsetY;
+						
+						setframe()
+						
+						l_top_x = e.offsetX
+						l_top_y = e.offsetY
+					
+						l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+						r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+						l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+						r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+						l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+						r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+						
+						$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+						$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+						$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+						$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+						$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+						$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+						$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+						$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+						$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+						
+					};
+					
+					const secondevent = (e) => {
+						
+						let checkedpixlength = $('input[name=pixlength]:checked');
+						let pl = $(checkedpixlength[0]).val();
+						
+						$('.lineContainermini').html('');
+						$('.lineContainer').html('');
+						$('#point1').html('');
+						$('#pointm1').html('');
+						
+						point1 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+							<circle r="20" fill="red" stroke="white" stroke-width="5" />
+						</svg>`
+						
+						$('#point1').append(point1)
+						$('#pointm1').append(point1)
+						
+						
+				
+						var input1_xy = document.querySelector(".class1.xy") // 객체인식 x 값 
+							document.querySelector("#point1").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#point1").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							document.querySelector("#pointm1").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#pointm1").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							input1_xy.value = e.offsetX +","+e.offsetY;
+							
+							setframe()
+							
+							r_top_x = e.offsetX
+							r_top_y = e.offsetY
+		
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							
+							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							
+					}
+					
+					const thirdevent = (e) => {
+						
+						let checkedpixlength = $('input[name=pixlength]:checked');
+						let pl = $(checkedpixlength[0]).val();
+						
+						$('.lineContainermini').html('');
+						$('.lineContainer').html('');
+						$('#point2').html('');
+						$('#pointm2').html('');
+						
+						point2 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+							<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+						</svg>`
+						
+						$('#point2').append(point2)
+						$('#pointm2').append(point2)
+						
+				
+						var input2_xy = document.querySelector(".class2.xy") // 객체인식 x 값 
+							document.querySelector("#point2").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#point2").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							document.querySelector("#pointm2").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#pointm2").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							input2_xy.value = e.offsetX +","+e.offsetY;
+							
+							setframe()
+							
+							l_mid_x = e.offsetX
+							l_mid_y = e.offsetY
+							
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							
+							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+					}
+					
+					const fourthevent = (e) => {
+						
+						let checkedpixlength = $('input[name=pixlength]:checked');
+						let pl = $(checkedpixlength[0]).val();
+						
+						$('.lineContainermini').html('');
+						$('.lineContainer').html('');
+						$('#point3').html('');
+						$('#pointm3').html('');
+						
+						point3 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+							<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+						</svg>`
+						
+						$('#point3').append(point3)
+						$('#pointm3').append(point3)
+						
+				
+						var input3_xy = document.querySelector(".class3.xy") // 객체인식 x 값 
+							document.querySelector("#point3").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#point3").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							document.querySelector("#pointm3").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#pointm3").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							input3_xy.value = e.offsetX +","+e.offsetY;
+							
+							setframe()
+							
+							r_mid_x = e.offsetX
+							r_mid_y = e.offsetY
+							
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							
+							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							
+					}
+					
+					const fifthevent = (e) => {
+						
+						let checkedpixlength = $('input[name=pixlength]:checked');
+						let pl = $(checkedpixlength[0]).val();
+						
+						$('.lineContainermini').html('');
+						$('.lineContainer').html('');
+						$('#point4').html('');
+						$('#pointm4').html('');
+						
+						point4 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+							<circle r="20" fill="green" stroke="white" stroke-width="5" />
+						</svg>`
+						
+						$('#point4').append(point4)
+						$('#pointm4').append(point4)
+						
+				
+						var input4_xy = document.querySelector(".class4.xy") // 객체인식 x 값 
+							document.querySelector("#point4").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#point4").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							document.querySelector("#pointm4").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#pointm4").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							input4_xy.value = e.offsetX +","+e.offsetY;
+							
+							setframe()
+							
+							l_bot_x = e.offsetX
+							l_bot_y = e.offsetY
+							
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							
+							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							
+					}
+					
+					const sixthevent = (e) => {
+						
+						let checkedpixlength = $('input[name=pixlength]:checked');
+						let pl = $(checkedpixlength[0]).val();
+						
+						$('.lineContainermini').html('');
+						$('.lineContainer').html('');
+						$('#point5').html('');
+						$('#pointm5').html('');
+						
+						point5 = `<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+							<circle r="20" fill="green" stroke="white" stroke-width="5" />
+						</svg>`
+						
+						$('#point5').append(point5)
+						$('#pointm5').append(point5)
+						
+				
+						var input5_xy = document.querySelector(".class5.xy") // 객체인식 x 값 
+							document.querySelector("#point5").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#point5").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							document.querySelector("#pointm5").style.left = parseInt(e.offsetX)+"px"; // x 값의 위치
+							document.querySelector("#pointm5").style.top = parseInt(e.offsetY)+"px"; // y 값의 위치
+							
+							input5_xy.value = e.offsetX +","+e.offsetY;
+							
+							setframe()
+							
+							r_bot_x = e.offsetX
+							r_bot_y = e.offsetY
+							
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							
+							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
+							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
+							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
+							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
+							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
+							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+
+							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
+							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
+							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							
+					}
+			
+			
+			
+			////////////////////////////////////////////////////////////////////////////////
+			function first(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point0').html('');
+				$('#pointm0').html('');
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',fifthevent);
+				image.removeEventListener('click',sixthevent);
+				
+				image.addEventListener('click', firstevent);
+						
+			}
+			
+			function second(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point1').html('');
+				$('#pointm1').html('');
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',fifthevent);
+				image.removeEventListener('click',sixthevent);
+
+				image.addEventListener('click', secondevent);
+						
+				
+			}
+			
+			function third(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point2').html('');
+				$('#pointm2').html('');
+				
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',fifthevent);
+				image.removeEventListener('click',sixthevent);
+
+				image.addEventListener('click', thirdevent);
+				
+				
+			}
+			
+			function fourth(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point3').html('');
+				$('#pointm3').html('');
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fifthevent);
+				image.removeEventListener('click',sixthevent);
+				
+				image.addEventListener('click', fourthevent);
+				
+			}
+			
+			function fifth(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point4').html('');
+				$('#pointm4').html('');
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',sixthevent);
+				
+				image.addEventListener('click', fifthevent);
+				
+			}
+			
+			function sixth(){
+				let checkedpixlength = $('input[name=pixlength]:checked');
+				let pl = $(checkedpixlength[0]).val();
+				
+				const minimap = document.getElementById('minimap');
+				const image = document.getElementById('image');
+				
+				$('.lineContainermini').html('');
+				$('.lineContainer').html('');
+				$('#point5').html('');
+				$('#pointm5').html('');
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',fifthevent);
+				
+				image.addEventListener('click', sixthevent);
+				
+			}
+			
+			function finishevent() {
+				image.removeEventListener('click',firstevent);
+				image.removeEventListener('click',secondevent);
+				image.removeEventListener('click',thirdevent);
+				image.removeEventListener('click',fourthevent);
+				image.removeEventListener('click',fifthevent);
+				image.removeEventListener('click',sixthevent);
+			}
+			
+			
+			/////////////////////////////////////////////////////
+			// var strArray = string.split(',');
+			// strAtrry[0]
+			// strAtrry[1]
 
 
 

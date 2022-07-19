@@ -30,13 +30,13 @@ public class CustomerDAO {
 	// =============================================================================
 
 	
-	public int cusJoin(CustomerVO vo) {
+	public int pJoin(CustomerVO vo) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
 		int cnt = 0;
 		try {
-			cnt = session.insert("cusJoin", vo);
+			cnt = session.insert("pJoin", vo);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,11 +48,11 @@ public class CustomerDAO {
 
 	}
 	
-	public List<CustomerVO> cusSearch(String search) {
+	public List<CustomerVO> pSearch(String search) {
 		
 		SqlSession session = sqlSessionFactory.openSession(true);
 		
-		List<CustomerVO> list = session.selectList("cusSearch", search);
+		List<CustomerVO> list = session.selectList("pSearch", search);
 		
 		session.close();
 		
@@ -60,13 +60,13 @@ public class CustomerDAO {
 		
 	}
 	
-	public int cusUpdate(CustomerVO vo) {
+	public int pUpdate(CustomerVO vo) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
 		int cnt = 0;
 		try {
-			cnt = session.insert("cusUpdate", vo);
+			cnt = session.insert("pUpdate", vo);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,13 +78,13 @@ public class CustomerDAO {
 
 	}
 	
-	public int cusDelete(int cus_cnt) {
+	public int pDelete(int p_seq) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
 		int cnt = 0;
 		try {
-			cnt = session.insert("cusDelete", cus_cnt);
+			cnt = session.insert("pDelete", p_seq);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,15 +96,27 @@ public class CustomerDAO {
 
 	}
 	
-	public List<CustomerVO> cusList(int doc_cnt) {
+	public List<CustomerVO> pList(String doc_id) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		List<CustomerVO> cusList = session.selectList("cusList", doc_cnt);
+		List<CustomerVO> pList = session.selectList("pList", doc_id);
 
 		session.close();
 
-		return cusList;
+		return pList;
+
+	}
+	
+	public CustomerVO pvo(int p_seq) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		CustomerVO pvo = session.selectOne("pvo", p_seq);
+
+		session.close();
+
+		return pvo;
 
 	}
 }
