@@ -38,7 +38,7 @@
 			.frame1 {
 				background-color: black;
 				width: 800px;
-				height: 800px;
+				height: 774px;
 				border: black 5px solid;
 				overflow-y: auto;
 				overflow-x: auto;
@@ -53,7 +53,7 @@
 			.miniframe1 {
 				background-color: black;
 				width: 315px;
-				height: 800px;
+				height: 774px;
 				border: black 5px solid;
 				overflow:hidden
 				position: relative;
@@ -465,7 +465,7 @@
 			var img = new Image();
 			img.src = src;
 			var calcScale = 800 / img.width  // (액자프레임 / 이미지크기)
-			var calcminiScale = 800 / img.height  // (액자프레임 / 이미지크기)
+			var calcminiScale = 774 / img.height  // (액자프레임 / 이미지크기)
 
 			console.log("이미지", img.height, img.width)
 			console.log("프레임스케일", calcScale, calcminiScale)
@@ -726,14 +726,14 @@
 						// 기준너비 재설정
 
 						calcScale = 800 / data.width  // (액자프레임 너비 / 이미지크기)
-						calcminiScale = 800 / data.height
+						calcminiScale = 774 / data.height
 						console.log(calcScale, calcminiScale);
 						document.querySelector('.frame2').style.transform = "scale(" + calcScale + ")";
 						$('.frame1').css('overflow-x', 'hidden')										// 액자프레임 가로스크롤 숨기기
 						document.querySelector('.frame1').style.width = data.width * calcScale + "px"; //액자프레임 1배크기기준으로
 						document.querySelector('.miniframe2').style.transform = "scale(" + calcminiScale + ")";
 						$('.miniframe1').css('overflow', 'hidden')										// 액자프레임 가로스크롤 숨기기
-						document.querySelector('.miniframe1').style.width = data.width * calcminiScale + "px"; //액자프레임 1배크기기준으로
+						document.querySelector('.miniframe1').style.height = data.height * calcminiScale + "px"; //액자프레임 1배크기기준으로
 
 
 
