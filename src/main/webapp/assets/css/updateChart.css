@@ -11,7 +11,7 @@ body{
     background-color: #c0c0c01c;
     border-radius: 12px;
     margin-top: 20px;
-    box-shadow: 0.8rem 0.8rem 1.4rem #0a0b0e, -0.2rem -0.2rem 1.8rem #000000;
+box-shadow: -1px -1px 3px 0px #596078, 3px 3px 5px 1px #1a1c22;
 }
 
 
@@ -114,7 +114,7 @@ body{
     height: 255px;
     width: 100%;
     position: relative;
-    border: 0.1px solid;
+    box-shadow: -1px -1px 3px 0px #515872, 3px 3px 5px 1px #15171c;
     color: white;
     /* margin: 0px; */
     margin-bottom: 25px;

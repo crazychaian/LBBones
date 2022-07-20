@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+body {
+    background-color: #323232;
+}
+
+
 .clickMem{
 	color: white;
 }
@@ -63,6 +68,7 @@
     justify-content: center;
     box-shadow: 2px 2px 6px 1px black, -1.2px -1.2px 0.2px #7e7e7e;
     border-radius: 12px;
+    transition: background-color 0.15s;
 }
 
 
@@ -174,7 +180,7 @@
     font-size: 12px;
     width: 105px;
     height: 105px;
-    box-shadow: 0.3rem 0.3rem 0.6rem #000000, 0rem 0rem 0.2rem #727272;
+    box-shadow: 0.1rem 0.1rem 0.25rem #000000, 0rem 0rem 0.2rem #727272;
     
   }
 .btn__secondary:hover{

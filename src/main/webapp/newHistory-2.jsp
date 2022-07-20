@@ -115,23 +115,23 @@
 
 <body>
 
-<%
-DoctorVO vo = (DoctorVO) session.getAttribute("vo");
-CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
-%>
-
-
-	<div>
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
+	%>
 
 
 
 
 
 
-		<div class="underview">
-		
-		
-<%-- 	
+
+
+
+	<div class="underview">
+
+
+		<%-- 	
 없애지 말아줭~
 	<input type="text" name="p_seq" value="<%= pvo.getP_seq() %>"></input> --%>
 
@@ -139,158 +139,200 @@ CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
 
 
 
-			<div class="imgdiv " id="height">
+		<div class="imgdiv " id="height">
 
-				<!-- 사진등록하면 추가되는 부분 -->
-				<div class="plus-img">
-					<div class="listimg">
-						<span>2018-10-18</span> <img class="day-img" alt="오늘진료이미지등록"
-							src="images/1.png">
-					</div>
+			<!-- 사진등록하면 추가되는 부분 -->
+			<div class="plus-img">
+				<div class="listimg">
+					<span>2018-10-18</span> <img class="day-img" alt="오늘진료이미지등록"
+						src="images/1.png">
 				</div>
-				<!-- 사진등록하면 추가되는 부분 -->
-				<div class="plus-img">
-					<div class="listimg">
-						<span>2018-11-18</span> <img class="day-img" alt="오늘진료이미지등록"
-							src="images/1.png">
-					</div>
+			</div>
+			<!-- 사진등록하면 추가되는 부분 -->
+			<div class="plus-img">
+				<div class="listimg">
+					<span>2018-11-18</span> <img class="day-img" alt="오늘진료이미지등록"
+						src="images/1.png">
 				</div>
-				<!-- 사진등록하면 추가되는 부분 -->
-				<div class="plus-img">
-					<div class="listimg">
-						<span>2018-12-18</span> <img class="day-img" alt="오늘진료이미지등록"
-							src="images/1.png">
+			</div>
+			<!-- 사진등록하면 추가되는 부분 -->
+			<div class="plus-img">
+				<div class="listimg">
+					<span>2018-12-18</span> <img class="day-img" alt="오늘진료이미지등록"
+						src="images/1.png">
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div class="mainImg">
+
+			<div class="img-date">2018-10-18</div>
+			<div class="miniframe1">
+				<div class="miniframe2">
+					<img src="./img/bono.png" id="minimap">
+					<div class="lineContainermini"></div>
+					<div class="point" id="pointm0">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="red" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="pointm1">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="red" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+
+					<div class="point" id="pointm2">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="pointm3">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="pointm4">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="pointm5">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
+					</svg>
 					</div>
 				</div>
 			</div>
 
+		</div>
 
 
 
 
 
 
-			<div class="mainImg">
 
-				<div class="img-date">2018-10-18</div>
-				<div class="miniframe1">
-					<div class="miniframe2">
-						<img src="./img/bono.png" id="minimap">
-						<div class="lineContainermini"></div>
-						<div class="point" id="pointm0">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
+
+		<div class="div-main-middle">
+			<div class="frame1">
+				<div class="frame2">
+					<img src="./img/bono.png" id="image">
+					<div class="lineContainer"></div>
+					<div class="point" id="point0">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
 						<circle r="20" fill="red" stroke="white" stroke-width="5" />
 					</svg>
-						</div>
-						<div class="point" id="pointm1">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="red" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-
-						<div class="point" id="pointm2">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="pointm3">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="pointm4">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="pointm5">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
 					</div>
+					<div class="point" id="point1">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="red" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+
+					<div class="point" id="point2">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="point3">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="point4">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+					<div class="point" id="point5">
+						<svg class="pointsvg" viewBox="-25 -25 50 50"
+							style="position: relative;">
+						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
+					</svg>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<div class="boxes">
+			<div class="line01">
+
+
+				<div class="filebox">
+					<input class="upload-name" value="첨부파일" placeholder="X-ray 이미지"
+						readonly disabled> <label for="file">파일찾기</label> <input
+						type="file" id="file" name="file">
+						<button class="metal linear" style="width: 130px;margin-left: 5px;" type="button"
+						id="btnSend_img" value="">X-ray upload</button>
+						
+						
+				</div>
+
+				<script type="text/javascript">
+
+						$("#file").on('change',function(){
+							  var fileName = $("#file").val();
+							  $(".upload-name").val(fileName);
+							});
+					</script>
+
+
+				<!-- <input type="file" name="file" /> -->
+
+				<div class="topbtn">
+					
+					<button class="metal linear" style="width: 183px;" type="button"
+						id="btnSend" value="랜드마크분석">Landmark Analysis</button>
+					<img src="./img/loding.gif" height="15" id="loading"
+						style="display: none;" />
+						
+						
+						<div class="llreset">
+					<button style="width: 130px;" id="btn1" class="metal linear">
+						<ion-icon name="sunny-outline"></ion-icon>
+						<ion-icon name="refresh-outline"></ion-icon>
+					</button>
+					<button style="width: 130px;" id="btn2" class="metal linear">
+						<ion-icon name="contrast-outline"></ion-icon>
+						<ion-icon name="refresh-outline"></ion-icon>
+					</button>
+				</div>
+						
+						
+						
 				</div>
 
 			</div>
 
+			<div class="line02">
 
 
+				
 
 
-
-
-
-			<div class="div-main-middle">
-				<div class="frame1">
-					<div class="frame2">
-						<img src="./img/bono.png" id="image">
-						<div class="lineContainer"></div>
-						<div class="point" id="point0">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="red" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="point1">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="red" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-
-						<div class="point" id="point2">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="point3">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="yellow" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="point4">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-						<div class="point" id="point5">
-							<svg class="pointsvg" viewBox="-25 -25 50 50"
-								style="position: relative;">
-						<circle r="20" fill="lightgreen" stroke="white" stroke-width="5" />
-					</svg>
-						</div>
-					</div>
-				</div>
-
-				<form>
-					<input type="file" name="file" /> <input type="button"
-						id="btnSend_img" value="이미지업로드" /> <input type="button"
-						id="btnSend" value="랜드마크분석" /> <img src="./img/loding.gif"
-						height="15" id="loading" style="display: none;" />
-				</form>
-				<button id="btn1">밝기 원래대로</button>
-				<button id="btn2">대비 원래대로</button>
-				<button id="btn3">크기 1배</button>
-				<button id="btn4">크기 반배</button>
-				<button id="btn5">크기 2배</button>
-				<button id="btn6">랜드마크 토글</button>
-				<input id='first' type='button' value='1번' onclick="first()" /> <input
-					id='second' type='button' value='2번' onclick="second()" /> <input
-					id='third' type='button' value='3번' onclick="third()" /> <input
-					id='fourth' type='button' value='4번' onclick="fourth()" /> <input
-					id='fifth' type='button' value='5번' onclick="fifth()" /> <input
-					id='sixth' type='button' value='6번' onclick="sixth()" /><input
-					id='finish' type='button' value='종료' onclick="finishevent()" />
 				<div class="Container">
+				<ion-icon name="sunny-outline"></ion-icon>
 					  <font size=2 id="value_view1">100</font>    <input
 						style="width: 80%;" id="slider1" type="range" value="100" min="0"
 						max="200"></input>
@@ -298,6 +340,7 @@ CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
 
 
 				<div class="Container">
+				<ion-icon name="contrast-outline"></ion-icon>
 					  <font size=2 id="value_view2">100</font>    <input
 						style="width: 80%;" id="slider2" type="range" value="100" min="0"
 						max="200"></input>
@@ -305,70 +348,118 @@ CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
 
 
 
+				<div class="bababtn">
+
+					<button id="btn3 " class="metal linear" style="width: 75px;">X1</button>
+					<button id="btn4 " class="metal linear" style="width: 75px;">/2</button>
+					<button id="btn5" class="metal linear" style="width: 75px;">X2</button>
+				<button id="btn6" class="metal linear " style="width: 214px;">Landmark
+					- ON - OFF</button>
+
+				</div>
+
+				<div class="numbtn">
+
+					<input style="width: 45px;" class="metal linear" id='first'
+						type='button' value='1' onclick="first()" /> <input
+						style="width: 45px;" class="metal linear" id='second'
+						type='button' value='2' onclick="second()" /> <input
+						style="width: 45px;" class="metal linear" id='third' type='button'
+						value='3' onclick="third()" />
+				
+
+					<input style="width: 45px;" class="metal linear" id='fourth'
+						type='button' value='4' onclick="fourth()" /> <input
+						style="width: 45px;" class="metal linear" id='fifth' type='button'
+						value='5' onclick="fifth()" /> <input style="width: 45px;"
+						class="metal linear" id='sixth' type='button' value='6'
+						onclick="sixth()" />
+				<input style="width: 147px;" class="metal linear" id='finish'
+					type='button' value='Landmark fix' onclick="finishevent()" />
+				</div>
+
+
+
+
 			</div>
 
 
 			<div id="myDIV2">
-				<div class="div-lm">
-					<div class="nnn">
-					</div>
-					<table>
 
-						<tr>
-							<td>허벅</td>
-							<td><input type="text" class="class0 xy" id="test1"></td>
-
-							<td><input type="text" class="class1 xy"></td>
-						</tr>
-
-						<tr>
-							<td>무릎</td>
-							<td><input type="text" class="class2 xy"></td>
-
-							<td><input type="text" class="class3 xy"></td>
-						</tr>
-
-						<tr>
-							<td>발목</td>
-							<td><input type="text" class="class4 xy"></td>
-
-							<td><input type="text" class="class5 xy"></td>
-						</tr>
-						<tr>
-							<td>Top</td>
-							<td><input type="text" class="class6 l"></td>
-							<td><input type="text" class="class6 r"></td>
-							<td><input type="text" class="class6 d"></td>
-						</tr>
-						<tr>
-							<td>Bottom</td>
-							<td><input type="text" class="class7 l"></td>
-							<td><input type="text" class="class7 r"></td>
-							<td><input type="text" class="class7 d"></td>
-						</tr>
-						<tr>
-							<td>Total</td>
-							<td><input type="text" class="class8 l"></td>
-							<td><input type="text" class="class8 r"></td>
-							<td><input type="text" class="class8 d"></td>
-						</tr>
+<!-- <div>Randmark Coordinate Information</div> -->
 
 
-					</table>
-					<textarea id="rm-write" name="chart" cols="30" rows="10">x-   y-  x-- yyy-----</textarea>
-				</div>
-				<div class="div-cm">
-					<textarea id="result-write" name="chart" cols="30" rows="10">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
-				</div>
+<div class="dididi">
+				<div>femur head L / R</div>
+				<input readonly="" disabled="" type="text" class="class0 xy  ipsize"
+					id="test1"> <input readonly="" disabled="" type="text"
+					class="class1 xy ipsize">
+
+</div>
+<div class="dididi">
+				<div>femur medial condyle L / R</div>
+				<input readonly="" disabled="" type="text" class="class2 xy ipsize">
+
+				<input readonly="" disabled="" type="text" class="class3 xy ipsize">
+</div>
+<div class="dididi">
+				<div>ankle talus L / R</div>
+				<input readonly="" disabled="" type="text" class="class4 xy ipsize">
+
+				<input readonly="" disabled="" type="text" class="class5 xy ipsize">
+</div>
+<div class="dididi">
+				<div>femur L / R / GAP</div>
+				<input readonly="" disabled="" type="text" class="class6 l ipsize">
+				<input readonly="" disabled="" type="text" class="class6 r ipsize" >
+				<input readonly="" disabled="" type="text" class="class6 d ipsize" style="background-color: #ffffff;">
+</div>
+<div class="dididi">
+				<div>tibia L / R / GAP</div>
+				<input readonly="" disabled="" type="text" class="class7 l ipsize">
+				<input readonly="" disabled="" type="text" class="class7 r ipsize">
+				<input readonly="" disabled="" type="text" class="class7 d ipsize" style="background-color: #ffffff;">
+</div>
+
+<div class="dididi">
+				<div>Total L / R / GAP</div>
+				<input readonly="" disabled="" type="text" class="class8 l ipsize">
+				<input readonly="" disabled="" type="text" class="class8 r ipsize">
+
+				<input readonly="" disabled="" type="text" class="class8 d ipsize" style="background-color: #ffffff;">
+</div >
+
+
+
+				<!-- <textarea id="rm-write" name="chart" cols="30" rows="10">x-   y-  x-- yyy-----</textarea> -->
 			</div>
+			
+			
+			
+			
+			
+			
+			<div class="div-cm">
+				<textarea id="result-write" name="chart" cols="30" rows="10">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
+			</div>
+		
+		
+		
 
 
-
-		</div>
 
 		<button type="submit" id="" class="btn-allsave">진료내용저장 및 제출</button>
-	</div>
+		
+		
+		</div>
 
+
+		
+		
+		
+		
+		
+	</div>
 
 
 
@@ -1382,7 +1473,6 @@ CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
 
 
 		</script>
-
 </body>
 
 </html>

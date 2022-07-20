@@ -14,7 +14,10 @@
 <link rel="stylesheet" href="assets/css/chat2.css" />
 
 
-<link rel="stylesheet" href="assets/css/sss01.css">
+<!-- <link rel="stylesheet" href="assets/css/sss01.css"> -->
+
+
+<link rel="stylesheet" href="assets/css/memhome-btn.css">
 
 
 
@@ -36,7 +39,35 @@
 
 	<div class="maintop">
 		<!-- 상단 고정 header -->
-		<section id="header">
+		
+		
+<!-- 버튼 -->
+     <form class="btn-four">
+	<label ><input onclick="movepage('mainHome.jsp');" class="iptxt" type="radio" name="band" value="fm" ><span class="inputext">INTRO</span></label>
+	<label><input onclick="movepage('memberHome-2.jsp');" class="iptxt" type="radio" name="band" value="am" checked><span class="inputext">TUTORIAL</span></label>
+	<label><input onclick="movepage('#price');" class="iptxt" type="radio" name="band" value="am" ><span class="inputext">PRICE</span></label>
+	<label ><input onclick="movepage('mainHome.jsp');" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext"  >LOGOUT</span></label>
+</form>
+
+<!-- 
+     <form class="btn-two">
+	<label ><input  onClick="location.href='serviceMain.jsp'" class="iptxt" type="radio" name="band" value="fm" ><span class="inputext ">SERVICE<br>RUNNING</span></label>
+	<label ><input  onclick="javascript:popOpen3();" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext "  >ACCOUNT<br>MANAGEMENT</span></label>
+</form>
+		 -->
+		
+		<!-- div 이동  -->
+<script type="text/javascript"> 
+function movepage(page) 
+{ 
+window.document.location.href=page; 
+return; 
+} 
+</script>
+		
+		
+		
+		<!-- <section id="header">
 			<div class="wrapper">
 
 				<div class="logo">
@@ -52,7 +83,7 @@
 						<li class=""><a style="cursor: pointer" href="mainHome.jsp">Home</a></li>
 						<li><a  href="memberHome.jsp" class="">Tutorial</a></li>
 						<li><a class="" href="#price">Price</a></li>
-						<!-- 로그아웃되고 시작홈으로  -->
+						로그아웃되고 시작홈으로 
 						<li><a class="" href="mainHome.jsp" onclick="">Logout</a></li>
 					</ul>
 				</nav>
@@ -60,7 +91,7 @@
 			</div>
 		</section>
 
-		<!-- // 상단 고정 header -->
+		// 상단 고정 header -->
 
 
 
@@ -68,19 +99,19 @@
 		<!-- 메인 - 서비스 튜토리얼 -->
 
 
-		<div id='btn'>
+	 	<div id='btn'>
 
 			<div id="container-btn">
 
-				<div class="button-main" onClick="location.href='serviceMain.jsp'">
-					<div class="button-inside">
-						<h1 class="btn-name">SERVICE RUNNING</h1>
+				<div class="button-main leftbt" onClick="location.href='serviceMain.jsp'">
+					<div class="button-inside leftbt">
+						<h1 class="btn-name lefth">SERVICE<br>RUNNING</h1>
 					</div>
 				</div>
 
-				<div class="button-main" onclick="javascript:popOpen3();">
-					<div class="button-inside">
-						<h1 class="btn-name">ACCOUNT MANAGEMENT</h1>
+				<div class="button-main rightbt" onclick="javascript:popOpen3();">
+					<div class="button-inside rightbt">
+						<h1 class="btn-name righth">ACCOUNT<br>MANAGEMENT</h1>
 					</div>
 				</div>
 
@@ -89,7 +120,7 @@
 
 
 
-		</div>
+		</div> 
 	</div>
 
 
@@ -163,9 +194,9 @@
 
 	<!-- 상담 연결 채팅 -->
 
-	<div>
+	<!--<div>
 		<span class="btn-chat chatfont">CONNECT</span>
-		<!-- <ion-icon class="btn-chat" name="chatbubble-ellipses-outline"></ion-icon> -->
+		<ion-icon class="btn-chat" name="chatbubble-ellipses-outline"></ion-icon> 
 	</div>
 
 
@@ -175,12 +206,12 @@
 
 
 		<!-- 회원일때 보이는 상담연결창  -->
-		<ul>
+	<!--	<ul>
 			<li class="c-zone"><a href="#"> <span class="title2 ppp">상담문의하기</span></a>
 			</li>
 		</ul>
 
-	</div>
+	</div>-->
 
 
 
@@ -199,6 +230,9 @@
 	<!-- 슬라이드쇼 컨테이너 -->
 
 	<div class="mainall">
+
+
+
 
 		<!-- 페이지 sss01 -->
 		<div class="center-al" id="tutorial">

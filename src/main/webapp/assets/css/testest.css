@@ -1,0 +1,335 @@
+@charset "UTF-8";
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit(
+                            $max-font-size - $min-font-size
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+@font-face {
+    src: url("https://assets.codepen.io/2479807/Matter-Regular.woff2");
+    font-family: "Matter Regular";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero {
+    background-color: transparent;
+    min-height: 100vh;
+    width: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Matter Regular", sans-serif;
+}
+
+/* span {
+	@include fluid-type(500px, 1920px, 24px, 80px);
+} */
+
+
+
+.toptxt{
+	    font-size: 35px;
+}
+.middletxt{
+	    font-size: 55px;
+}
+.bottomtxt{
+	    font-size: 35px;
+}
+
+
+
+
+.btn-next {
+	margin-top: 24px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 16px 64px;
+    font-size: 18px;
+    font-family: inherit;
+    transition: transform 0.1s;
+    cursor: pointer;
+}
+
+.hero {
+    height: 93vh;
+    min-height: 800px;
+    padding: 120px 40px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+
+ 
+}
+
+ .hero__content {
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    
+    
+    
+    
+    .div2__content{
+ height: 700px;
+    margin-bottom: 50px;
+    }
+    
+    
+    .div3__content{
+ height: 700px;
+    margin-bottom: 50px;
+    }
+
+
+
+
+
+
+
+
+
+
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 글자 */
+
+  .rolling_box{
+          width: 696px;
+    height:72px;
+    text-align: center;
+        }
+
+        .rolling_box ul {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .rolling_box ul li {
+          width: 100%;
+    height: 100%;
+    transition: .5s;
+    position: absolute;
+    transition: bottom 1s;
+    bottom: 100%;
+    z-index: 1;
+        }
+
+        .card_sliding{
+           bottom: 0 !important;
+    z-index: 1 !important;
+        } 
+
+        .card_sliding_after{
+          bottom: 1000% !important;
+    z-index: -100 !important;
+        }
+
+        .rolling_box ul li p {
+          /*   font-size: 30px;
+            font-weight: bold;*/
+                line-height: 65px;
+        } 
+
+        .before_slide {
+            transform: translateY(100%);
+        }
+
+        .after_slide {
+            transform: translateY(0);
+        }
+
+
+
+
+/* 버튼 */
+
+.btn-two{
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	
+}
+btn-two:root {
+	--bg: #e3e4e8;
+	--fg: #17181c;
+	--transDur: 0.1s;
+	font-size: calc(20px + (40 - 20)*(100vw - 320px)/(2560 - 320));
+}
+.btn-two {
+	display: flex;
+}
+.btn-two, .iptxt {
+	color: var(--fg);
+	font: 1em/1.5 Helvetica, sans-serif;
+}
+
+.btn-two, label {
+	width: 100%;	
+}
+.btn-two{
+	margin: auto;
+    max-width: 18em;
+   position: fixed;
+    top: 837px;
+}
+label {
+	display: block;
+	text-align: center;
+	-webkit-tap-highlight-color: transparent;
+}
+label:first-child input {
+	border-radius: 0.5em 0 0 0.5em;
+	box-shadow:
+		0.1em 0 0 #2726267f inset,
+		-0.1em 0 0 #27262600 inset,
+		0 0.1em 0 #afa490 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.2em 0.5em #0000007f,
+		0 -0.1em 0 #926086 inset,
+		-0.1em -0.2em 0 #ffffff7f inset,
+		0.2em 0 0 #ffffff7f inset;
+}
+label:last-child input {
+	border-radius: 0 0.5em 0.5em 0;
+	box-shadow:
+		0 -0.1em 0 #926086 inset,
+		0.1em 0 0 #2726267f inset,
+		-0.1em 0 0 #2726267f inset,
+		0 0.1em 0 #afa490 inset,
+		-0.1em 0 0 #afa490 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.2em 0.5em #0000007f,
+		-0.1em -0.1em 0 0.1em #ffffff7f inset;
+}
+label:first-child input:checked {
+	box-shadow:
+		0.1em 0 0 #272626af inset,
+		-0.1em 0 0 #272626 inset,
+		0 0.1em 0 #847a62 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.1em 0 #ffffff7f,
+		0 -0.1em 0 #722257 inset,
+		-0.1em -0.2em 0 #ffffff7f inset,
+		0.2em 0 0 #ffffff7f inset;
+}
+label:last-child input:checked {
+	box-shadow:
+		0.1em 0 0 #272626af inset,
+		-0.1em 0 0 #272626 inset,
+		0 -0.1em 0 #722257 inset,
+		0 0.1em 0 #847a62 inset,
+		-0.1em 0 0 #847a62 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.1em 0 #ffffff7f,
+		-0.1em -0.1em 0 0.1em #ffffff7f inset;
+}
+.iptxt{
+	background-image: linear-gradient(#ffffff 33%,#414751 58%,#837b52,#c5baa1,#c3adaa);
+	border-radius: 0;
+	box-shadow:
+		0.1em 0 0 #2726267f inset,
+		-0.1em 0 0 #27262600 inset,
+		0 0.1em 0 #afa490 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.2em 0.5em #0000007f,
+		0 -0.1em 0 #926086 inset,
+		-0.1em -0.2em 0 #ffffff7f inset;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 0.5em;
+	width: 100%;
+	height: 1em;
+	transition: box-shadow var(--transDur) ease-in-out;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.iptxt:checked {
+	background-image: linear-gradient(#ffffff 33%,#414751 58%,#827a7b,#c0b6ac,#c3adaa);
+	box-shadow:
+		0.1em 0 0 #272626af inset,
+		-0.1em 0 0 #272626 inset,
+		0 0.1em 0 #847a62 inset,
+		0 -0.1em 0 #ffffff3f,
+		0 0.1em 0 #ffffff7f,
+		0 -0.1em 0 #722257 inset,
+		-0.1em -0.2em 0 #ffffff7f inset;
+}
+.iptxt:checked + .inputext {
+	opacity: 1;
+}
+.iptxt:focus {
+	outline: transparent;
+}
+.iptxt + .inputext {
+	opacity: 0.35;
+	transition: opacity var(--transDur) ease-in-out;
+}
