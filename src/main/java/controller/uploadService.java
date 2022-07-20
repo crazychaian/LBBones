@@ -42,22 +42,18 @@ public class uploadService extends HttpServlet {
 // 파일이름 출력
 // getFilesystemName("Name")
 		String fileName = multi.getFilesystemName("file");
-		int p_seq = Integer.parseInt(multi.getParameter("p_seq"));
+		/* int p_seq = Integer.parseInt(multi.getParameter("p_seq")); */
 		System.out.println(fileName);
 		String file_loc = (savePath+'\\'+fileName);
 		System.out.println(file_loc);
 		
-		XrayVO xvo = new XrayVO();
-		xvo.setP_seq(p_seq);
-		xvo.setXray_img(fileName);
-		
-		XrayDAO dao = new XrayDAO();
-		int cnt = dao.xrayJoin(xvo);
-	
-		if(cnt >0) {
-		
-		
-		
+		/*
+		 * XrayVO xvo = new XrayVO(); xvo.setP_seq(p_seq); xvo.setXray_img(fileName);
+		 * 
+		 * XrayDAO dao = new XrayDAO(); int cnt = dao.xrayJoin(xvo);
+		 * 
+		 * if(cnt >0) {
+		 */
 		
 		File file = new File(file_loc);
 		System.out.println(file);
@@ -79,9 +75,9 @@ public class uploadService extends HttpServlet {
 		
 		out.print(data);
 		
-		}else {
+/*		}else {
 			System.out.println("실패");
-		}
+		}*/
 		
 	}
 

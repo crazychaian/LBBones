@@ -352,8 +352,8 @@
 
 				<div class="bababtn">
 
-					<button id="btn3 " class="metal linear" style="width: 75px;">X1</button>
-					<button id="btn4 " class="metal linear" style="width: 75px;">/2</button>
+					<button id="btn3" class="metal linear" style="width: 75px;">X1</button>
+					<button id="btn4" class="metal linear" style="width: 75px;">/2</button>
 					<button id="btn5" class="metal linear" style="width: 75px;">X2</button>
 					<button id="btn6" class="metal linear " style="width: 214px;">Landmark
 						- ON - OFF</button>
@@ -515,6 +515,9 @@
 			var r_femur_len
 			var r_tibia_len
 			var r_total_len
+			var lr_femur_gap   
+			var lr_tibia_gap   
+			var lr_total_gap
 
 
 
@@ -912,12 +915,16 @@
 				l_bot_y = data[4].y
 				r_bot_x = data[5].x
 				r_bot_y = data[5].y
-				l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-				r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-				l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-				r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-				l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-				r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+				l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+				r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+				l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+				r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+				l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+				r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
+				
+				lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+				lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+				lr_total_gap = Math.abs(l_total_len - r_total_len)
 				for (var i = 0; i < data.length; i++) {
 					var input_xy = document.querySelector(".class" + i + ".xy")
 					input_xy.value = data[i].x + "," +data[i].y;
@@ -932,16 +939,16 @@
 
 				//			console.log(dist(arr2[0],arr2[1],arr2[4],arr2[5]))
 				// console.log($(".class0.x").val())
-				$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-				$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-				$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-				$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-				$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-				$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+						$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+						$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+						$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+						$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+						$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+						$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-				$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-				$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-				$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+						$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+						$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+						$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 			}
 
 
@@ -1042,23 +1049,27 @@
 						l_top_x = e.offsetX
 						l_top_y = e.offsetY
 					
-						l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-						r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-						l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-						r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-						l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-						r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+						l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+						r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+						l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+						r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+						l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+						r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 						
-						$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-						$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-						$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-						$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-						$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-						$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+						lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+						lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+						lr_total_gap = Math.abs(l_total_len - r_total_len)
+						
+						$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+						$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+						$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+						$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+						$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+						$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-						$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-						$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-						$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+						$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+						$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+						$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 						
 					};
 					
@@ -1096,23 +1107,27 @@
 							r_top_x = e.offsetX
 							r_top_y = e.offsetY
 		
-							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 							
-							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+							lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+							lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+							lr_total_gap = Math.abs(l_total_len - r_total_len)
+							
+							$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+							$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+							$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+							$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+							$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+							$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+							$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+							$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 							
 					}
 					
@@ -1149,23 +1164,27 @@
 							l_mid_x = e.offsetX
 							l_mid_y = e.offsetY
 							
-							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 							
-							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+							lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+							lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+							lr_total_gap = Math.abs(l_total_len - r_total_len)
+							
+							$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+							$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+							$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+							$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+							$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+							$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+							$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+							$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 					}
 					
 					const fourthevent = (e) => {
@@ -1201,23 +1220,27 @@
 							r_mid_x = e.offsetX
 							r_mid_y = e.offsetY
 							
-							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 							
-							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+							lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+							lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+							lr_total_gap = Math.abs(l_total_len - r_total_len)
+							
+							$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+							$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+							$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+							$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+							$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+							$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+							$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+							$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 							
 					}
 					
@@ -1254,23 +1277,27 @@
 							l_bot_x = e.offsetX
 							l_bot_y = e.offsetY
 							
-							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 							
-							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+							lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+							lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+							lr_total_gap = Math.abs(l_total_len - r_total_len)
+							
+							$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+							$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+							$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+							$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+							$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+							$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+							$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+							$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 							
 					}
 					
@@ -1307,23 +1334,27 @@
 							r_bot_x = e.offsetX
 							r_bot_y = e.offsetY
 							
-							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)
-							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)
-							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)
-							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)
-							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)
-							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)
+							l_femur_len = dist(l_top_x,l_top_y,l_mid_x,l_mid_y)*0.14
+							r_femur_len = dist(r_top_x,r_top_y,r_mid_x,r_mid_y)*0.14
+							l_tibia_len = dist(l_bot_x,l_bot_y,l_mid_x,l_mid_y)*0.14
+							r_tibia_len = dist(r_bot_x,r_bot_y,r_mid_x,r_mid_y)*0.14
+							l_total_len = dist(l_bot_x,l_bot_y,l_top_x,l_top_y)*0.14
+							r_total_len = dist(r_bot_x,r_bot_y,r_top_x,r_top_y)*0.14
 							
-							$(".class6.l").val((l_femur_len * pl).toFixed(3) + " mm")
-							$(".class6.r").val((r_femur_len * pl).toFixed(3) + " mm")
-							$(".class7.l").val((l_tibia_len * pl).toFixed(3) + " mm")
-							$(".class7.r").val((r_tibia_len * pl).toFixed(3) + " mm")
-							$(".class8.l").val((l_total_len * pl).toFixed(3) + " mm")
-							$(".class8.r").val((r_total_len * pl).toFixed(3) + " mm")
+							lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
+							lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
+							lr_total_gap = Math.abs(l_total_len - r_total_len)
+							
+							$(".class6.l").val(l_femur_len.toFixed(2) + " mm")
+							$(".class6.r").val(r_femur_len.toFixed(2) + " mm")
+							$(".class7.l").val(l_tibia_len.toFixed(2) + " mm")
+							$(".class7.r").val(r_tibia_len.toFixed(2) + " mm")
+							$(".class8.l").val(l_total_len.toFixed(2) + " mm")
+							$(".class8.r").val(r_total_len.toFixed(2) + " mm")
 
-							$(".class6.d").val((Math.abs(l_femur_len - r_femur_len) * pl).toFixed(3)  + " mm")
-							$(".class7.d").val((Math.abs(l_tibia_len - r_tibia_len) * pl).toFixed(3)  + " mm")
-							$(".class8.d").val((Math.abs(l_total_len - r_total_len) * pl).toFixed(3)  + " mm")
+							$(".class6.d").val(lr_femur_gap.toFixed(2)  + " mm")
+							$(".class7.d").val(lr_tibia_gap.toFixed(2)  + " mm")
+							$(".class8.d").val(lr_total_gap.toFixed(2)  + " mm")
 							
 					}
 			
@@ -1331,8 +1362,6 @@
 			
 			////////////////////////////////////////////////////////////////////////////////
 			function first(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
@@ -1352,8 +1381,6 @@
 			}
 			
 			function second(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
@@ -1374,8 +1401,6 @@
 			}
 			
 			function third(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
@@ -1397,8 +1422,6 @@
 			}
 			
 			function fourth(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
@@ -1418,8 +1441,6 @@
 			}
 			
 			function fifth(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
@@ -1439,8 +1460,6 @@
 			}
 			
 			function sixth(){
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				const minimap = document.getElementById('minimap');
 				const image = document.getElementById('image');
