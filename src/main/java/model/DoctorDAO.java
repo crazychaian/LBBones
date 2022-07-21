@@ -64,6 +64,7 @@ public class DoctorDAO {
 		DoctorVO dvo = session.selectOne("login", vo);
 
 		session.close();
+		System.out.println(dvo);
 
 		return dvo;
 

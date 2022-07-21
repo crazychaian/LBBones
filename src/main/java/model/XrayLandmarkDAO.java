@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class LandmarkDAO {
+public class XrayLandmarkDAO {
 	
 	private static SqlSessionFactory sqlSessionFactory;
 
@@ -27,33 +27,19 @@ public class LandmarkDAO {
 
 	// =============================================================================
 	
-	public int lmjoin(LandmarkVO vo) {
+
+	public List<XrayLandmarkVO> selectXrayLm(int p_seq) {
+		System.out.println(p_seq);
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
-		int cnt = 0;
-		try {
-			cnt = session.insert("lmjoin", vo);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		session.close();
-
-		return cnt;
-
-	}
-	
-	public LandmarkVO lmview(int xray_seq) {
+		List<XrayLandmarkVO> xrayList = session.selectList("selectXrayLm", p_seq);
 		
-		SqlSession session = sqlSessionFactory.openSession(true);
-
-		LandmarkVO lmview = session.selectOne("lmview", xray_seq);
+		
 
 		session.close();
 
-		return lmview;
+		return xrayList;
 
 	}
 	

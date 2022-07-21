@@ -12,28 +12,25 @@ import javax.servlet.http.HttpSession;
 
 import model.CustomerDAO;
 import model.CustomerVO;
+import model.LandmarkDAO;
+import model.LandmarkVO;
 import model.XrayDAO;
 import model.XrayLandmarkDAO;
 import model.XrayLandmarkVO;
 import model.XrayVO;
 
-@WebServlet("/xrayListService")
-public class xrayListService extends HttpServlet {
+@WebServlet("/xrayListService2")
+public class xrayListService2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+	
 		request.setCharacterEncoding("utf-8");
 		
 		int p_seq = Integer.parseInt(request.getParameter("p_seq"));
-		System.out.println(p_seq);
 		
-		XrayLandmarkDAO xdao = new XrayLandmarkDAO();
-		System.out.println(xdao);
-		List<XrayLandmarkVO> xrayList = xdao.selectXrayLm(p_seq);
-		System.out.println(xrayList);
-		
+		XrayDAO xdao = new XrayDAO();
+		List<XrayVO> xrayList = xdao.selectXray(p_seq);
 		
 		CustomerDAO cdao = new CustomerDAO();
 		CustomerVO pvo = cdao.pvo(p_seq);
@@ -41,9 +38,10 @@ public class xrayListService extends HttpServlet {
 		HttpSession session1 = request.getSession();
 		session1.setAttribute("xrayList", xrayList);
 		
+		System.out.println(xrayList);
+		
 		HttpSession session2 = request.getSession();
 		session2.setAttribute("pvo", pvo);
-		
 		
 		response.sendRedirect("idHistoryList.jsp");
 

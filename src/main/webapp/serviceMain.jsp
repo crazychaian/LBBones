@@ -134,7 +134,7 @@
 					<li><span><%=cvo.getP_gender()%></span></li>
 					<li><span>
 							<button type="button" onclick="popOpen2(<%=cvo.getP_seq()%>)">수정
-							</button> / 
+							</button>/
 							<button type="button" onclick="removeCheck(<%=cvo.getP_seq()%>)">
 								삭제</button>
 					</span></li>

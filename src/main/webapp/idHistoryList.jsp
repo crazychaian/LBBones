@@ -1,3 +1,5 @@
+<%@page import="model.XrayLandmarkVO"%>
+<%@page import="model.LandmarkVO"%>
 <%@page import="model.XrayVO"%>
 <%@page import="java.util.List"%>
 <%@page import="model.CustomerVO"%>
@@ -22,7 +24,7 @@
 	<%
 	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
 	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
-	List<XrayVO> xrayList = (List<XrayVO>) request.getAttribute("xrayList");
+	List<XrayLandmarkVO> xrayList = (List<XrayLandmarkVO>) session.getAttribute("xrayList");
 	%>
 
 
@@ -70,24 +72,28 @@
 
 
 			<div id="container-btn">
+			<form action="cusSearchService2" method="post">
+				<input type="hidden" class="SearchId" name="SearchId"
+					value="<%=vo.getDoc_id()%>">
+				<input type="text"
+					placeholder="caseID 또는 환자이름을 검색하세요" id="serch-pati"
+					class="serch-patient" name="pSearch">
 
-				<input type="text" placeholder="caseID 또는 환자이름을 검색하세요"
-					id="serch-pati" class="serch-patient ">
-
-				<div class="button-main ser-main" type="submit">
+				<button class="button-main ser-main" type="submit">
 					<div class="button-inside ser-inside">
 						<h1 class="btn-name">SERCH</h1>
 					</div>
-				</div>
+				</button>
+				</form>
 
-				<div class="button-main new-main" onclick="javascript:popOpen();">
+				<div class="button-main new-main" onclick="popOpen()">
 					<div class="button-inside new-inside">
 						<h1 class="btn-name">NEW PATIENT REGISTRATION</h1>
 					</div>
 				</div>
 				
 				<div class="button-main record-main" 
-				onclick="window.open('newHistory-2.jsp','newhistroy','resizable=no width=1500 height=900');return false">
+				onclick="window.open('newHistory-3.jsp','newhistroy','resizable=no width=1500 height=900');return false">
 					<div class="button-inside record-inside">
 						<h1 class="btn-name">ADD MEDICAL RECORDS</h1>
 					</div>
@@ -98,7 +104,7 @@
 			</div>
 			<!-- 클릭하고 들어온 환자 정보  //  환자코드 / 생년월일 / 이름 /  -->
 				<div class="clickMem-div">
-				<span class="clickMem"><%= pvo.getP_seq() %></span>  <span class="clickMem"><%=pvo.getP_name() %></span>  <span class="clickMem"><%= pvo.getP_gender() %></span>  <span class="clickMem"><%= pvo.getP_date() %></span> 
+				<span class="clickMem"><%= pvo.getP_seq() %></span>  <span class="clickMem"><%=pvo.getP_name() %></span>  <span class="clickMem"><%= pvo.getP_gender() %></span>  <span class="clickMem"><%= pvo.getP_birth() %></span> 
 				</div>
 
 
@@ -124,70 +130,66 @@
 			</div>
 
 			<!-- 환자 진료기록 업데이트 추가될 부분 -->
-<%
+			<%
 			if (xrayList == null) {
 			%>
+			<!-- 환자 진료기록 업데이트 추가될 부분 -->
 			<div class="info-cont">
-		
+
+				<%
+				} else {
+				%>
 			</div>
 
-<%
-			} else {
-			%>
 
 
-<!-- 환자 진료기록 업데이트 추가될 부분 -->
-			<div class="info-cont">
+
+			<!-- 환자 진료기록 업데이트 추가될 부분 -->
+
 				<%
-				for (XrayVO xvo : xrayList) {
+				for (XrayLandmarkVO xlvo : xrayList) {
 				%>
+			<div class="info-cont">
+				<input type="hidden" name="xrayseq" value="<%=xlvo.getXray_seq() %>"></input>
 				<ul class="info-cont-rp">
-					<li><span><%= xvo.getXray_date() %></span></li>
+					<li><span><%=xlvo.getXray_date()%></span></li>
 					<li id="imglistLi">
-						
-						
-						
 						<!-- 클릭할 이미지 리스트  -->
 						<div class="imgList">
-							<div class="imgC" style="cursor : zoom-in">
-								<img src="images/1.png" alt="모달할 이미지">
-								<%=xvo.getXray_img() %>
-								<p>이미지 1</p>
+							<div class="imgC" style="cursor: zoom-in">
+								<img src="img/<%=xlvo.getXray_img()%>" alt="모달할 이미지"
+								style="width: 100px; height: 150px;">
+								
 							</div>
-							<input type="hidden" name="XraySeq" value="<%= xvo.getXray_seq()%>">
-							<div class="lmC" style="cursor : zoom-in">
-							<img src="images/1.png" alt="모달할 이미지">
-								<%=xvo.getXray_img() %>
-								<p>이미지 1</p>
-							</div>
-
 						</div>
 
 
 					</li>
-					<li><textarea class="txtarea" name="randmark-view" cols="30" rows="10"
-							readonly  disabled>대퇴골의 길이 : <br>
-							경골의 길이 : <br>
+					<li><textarea class="txtarea" name="randmark-view" cols="30"
+							rows="10" readonly disabled>대퇴골의 길이 : 
+							경골의 길이 : 
 							다리 전체의 길이 : 
 							</textarea></li>
-					<li><textarea class="txtarea" name="today-chart-view" cols="30" rows="10"
-							readonly  disabled></textarea></li>
+					<li><textarea class="txtarea" name="today-chart-view"
+							cols="30" rows="10" readonly disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
 					<li>
-							<div class="btn btn__secondary" onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
-							<span>진료 내용 추가</span></div>
+						<div class="btn btn__secondary" type="button" href=""
+							onclick="window.open('updateChart.jsp','name','resizable=no width=1500 height=1100');return false">
+							<span>진료 내용 추가</span>
+						</div>
 
 					</li>
 
 				</ul>
+			</div>
+
 				<%
 				}
 				%>
-			</div>
-			
-				<%
+
+			<%
 			}
 			%>
-
 
 
 
@@ -316,19 +318,50 @@
 
 		}
 
-		/* 삭제버튼 눌렀을때 정말 삭제하시겠습니까? */
-		function removeCheck() {
 
-			if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+		
+		
+		function pJoin() {
+			let inputdoc_id = $('input[name=doc_id]');
+			let doc_id = $(inputdoc_id[0]).val();
+			let inputbirth = $('input[name=birth]');
+			let p_birth = $(inputbirth[0]).val();
+			let inputmembername = $('input[name=membername]');
+			let p_name = $(inputmembername[0]).val();
+			let inputgender = $('input[name=gender]:checked');
+			let p_gender = $(inputgender[0]).val();
+			
+			$.ajax({
+				url : 'cusJoinService',
+				type : 'post',
+				dataType : 'json',
+				data : {
+					"doc_id" : doc_id,
+					"p_name" : p_name,
+					"p_birth" : p_birth,
+					"p_gender" : p_gender
+				},
+				success : function(cnt) {
+					if (cnt > 0) {
+						var modalPop = $('.modal-wrap');
+						var modalBg = $('.modal-bg');
 
-				document.removefrm.submit();
+						$(modalPop).hide();
+						$(modalBg).hide();
+						
+						alert("환자 등록 성공하였습니다.")
+						
+						document.location.reload(true)
+					} else {
+						alert("환자 등록실패하였습니다.")
+					}
 
-			} else { //취소
+				},
+				error : function() {
+					alert("에러발생");
+				}
 
-				return false;
-
-			}
-
+			});
 		}
 
 		
@@ -359,7 +392,7 @@
 		
 		
 		
-		
+/* 		
 		$(".info-cont-rp").onload=function(){
 			let a = 0;
 			let inpiXraySeq = $('input[name=XraySeq]');
@@ -424,7 +457,7 @@
 			});
 			
 			a++;
-		}
+		} */
 			
 			
 			

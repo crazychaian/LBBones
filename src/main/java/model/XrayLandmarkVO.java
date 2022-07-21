@@ -3,14 +3,17 @@ package model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LandmarkVO {
+public class XrayLandmarkVO {
 	
-	private int landmark_seq;
 	private int xray_seq;
+	private int p_seq;
+	private String xray_img;
+	private String xray_date;
 	private int l_top_x;
 	private int l_top_y;
 	private int l_mid_x;
@@ -32,8 +35,7 @@ public class LandmarkVO {
 	private Float lr_femur_gap;      
 	private Float lr_tibia_gap;      
 	private Float lr_total_gap;      
-	private String landmark_date;    
+	private String cmt_content;
+
 
 }
-
-

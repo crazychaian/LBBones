@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.LandmarkDAO;
 import model.LandmarkVO;
+import model.XrayCommentDAO;
+import model.XrayCommentVO;
 
 @WebServlet("/landmarkService")
 public class landmarkService extends HttpServlet {
@@ -33,18 +35,22 @@ public class landmarkService extends HttpServlet {
 		int r_mid_y = Integer.parseInt(request.getParameter("r_mid_y"));
 		int r_bot_x = Integer.parseInt(request.getParameter("r_bot_x"));
 		int r_bot_y = Integer.parseInt(request.getParameter("r_bot_y"));
-		int l_femur_len = Integer.parseInt(request.getParameter("l_femur_len"));
-		int l_tibia_len = Integer.parseInt(request.getParameter("l_tibia_len"));
-		int l_total_len = Integer.parseInt(request.getParameter("l_total_len"));
-		int r_femur_len = Integer.parseInt(request.getParameter("r_femur_len"));
-		int r_tibia_len = Integer.parseInt(request.getParameter("r_tibia_len"));
-		int r_total_len = Integer.parseInt(request.getParameter("r_total_len"));
-		int lr_femur_gap = Integer.parseInt(request.getParameter("lr_femur_gap"));
-		int lr_tibia_gap = Integer.parseInt(request.getParameter("lr_tibia_gap"));
-		int lr_total_gap = Integer.parseInt(request.getParameter("lr_total_gap"));
+		Float l_femur_len = Float.parseFloat(request.getParameter("l_femur_len"));
+		Float l_tibia_len = Float.parseFloat(request.getParameter("l_tibia_len"));
+		Float l_total_len = Float.parseFloat(request.getParameter("l_total_len"));
+		Float r_femur_len = Float.parseFloat(request.getParameter("r_femur_len"));
+		Float r_tibia_len = Float.parseFloat(request.getParameter("r_tibia_len"));
+		Float r_total_len = Float.parseFloat(request.getParameter("r_total_len"));
+		Float lr_femur_gap = Float.parseFloat(request.getParameter("lr_femur_gap"));
+		Float lr_tibia_gap = Float.parseFloat(request.getParameter("lr_tibia_gap"));
+		Float lr_total_gap = Float.parseFloat(request.getParameter("lr_total_gap"));
+		
+		String doc_id = request.getParameter("doc_id");
+		String cmt_content = request.getParameter("cmt_content");
+		System.out.println(cmt_content);
 
 		LandmarkVO lmvo = new LandmarkVO();
-		lmvo.setXray_seq(xray_seq);;
+		lmvo.setXray_seq(xray_seq);
 		lmvo.setL_top_x(l_top_x);
 		lmvo.setL_top_y(l_top_y);
 		lmvo.setL_mid_x(l_mid_x);
@@ -67,15 +73,37 @@ public class landmarkService extends HttpServlet {
 		lmvo.setLr_tibia_gap(lr_tibia_gap);
 		lmvo.setLr_total_gap(lr_total_gap);
 		
-
 		LandmarkDAO lmdao = new LandmarkDAO();
+		System.out.println("lmvo:" + lmvo);
+		System.out.println("lmdao:" + lmdao);
 		int cnt = lmdao.lmjoin(lmvo);
-
+		System.out.println("cnt:" + cnt);
+		
+		
+		XrayCommentVO xcvo = new XrayCommentVO();
+		xcvo.setXray_seq(xray_seq);
+		xcvo.setDoc_id(doc_id);
+		xcvo.setCmt_content(cmt_content);
+		
+		XrayCommentDAO xcdao = new XrayCommentDAO();
+		System.out.println("xcvo:" + xcvo);
+		System.out.println("xcdao:" + xcdao);
+		int cnt2 = xcdao.insertCom(xcvo);
+		System.out.println("cnt2 :" +  cnt2);
+		
+		
+		boolean res;
+		if(cnt >0 && cnt2 >0) {
+			res = true;
+		}else {
+			res = false;
+		}
+		
 		response.setContentType("text/html; charset=utf-8");
 
 		PrintWriter out = response.getWriter();
 
-		out.print(cnt);
+		out.print(res);
 	
 	
 	

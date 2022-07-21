@@ -94,5 +94,17 @@ public class XrayDAO {
 
 	}
 	
+	public XrayVO findXraySeq(String fileName) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		XrayVO fxvo = session.selectOne("findXraySeq", fileName);
+
+		session.close();
+
+		return fxvo;
+
+	}
+	
 
 }

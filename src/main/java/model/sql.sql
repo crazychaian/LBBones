@@ -344,3 +344,71 @@ select * from tbl_patient
 
 select * from tbl_xray
 
+select * from tbl_landmark
+
+select * from tbl_xray_cmt
+
+select a.xray_seq as xray_seq, 
+      a.p_seq as p_seq, 
+      a.xray_img as xray_img, 
+      a.xray_date as xray_date,  
+      b.l_top_x as l_top_x, 
+      b.l_top_y as l_top_y, 
+      b.l_mid_x as l_mid_x, 
+      b.l_mid_y as l_mid_y, 
+      b.l_bot_x as l_bot_x, 
+      b.l_bot_y as l_bot_y, 
+      b.r_top_x as r_top_x, 
+      b.r_top_y as r_top_y, 
+      b.r_mid_x as r_mid_x, 
+      b.r_mid_y as r_mid_y, 
+      b.r_bot_x as r_bot_x, 
+      b.r_bot_y as r_bot_y, 
+      b.l_femur_len as l_femur_len, 
+      b.l_tibia_len as l_tibia_len, 
+      b.l_total_len as l_total_len, 
+      b.r_femur_len as r_femur_len, 
+      b.r_tibia_len as r_tibia_len, 
+      b.r_total_len as r_total_len, 
+      b.lr_femur_gap as lr_femur_gap, 
+      b.lr_tibia_gap as lr_tibia_gap, 
+      b.lr_total_gap as lr_total_gap, 
+      c.cmt_content as cmt_content
+      from tbl_xray a, tbl_landmark b, tbl_xray_cmt c
+      where a.xray_seq = b.xray_seq
+      and b.xray_seq = c.xray_seq
+      and a.p_seq = 40 
+
+select * from tbl_xray a
+select * from tbl_landmark b
+select * from tbl_xray_cmt c
+
+
+select a.xray_seq as xray_seq, 
+      a.p_seq as p_seq, 
+      a.xray_img as xray_img, 
+      a.xray_date as xray_date,  
+      b.l_top_x as l_top_x, 
+      b.l_top_y as l_top_y, 
+      b.l_mid_x as l_mid_x, 
+      b.l_mid_y as l_mid_y, 
+      b.l_bot_x as l_bot_x, 
+      b.l_bot_y as l_bot_y, 
+      b.r_top_x as r_top_x, 
+      b.r_top_y as r_top_y, 
+      b.r_mid_x as r_mid_x, 
+      b.r_mid_y as r_mid_y, 
+      b.r_bot_x as r_bot_x, 
+      b.r_bot_y as r_bot_y, 
+      b.l_femur_len as l_femur_len, 
+      b.l_tibia_len as l_tibia_len, 
+      b.l_total_len as l_total_len, 
+      b.r_femur_len as r_femur_len, 
+      b.r_tibia_len as r_tibia_len, 
+      b.r_total_len as r_total_len, 
+      b.lr_femur_gap as lr_femur_gap, 
+      b.lr_tibia_gap as lr_tibia_gap, 
+      b.lr_total_gap as lr_total_gap, 
+      c.cmt_content as cmt_content
+      from tbl_xray a left join tbl_landmark b on a.xray_seq = b.xray_seq left join tbl_xray_cmt c on a.xray_seq = c.xray_seq
+      where a.p_seq = 40 

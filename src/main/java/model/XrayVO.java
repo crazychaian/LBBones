@@ -17,5 +17,6 @@ public class XrayVO {
 	private int p_seq;
 	private String xray_img;
 	private String xray_date;
+	
 
 }
