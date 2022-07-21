@@ -10,10 +10,10 @@ body {
 
 
 #btn {
-	position: fixed;
+	position: relative;
     margin-top: 99px;
     margin-left: 3px;
-    width: 100%;
+    width: 99.8%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,13 +24,13 @@ body {
 .maintop{
 	width: 100%;
     height: 27%;
-    position: fixed;
+   position: relative;
     z-index: 1;
 }
 
 .mainall{
 	    position: relative;
-    top: 250px;
+    top: 50px;
     padding: 38px;
   background-image: linear-gradient(180deg, #c3c3c3, #424242);
 }
@@ -58,7 +58,21 @@ body {
 
 
 
-
+#price{
+	top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    /* border: 1px solid; */
+    border-radius: 50px;
+    margin-bottom: 115px;
+    height: 447px;
+    background-color: #8d8d8d;
+    background-image: linear-gradient(180deg, #727272, #424242);
+    box-shadow: inset -3px 3px 3px 0px #3e3d3d, inset 0.2em -0.2em 0 #bdbcbc;
+}
 
 
 

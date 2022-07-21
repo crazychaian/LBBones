@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="assets/css/addImgPop.css" />
-<link rel="stylesheet" href="assets/css/newHistory-2.css" />
+ <link rel="stylesheet" href="assets/css/addImgPop.css" />
+<link rel="stylesheet" href="assets/css/newHistory-2-Real.css" />
 
 
 
@@ -40,8 +40,8 @@
 
 .frame1 {
 	background-color: black;
-	width: 800px;
-	height: 774px;
+	width: 810px;
+	height: 925px;
 	border: black 5px solid;
 	overflow-y: auto;
 	overflow-x: auto;
@@ -56,8 +56,8 @@
 
 .miniframe1 {
 	background-color: black;
-	width: 315px;
-	height: 774px;
+	width: 325px;
+	height: 925px;
 	border: black 5px solid;
 	overflow: hidden position: relative;
 }
@@ -109,6 +109,20 @@
 	left: -40px;
 	top: -40px;
 }
+
+ .fimg{
+    width: 327px;
+    height: 891px;
+}
+.fimgbig{
+     width: 809px;
+    height: 916px;
+
+}
+
+
+
+
 </style>
 </head>
 
@@ -175,7 +189,7 @@
 			<div class="img-date">2018-10-18</div>
 			<div class="miniframe1">
 				<div class="miniframe2">
-					<img src="./img/bono.png" id="minimap">
+					<img src="images/rex.png" id="minimap" class="fimg">
 					<div class="lineContainermini"></div>
 					<div class="point" id="pointm0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -229,7 +243,7 @@
 		<div class="div-main-middle">
 			<div class="frame1">
 				<div class="frame2">
-					<img src="./img/bono.png" id="image">
+					<img src="images/rex.png" id="image" class="fimgbig">
 					<div class="lineContainer"></div>
 					<div class="point" id="point0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -280,47 +294,49 @@
 
 
 				<div class="filebox">
-					<input class="upload-name" value="첨부파일" placeholder="X-ray 이미지"
-						readonly disabled> <label for="file">파일찾기</label> <input
-						type="file" id="file" name="file">
-						<button class="metal linear" style="width: 130px;margin-left: 5px;" type="button"
+					<!-- 	<input class="upload-name" value="첨부파일" placeholder="X-ray 이미지"
+						readonly disabled> <label for="file"></label>  -->
+					<input type="file" id="file" name="file"
+						style="border-radius: 92px; background: gray; width: 254px;">
+					<button class="metal linear disdis"
+						style="width: 184px; margin-left: 5px;" type="button"
 						id="btnSend_img" value="">X-ray upload</button>
-						
-						
+
+
 				</div>
 
-				<script type="text/javascript">
+				<!-- 	<script type="text/javascript">
 
 						$("#file").on('change',function(){
 							  var fileName = $("#file").val();
-							  $(".upload-name").val(fileName);
+							  $(".upload-nam	e").val(fileName);
 							});
-					</script>
+					</script> -->
 
 
 				<!-- <input type="file" name="file" /> -->
 
 				<div class="topbtn">
-					
-					<button class="metal linear" style="width: 183px;" type="button"
+
+					<button class="metal linear disdis" style="width: 257px;" type="button" disabled
 						id="btnSend" value="랜드마크분석">Landmark Analysis</button>
 					<img src="./img/loding.gif" height="15" id="loading"
-						style="display: none;" />
-						
-						
-						<div class="llreset">
-					<button style="width: 130px;" id="btn1" class="metal linear">
+						style="/* display: block; */z-index: 20;left: -33px;position: relative;" />
+
+
+					<!-- <div class="llreset"> -->
+					<button style="width: 80px;left: -6px;" id="btn1" class="metal linear">
 						<ion-icon name="sunny-outline"></ion-icon>
 						<ion-icon name="refresh-outline"></ion-icon>
 					</button>
-					<button style="width: 130px;" id="btn2" class="metal linear">
+					<button style="width: 80px;" id="btn2" class="metal linear">
 						<ion-icon name="contrast-outline"></ion-icon>
 						<ion-icon name="refresh-outline"></ion-icon>
 					</button>
-				</div>
-						
-						
-						
+					<!-- </div> -->
+
+
+
 				</div>
 
 			</div>
@@ -328,11 +344,11 @@
 			<div class="line02">
 
 
-				
+
 
 
 				<div class="Container">
-				<ion-icon name="sunny-outline"></ion-icon>
+					<ion-icon name="sunny-outline"></ion-icon>
 					  <font size=2 id="value_view1">100</font>    <input
 						style="width: 80%;" id="slider1" type="range" value="100" min="0"
 						max="200"></input>
@@ -340,7 +356,7 @@
 
 
 				<div class="Container">
-				<ion-icon name="contrast-outline"></ion-icon>
+					<ion-icon name="contrast-outline"></ion-icon>
 					  <font size=2 id="value_view2">100</font>    <input
 						style="width: 80%;" id="slider2" type="range" value="100" min="0"
 						max="200"></input>
@@ -353,8 +369,8 @@
 					<button id="btn3 " class="metal linear" style="width: 75px;">X1</button>
 					<button id="btn4 " class="metal linear" style="width: 75px;">/2</button>
 					<button id="btn5" class="metal linear" style="width: 75px;">X2</button>
-				<button id="btn6" class="metal linear " style="width: 214px;">Landmark
-					- ON - OFF</button>
+					<button id="btn6" class="metal linear " style="width: 214px;">Landmark
+						- ON - OFF</button>
 
 				</div>
 
@@ -365,17 +381,15 @@
 						style="width: 45px;" class="metal linear" id='second'
 						type='button' value='2' onclick="second()" /> <input
 						style="width: 45px;" class="metal linear" id='third' type='button'
-						value='3' onclick="third()" />
-				
-
-					<input style="width: 45px;" class="metal linear" id='fourth'
-						type='button' value='4' onclick="fourth()" /> <input
-						style="width: 45px;" class="metal linear" id='fifth' type='button'
-						value='5' onclick="fifth()" /> <input style="width: 45px;"
+						value='3' onclick="third()" /> <input style="width: 45px;"
+						class="metal linear" id='fourth' type='button' value='4'
+						onclick="fourth()" /> <input style="width: 45px;"
+						class="metal linear" id='fifth' type='button' value='5'
+						onclick="fifth()" /> <input style="width: 45px;"
 						class="metal linear" id='sixth' type='button' value='6'
-						onclick="sixth()" />
-				<input style="width: 147px;" class="metal linear" id='finish'
-					type='button' value='Landmark fix' onclick="finishevent()" />
+						onclick="sixth()" /> <input style="width: 170px;"
+						class="metal linear" id='finish' type='button'
+						value='Landmark fix' onclick="finishevent()" />
 				</div>
 
 
@@ -386,79 +400,84 @@
 
 			<div id="myDIV2">
 
-<!-- <div>Randmark Coordinate Information</div> -->
+				<!-- <div>Randmark Coordinate Information</div> -->
 
 
-<div class="dididi">
-				<div>femur head L / R</div>
-				<input readonly="" disabled="" type="text" class="class0 xy  ipsize"
-					id="test1"> <input readonly="" disabled="" type="text"
-					class="class1 xy ipsize">
+				<div class="dididi">
+					<div>femur head L / R</div>
+					<input readonly="" disabled="" type="text"
+						class="class0 xy  ipsize" id="test1"> <input readonly=""
+						disabled="" type="text" class="class1 xy ipsize">
 
-</div>
-<div class="dididi">
-				<div>femur medial condyle L / R</div>
-				<input readonly="" disabled="" type="text" class="class2 xy ipsize">
+				</div>
+				<div class="dididi">
+					<div>femur medial condyle L / R</div>
+					<input readonly="" disabled="" type="text" class="class2 xy ipsize">
 
-				<input readonly="" disabled="" type="text" class="class3 xy ipsize">
-</div>
-<div class="dididi">
-				<div>ankle talus L / R</div>
-				<input readonly="" disabled="" type="text" class="class4 xy ipsize">
+					<input readonly="" disabled="" type="text" class="class3 xy ipsize">
+				</div>
+				<div class="dididi">
+					<div>ankle talus L / R</div>
+					<input readonly="" disabled="" type="text" class="class4 xy ipsize">
 
-				<input readonly="" disabled="" type="text" class="class5 xy ipsize">
-</div>
-<div class="dididi">
-				<div>femur L / R / GAP</div>
-				<input readonly="" disabled="" type="text" class="class6 l ipsize">
-				<input readonly="" disabled="" type="text" class="class6 r ipsize" >
-				<input readonly="" disabled="" type="text" class="class6 d ipsize" style="background-color: #ffffff;">
-</div>
-<div class="dididi">
-				<div>tibia L / R / GAP</div>
-				<input readonly="" disabled="" type="text" class="class7 l ipsize">
-				<input readonly="" disabled="" type="text" class="class7 r ipsize">
-				<input readonly="" disabled="" type="text" class="class7 d ipsize" style="background-color: #ffffff;">
-</div>
+					<input readonly="" disabled="" type="text" class="class5 xy ipsize">
+				</div>
+				<div class="dididi">
+					<div>femur L / R / GAP</div>
+					<input readonly="" disabled="" type="text" class="class6 l ipsize">
+					<input readonly="" disabled="" type="text" class="class6 r ipsize">
+					<input readonly="" disabled="" type="text" class="class6 d ipsize"
+						style="background-color: #ffffff;">
+				</div>
+				<div class="dididi">
+					<div>tibia L / R / GAP</div>
+					<input readonly="" disabled="" type="text" class="class7 l ipsize">
+					<input readonly="" disabled="" type="text" class="class7 r ipsize">
+					<input readonly="" disabled="" type="text" class="class7 d ipsize"
+						style="background-color: #ffffff;">
+				</div>
 
-<div class="dididi">
-				<div>Total L / R / GAP</div>
-				<input readonly="" disabled="" type="text" class="class8 l ipsize">
-				<input readonly="" disabled="" type="text" class="class8 r ipsize">
+				<div class="dididi">
+					<div>Total L / R / GAP</div>
+					<input readonly="" disabled="" type="text" class="class8 l ipsize">
+					<input readonly="" disabled="" type="text" class="class8 r ipsize">
 
-				<input readonly="" disabled="" type="text" class="class8 d ipsize" style="background-color: #ffffff;">
-</div >
+					<input readonly="" disabled="" type="text" class="class8 d ipsize"
+						style="background-color: #ffffff;">
+				</div>
 
 
 
 				<!-- <textarea id="rm-write" name="chart" cols="30" rows="10">x-   y-  x-- yyy-----</textarea> -->
 			</div>
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 			<div class="div-cm">
-				<textarea id="result-write" name="chart" cols="30" rows="10">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
+				<textarea id="result-write" name="chart" cols="30" rows="12">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
 			</div>
-		
-		
-		
 
 
 
-		<button type="submit" id="" class="btn-allsave">진료내용저장 및 제출</button>
-		
-		
+
+
+
+			<button type="submit" id="" class="btn-allsave metal linear"
+				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;">진료내용저장
+				및 제출</button>
+
+
 		</div>
 
 
-		
-		
-		
-		
-		
+
+
+
+
+
 	</div>
 
 
@@ -566,8 +585,8 @@
 			var src = $('#image').attr('src')
 			var img = new Image();
 			img.src = src;
-			var calcScale = 800 / img.width  // (액자프레임 / 이미지크기)
-			var calcminiScale = 774 / img.height  // (액자프레임 / 이미지크기)
+			var calcScale = 810 / img.width  // (액자프레임 / 이미지크기)
+			var calcminiScale = 925 / img.height  // (액자프레임 / 이미지크기)
 
 			console.log("이미지", img.height, img.width)
 			console.log("프레임스케일", calcScale, calcminiScale)
@@ -824,8 +843,8 @@
 						line.remove();
 						LMtoggle = 0;
 
-						calcScale = 800 / data.width  // (액자프레임 너비 / 이미지크기)
-						calcminiScale = 774 / data.height
+						calcScale = 810 / data.width  // (액자프레임 너비 / 이미지크기)
+						calcminiScale = 925 / data.height
 						console.log(calcScale, calcminiScale);
 						document.querySelector('.frame2').style.transform = "scale(" + calcScale + ")";
 						$('.frame1').css('overflow-x', 'hidden')										// 액자프레임 가로스크롤 숨기기
