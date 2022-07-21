@@ -5,19 +5,25 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="assets/css/header2.css" />
-<link rel="stylesheet" href="assets/css/memberHome.css" />
+<link rel="stylesheet" href="assets/css/header2-Real.css" />
+<link rel="stylesheet" href="assets/css/memberHome-Real.css" />
 
-<link rel="stylesheet" href="assets/css/updateMemPop.css" />
+<link rel="stylesheet" href="assets/css/updateMemPop-Real.css" />
 
 
-<link rel="stylesheet" href="assets/css/chat2.css" />
+<link rel="stylesheet" href="assets/css/chat2-Real.css" />
 
 
 <!-- <link rel="stylesheet" href="assets/css/sss01.css"> -->
 
 
-<link rel="stylesheet" href="assets/css/memhome-btn.css">
+<link rel="stylesheet" href="assets/css/memhome-btn-Real.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;600&display=swap" rel="stylesheet">
+
 
 
 
@@ -27,7 +33,7 @@
 
 
 <!-- 마우스 -->
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style-Real.css">
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -43,10 +49,10 @@
 		
 <!-- 버튼 -->
      <form class="btn-four">
-	<label ><input onclick="movepage('mainHome.jsp');" class="iptxt" type="radio" name="band" value="fm" ><span class="inputext">INTRO</span></label>
-	<label><input onclick="movepage('memberHome-2.jsp');" class="iptxt" type="radio" name="band" value="am" checked><span class="inputext">TUTORIAL</span></label>
+	<label ><input onclick="movepage('mainHome-Real.jsp');" class="iptxt" type="radio" name="band" value="fm" ><span class="inputext">INTRO</span></label>
+	<label><input onclick="movepage('memberHome-Real.jsp');" class="iptxt" type="radio" name="band" value="am" checked><span class="inputext">TUTORIAL</span></label>
 	<label><input onclick="movepage('#price');" class="iptxt" type="radio" name="band" value="am" ><span class="inputext">PRICE</span></label>
-	<label ><input onclick="movepage('mainHome.jsp');" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext"  >LOGOUT</span></label>
+	<label ><input onclick="movepage('mainHome-Real.jsp');" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext"  >LOGOUT</span></label>
 </form>
 
 <!-- 
@@ -227,6 +233,19 @@ return;
 
 
 
+<!-- 페이지 새로고침시 스크롤 고정 안되게 -->
+<script type="text/javascript">
+	window.onload = function(){
+		setTimeout(function(){
+			scrollTo(0,0);
+		},100)
+	}
+</script>
+
+
+
+
+
 	<!-- 슬라이드쇼 컨테이너 -->
 
 	<div class="mainall">
@@ -243,7 +262,7 @@ return;
 			<div  id='article'>
 				<div class='img'>
 					<img class='otani' alt=""
-						src="images/tu22.png">
+						src="images/lmpage.jpg">
 				</div>
 
 
@@ -252,7 +271,7 @@ return;
 			<div id='article'>
 				<div class='img'>
 					<img class='otani' alt=""
-						src="https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/29/62813426-6496-4aee-b90b-55adbbfc25a0.jpg">
+						src="images/lm.png">
 				</div>
 
 
@@ -261,7 +280,7 @@ return;
 			<div id='article'>
 				<div class='img'>
 					<img class='otani' alt=""
-						src="https://newsimg.hankookilbo.com/cms/articlerelease/2021/06/29/62813426-6496-4aee-b90b-55adbbfc25a0.jpg">
+						src="images/lmpage.jpg">
 				</div>
 
 
@@ -271,6 +290,9 @@ return;
 
 
 		</div>
+
+
+
 
 		<!-- 페이지 sss02 -->
 		<div class="" id="price">

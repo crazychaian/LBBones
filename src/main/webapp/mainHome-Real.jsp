@@ -5,20 +5,20 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="assets/css/header.css" />
+<link rel="stylesheet" href="assets/css/header-Real.css" />
 <link rel="stylesheet" href="assets/css/signInUp-Real.css" />
-<!-- <link rel="stylesheet" href="assets/css/mainSlide.css" />  -->
-<link rel="stylesheet" href="assets/css/chat.css" />
+<link rel="stylesheet" href="assets/css/chat-Real.css" />
 
 <link rel="stylesheet" href="assets/css/mainHome-Real.css" />
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;600&display=swap" rel="stylesheet">
+
+
 <!-- 마우스 -->
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style-Real.css">
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
