@@ -7,19 +7,20 @@
 <mapper namespace="XrayCommentDAO">
 
 	<insert id="insertCom" parameterType="XrayCommentVO">
-		insert into x_ray_comment
+		insert into tbl_xray_cmt
 		values(
-			xr_com_cnt_seq.nextval,
+			tbl_xray_cmt_SEQ.nextval,
+			#{xray_seq},
+			#{doc_id}
+			#{cmt_content}
 			sysdate,
-			#{xr_cnt},
-			#{xr_com}
 		)
 	</insert>
 	
 	<select id="selectXrayCom" resultType="XrayCommentVO">
 		select * 
-		from x_ray_comment
-		where xr_cnt like #{xr_cnt}
+		from tbl_xray_cmt
+		where xray_seq like #{xray_seq}
 	</select>
 
 </mapper>

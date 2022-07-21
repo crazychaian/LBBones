@@ -58,12 +58,14 @@ public class DoctorDAO {
 	}
 	
 	public DoctorVO login(DoctorVO vo) {
+		System.out.println(vo);
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
 		DoctorVO dvo = session.selectOne("login", vo);
 
 		session.close();
+		System.out.println(dvo);
 
 		return dvo;
 

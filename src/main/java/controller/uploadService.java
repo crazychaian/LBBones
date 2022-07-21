@@ -19,14 +19,16 @@ import model.XrayDAO;
 import model.XrayVO;
 
 import org.json.simple.JSONObject;
+
 @WebServlet("/uploadService")
 public class uploadService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.setCharacterEncoding("utf-8");
-		
+
 		String savePath = request.getSession().getServletContext().getRealPath("img");
 		int maxSize = 20 * 1024 * 1024;
 		String encoding = "UTF-8";
@@ -34,27 +36,30 @@ public class uploadService extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, savePath, // 어디에 저장할지
 				maxSize, // 허용 용량
 				encoding, // 인코딩 방식
-				new DefaultFileRenamePolicy()
-		);
-		
+				new DefaultFileRenamePolicy());
+
 // 파라미터 수집
-	
+
 // 파일이름 출력
 // getFilesystemName("Name")
 		String fileName = multi.getFilesystemName("file");
-		/* int p_seq = Integer.parseInt(multi.getParameter("p_seq")); */
+		int p_seq = Integer.parseInt(multi.getParameter("p_seq"));
 		System.out.println(fileName);
-		String file_loc = (savePath+'\\'+fileName);
+		String file_loc = (savePath + '\\' + fileName);
 		System.out.println(file_loc);
+
 		
-		/*
-		 * XrayVO xvo = new XrayVO(); xvo.setP_seq(p_seq); xvo.setXray_img(fileName);
-		 * 
-		 * XrayDAO dao = new XrayDAO(); int cnt = dao.xrayJoin(xvo);
-		 * 
-		 * if(cnt >0) {
-		 */
+		XrayVO xvo = new XrayVO(); 
+		xvo.setP_seq(p_seq); 
+		xvo.setXray_img(fileName);
+		  
+		XrayDAO dao = new XrayDAO(); 
 		
+		int cnt = dao.xrayJoin(xvo);
+		 
+		if(cnt >0) {
+		 
+
 		File file = new File(file_loc);
 		System.out.println(file);
 		BufferedImage bi = ImageIO.read(file);
@@ -67,18 +72,25 @@ public class uploadService extends HttpServlet {
 		// 응답
 //		out.print(fileName);
 		
+		XrayDAO newdao = new XrayDAO(); 
+		XrayVO newxvo = newdao.findXraySeq(fileName);
+		
+		
+		
+
 		JSONObject data = new JSONObject();
-		data.put("name",fileName);
-		data.put("height",bi.getHeight());
-		data.put("width",bi.getWidth());
+		data.put("name", fileName);
+		data.put("height", bi.getHeight());
+		data.put("width", bi.getWidth());
+		data.put("thisXray_seq", newxvo.getXray_seq() );
 		System.out.println(data);
-		
+
 		out.print(data);
+
 		
-/*		}else {
-			System.out.println("실패");
-		}*/
+		} else { System.out.println("실패"); }
 		
+
 	}
 
 }

@@ -87,7 +87,7 @@
 				</div>
 				
 				<div class="button-main record-main" 
-				onclick="window.open('newHistory-2.jsp','newhistroy','resizable=no width=1500 height=900');return false">
+				onclick="window.open('newHistory-3.jsp','newhistroy','resizable=no width=1500 height=900');return false">
 					<div class="button-inside record-inside">
 						<h1 class="btn-name">ADD MEDICAL RECORDS</h1>
 					</div>
@@ -359,7 +359,7 @@
 		
 		
 		
-		
+/* 		
 		$(".info-cont-rp").onload=function(){
 			let a = 0;
 			let inpiXraySeq = $('input[name=XraySeq]');
@@ -424,7 +424,7 @@
 			});
 			
 			a++;
-		}
+		} */
 			
 			
 			

@@ -41,6 +41,13 @@
 		order by
 		xr_date desc
 	</select>
+	
+		<select id="selectXray" parameterType="XrayVO"
+		resultType="XrayVO">
+		select *
+		from tbl_xray
+		where xray_img = #{fileName}
+	</select>
 
 
 

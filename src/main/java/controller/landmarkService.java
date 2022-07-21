@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.LandmarkDAO;
 import model.LandmarkVO;
+import model.XrayCommentDAO;
+import model.XrayCommentVO;
 
 @WebServlet("/landmarkService")
 public class landmarkService extends HttpServlet {
@@ -42,6 +44,9 @@ public class landmarkService extends HttpServlet {
 		int lr_femur_gap = Integer.parseInt(request.getParameter("lr_femur_gap"));
 		int lr_tibia_gap = Integer.parseInt(request.getParameter("lr_tibia_gap"));
 		int lr_total_gap = Integer.parseInt(request.getParameter("lr_total_gap"));
+		
+		String doc_id = request.getParameter("doc_id");
+		String cmt_content = request.getParameter("cmt_content");
 
 		LandmarkVO lmvo = new LandmarkVO();
 		lmvo.setXray_seq(xray_seq);;
@@ -67,15 +72,30 @@ public class landmarkService extends HttpServlet {
 		lmvo.setLr_tibia_gap(lr_tibia_gap);
 		lmvo.setLr_total_gap(lr_total_gap);
 		
-
 		LandmarkDAO lmdao = new LandmarkDAO();
 		int cnt = lmdao.lmjoin(lmvo);
-
+		
+		
+		XrayCommentVO xcvo = new XrayCommentVO();
+		xcvo.setXray_seq(xray_seq);
+		xcvo.setDoc_id(doc_id);
+		xcvo.setCmt_content(cmt_content);
+		
+		XrayCommentDAO xcdao = new XrayCommentDAO();
+		int cnt2 = xcdao.insertCom(xcvo);
+		
+		boolean res;
+		if(cnt >0 && cnt2 >0) {
+			res = true;
+		}else {
+			res = false;
+		}
+		
 		response.setContentType("text/html; charset=utf-8");
 
 		PrintWriter out = response.getWriter();
 
-		out.print(cnt);
+		out.print(res);
 	
 	
 	
