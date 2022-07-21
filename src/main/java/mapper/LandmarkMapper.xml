@@ -37,12 +37,12 @@
 	</insert>
 
 	<select id="lmview" resultType="LandmarkVO">
-		select * 
+		select *
 		from tbl_landmark
 		where xray_seq = #{xray_seq}
-		ORDER  BY landmark_seq DESC
-		LIMIT  1
+		ORDER BY landmark_seq DESC
+		LIMIT 1
 	</select>
-	
+
 
 </mapper>

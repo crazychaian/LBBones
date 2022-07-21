@@ -1,3 +1,5 @@
+<%@page import="model.XrayVO"%>
+<%@page import="java.util.List"%>
 <%@page import="model.CustomerVO"%>
 <%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -118,6 +120,7 @@
 	<%
 	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
 	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
+	List<XrayVO> xrayList = (List<XrayVO>) session.getAttribute("xrayList");
 	%>
 
 
@@ -129,11 +132,11 @@
 
 
 	<div class="underview">
-	
-	<div id="inputhidden">
-	<input type="hidden" name="p_seq" value="<%= pvo.getP_seq() %>"></input>
-	<input type="hidden" name="doc_id" value="<%= vo.getDoc_id() %>"></input>
-	</div>
+
+		<div id="inputhidden">
+			<input type="hidden" name="p_seq" value="<%=pvo.getP_seq()%>"></input>
+			<input type="hidden" name="doc_id" value="<%=vo.getDoc_id()%>"></input>
+		</div>
 
 
 
@@ -141,27 +144,34 @@
 
 		<div class="imgdiv " id="height">
 
+			<%
+			if (xrayList == null) {
+			%>
+			<div class="plus-img">
+			
+			</div>
+			<%
+			} else {
+			%>
+
+			<%
+			for (XrayVO xvo : xrayList) {
+			%>
+
 			<!-- 사진등록하면 추가되는 부분 -->
 			<div class="plus-img">
 				<div class="listimg">
-					<span>2018-10-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
+					<span><%=xvo.getXray_date() %></span> <img class="day-img" alt="오늘진료이미지등록"
+						src="img/<%=xvo.getXray_img()%>">
 				</div>
+
 			</div>
-			<!-- 사진등록하면 추가되는 부분 -->
-			<div class="plus-img">
-				<div class="listimg">
-					<span>2018-11-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
-				</div>
-			</div>
-			<!-- 사진등록하면 추가되는 부분 -->
-			<div class="plus-img">
-				<div class="listimg">
-					<span>2018-12-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
-				</div>
-			</div>
+			<%
+			}
+			%>
+			<%
+			}
+			%>
 		</div>
 
 
@@ -172,7 +182,7 @@
 
 		<div class="mainImg">
 
-			<div class="img-date">2018-10-18</div>
+			<!-- <div class="img-date" style="display:none"><input class="thisimg-date"></input></div> -->
 			<div class="miniframe1">
 				<div class="miniframe2">
 					<img src="./img/bono.png" id="minimap">
@@ -398,38 +408,40 @@
 				</div>
 				<div class="dididi">
 					<div>femur medial condyle L / R</div>
-					<input readonly="" disabled="" type="text" name="class2xy" class="class2 xy ipsize">
-
-					<input readonly="" disabled="" type="text" name="class3xy" class="class3 xy ipsize">
+					<input readonly="" disabled="" type="text" name="class2xy"
+						class="class2 xy ipsize"> <input readonly="" disabled=""
+						type="text" name="class3xy" class="class3 xy ipsize">
 				</div>
 				<div class="dididi">
 					<div>ankle talus L / R</div>
-					<input readonly="" disabled="" type="text" name="class4xy" class="class4 xy ipsize">
-
-					<input readonly="" disabled="" type="text" name="class5xy" class="class5 xy ipsize">
+					<input readonly="" disabled="" type="text" name="class4xy"
+						class="class4 xy ipsize"> <input readonly="" disabled=""
+						type="text" name="class5xy" class="class5 xy ipsize">
 				</div>
 				<div class="dididi">
 					<div>femur L / R / GAP</div>
-					<input readonly="" disabled="" type="text" name="class6fel" class="class6 l ipsize">
-					<input readonly="" disabled="" type="text" name="class6fer" class="class6 r ipsize">
-					<input readonly="" disabled="" type="text" name="class6feg" class="class6 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" name="class6fel"
+						class="class6 l ipsize"> <input readonly="" disabled=""
+						type="text" name="class6fer" class="class6 r ipsize"> <input
+						readonly="" disabled="" type="text" name="class6feg"
+						class="class6 d ipsize" style="background-color: #ffffff;">
 				</div>
 				<div class="dididi">
 					<div>tibia L / R / GAP</div>
-					<input readonly="" disabled="" type="text" name="class7til" class="class7 l ipsize">
-					<input readonly="" disabled="" type="text" name="class7tir" class="class7 r ipsize">
-					<input readonly="" disabled="" type="text" name="class7tig" class="class7 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" name="class7til"
+						class="class7 l ipsize"> <input readonly="" disabled=""
+						type="text" name="class7tir" class="class7 r ipsize"> <input
+						readonly="" disabled="" type="text" name="class7tig"
+						class="class7 d ipsize" style="background-color: #ffffff;">
 				</div>
 
 				<div class="dididi">
 					<div>Total L / R / GAP</div>
-					<input readonly="" disabled="" type="text" name="class8ttl" class="class8 l ipsize">
-					<input readonly="" disabled="" type="text" name="class8ttr" class="class8 r ipsize">
-
-					<input readonly="" disabled="" type="text" name="class8ttg" class="class8 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" name="class8ttl"
+						class="class8 l ipsize"> <input readonly="" disabled=""
+						type="text" name="class8ttr" class="class8 r ipsize"> <input
+						readonly="" disabled="" type="text" name="class8ttg"
+						class="class8 d ipsize" style="background-color: #ffffff;">
 				</div>
 
 
@@ -443,7 +455,7 @@
 
 
 			<div class="div-cm">
-				<textarea id="result-write"  cols="30" rows="12" name="cmt_content"></textarea>
+				<textarea id="result-write" cols="30" rows="12" name="cmt_content"></textarea>
 			</div>
 
 
@@ -452,8 +464,8 @@
 
 
 			<button type="button" id="" class="btn-allsave metal linear"
-				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;" onclick="lmjoin()">진료내용저장
-				및 제출</button>
+				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;"
+				onclick="lmjoin()">진료내용저장 및 제출</button>
 
 
 		</div>
@@ -852,9 +864,9 @@
 						$('div#inputhidden').append(XraySeqinput);
 						
 						
-						
-						
-						
+/* 						var inputthisimgdate = document.querySelector(".thisimg-date")
+						document.querySelector(".img-date").style.display = "block"; 
+						inputthisimgdate.value = data.thisXray_date; */
 						
 					}
 					)

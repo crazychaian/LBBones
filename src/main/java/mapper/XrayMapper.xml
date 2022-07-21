@@ -49,6 +49,8 @@
 		from tbl_xray
 		where xray_img = #{fileName}
 	</select>
+	
+
 
 
 

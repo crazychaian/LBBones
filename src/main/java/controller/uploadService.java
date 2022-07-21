@@ -81,7 +81,9 @@ public class uploadService extends HttpServlet {
 		data.put("height", bi.getHeight());
 		data.put("width", bi.getWidth());
 		data.put("thisXray_seq", newxvo.getXray_seq() );
+		data.put("thisXray_date", newxvo.getXray_date() );
 		System.out.println(data);
+		System.out.println(newxvo.getXray_date());
 
 		out.print(data);
 

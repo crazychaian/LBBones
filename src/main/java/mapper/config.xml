@@ -19,6 +19,8 @@
 		<typeAlias type="model.LandmarkDAO" alias="LandmarkDAO" />
 		<typeAlias type="model.XrayCommentVO" alias="XrayCommentVO" />
 		<typeAlias type="model.XrayCommentDAO" alias="XrayCommentDAO" />
+		<typeAlias type="model.XrayCommentDAO" alias="XrayLandmarkVO" />
+		<typeAlias type="model.XrayCommentDAO" alias="XrayLandmarkDAO" />
 
 	</typeAliases>
 
@@ -40,6 +42,7 @@
 		<mapper resource="mapper/XrayMapper.xml" />
 		<mapper resource="mapper/LandmarkMapper.xml" />
 		<mapper resource="mapper/XrayCommentMapper.xml" />
+		<mapper resource="mapper/XrayLandmarkMapper.xml" />
 
 	</mappers>
 </configuration>
