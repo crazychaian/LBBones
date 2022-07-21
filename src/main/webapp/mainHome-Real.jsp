@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="assets/css/header.css" />
-<link rel="stylesheet" href="assets/css/signInUp.css" />
+<link rel="stylesheet" href="assets/css/signInUp-Real.css" />
 <!-- <link rel="stylesheet" href="assets/css/mainSlide.css" />  -->
 <link rel="stylesheet" href="assets/css/chat.css" />
 
