@@ -56,6 +56,9 @@ public class uploadService extends HttpServlet {
 		XrayDAO dao = new XrayDAO(); 
 		
 		int cnt = dao.xrayJoin(xvo);
+		
+		XrayDAO newdao = new XrayDAO(); 
+		XrayVO newxvo = newdao.findXraySeq(fileName);
 		 
 		if(cnt >0) {
 		 
@@ -72,12 +75,7 @@ public class uploadService extends HttpServlet {
 		// ¿¿¥‰
 //		out.print(fileName);
 		
-		XrayDAO newdao = new XrayDAO(); 
-		XrayVO newxvo = newdao.findXraySeq(fileName);
 		
-		
-		
-
 		JSONObject data = new JSONObject();
 		data.put("name", fileName);
 		data.put("height", bi.getHeight());

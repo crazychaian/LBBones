@@ -443,7 +443,7 @@
 
 
 			<div class="div-cm">
-				<textarea id="result-write" name="chart" cols="30" rows="12" name="cmt_content"></textarea>
+				<textarea id="result-write"  cols="30" rows="12" name="cmt_content"></textarea>
 			</div>
 
 
@@ -1560,6 +1560,9 @@
 		let class8ttg = $('input[name=class8ttg]');
 		let lrtotalgap = $(class8ttg[0]).val();
 		let lr_total_gap = lrtotalgap.replace(' mm','');
+		
+		let inputxray_seq = $('input[name=xray_seq]');
+		let xray_seq = $(inputxray_seq[0]).val();
 		
 		let inputdoc_id = $('input[name=doc_id]');
 		let doc_id = $(inputdoc_id[0]).val();

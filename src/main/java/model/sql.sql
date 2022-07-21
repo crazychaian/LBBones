@@ -344,3 +344,9 @@ select * from tbl_patient
 
 select * from tbl_xray
 
+select * from tbl_landmark
+
+select * from tbl_xray_cmt
+
+
+

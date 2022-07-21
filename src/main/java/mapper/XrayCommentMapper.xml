@@ -11,9 +11,9 @@
 		values(
 			tbl_xray_cmt_SEQ.nextval,
 			#{xray_seq},
-			#{doc_id}
-			#{cmt_content}
-			sysdate,
+			#{doc_id},
+			#{cmt_content},
+			sysdate
 		)
 	</insert>
 	

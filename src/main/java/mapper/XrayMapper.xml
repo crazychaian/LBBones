@@ -21,7 +21,8 @@
 		select *
 		from tbl_xray
 		where p_seq = #{p_seq}
-		order by xray_date desc
+		order by
+		xray_date desc
 	</select>
 
 	<select id="xrayDateList" parameterType="XrayVO"
@@ -41,8 +42,8 @@
 		order by
 		xr_date desc
 	</select>
-	
-		<select id="selectXray" parameterType="XrayVO"
+
+	<select id="findXraySeq" parameterType="XrayVO"
 		resultType="XrayVO">
 		select *
 		from tbl_xray
