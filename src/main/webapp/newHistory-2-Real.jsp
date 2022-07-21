@@ -457,7 +457,7 @@
 
 
 			<div class="div-cm">
-				<textarea id="result-write" name="chart" cols="30" rows="12">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
+				<input id="result-write" type="textarea" name="chart" cols="30" rows="12">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</input>
 			</div>
 
 
