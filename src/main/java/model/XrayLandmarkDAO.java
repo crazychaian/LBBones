@@ -29,13 +29,10 @@ public class XrayLandmarkDAO {
 	
 
 	public List<XrayLandmarkVO> selectXrayLm(int p_seq) {
-		System.out.println(p_seq);
 
 		SqlSession session = sqlSessionFactory.openSession(true);
 
 		List<XrayLandmarkVO> xrayList = session.selectList("selectXrayLm", p_seq);
-		
-		
 
 		session.close();
 

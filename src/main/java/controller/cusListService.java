@@ -28,7 +28,7 @@ public class cusListService extends HttpServlet {
 
 		request.setAttribute("pList", pList);
 
-		RequestDispatcher rd = request.getRequestDispatcher("serviceMain.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("serviceMain-Real.jsp");
 		rd.forward(request, response);
 	
 	}

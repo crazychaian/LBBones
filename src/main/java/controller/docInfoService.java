@@ -28,7 +28,7 @@ public class docInfoService extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("vo", vo);
-		response.sendRedirect("memberHome.jsp");
+		response.sendRedirect("memberHome-Real.jsp");
 
 	}
 

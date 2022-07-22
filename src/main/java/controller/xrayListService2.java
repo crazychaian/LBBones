@@ -43,7 +43,7 @@ public class xrayListService2 extends HttpServlet {
 		HttpSession session2 = request.getSession();
 		session2.setAttribute("pvo", pvo);
 		
-		response.sendRedirect("idHistoryList.jsp");
+		response.sendRedirect("idHistoryList-Real.jsp");
 
 	}
 

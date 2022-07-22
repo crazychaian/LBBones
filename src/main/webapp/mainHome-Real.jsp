@@ -1,3 +1,4 @@
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +15,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;600&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;600&display=swap"
+	rel="stylesheet">
 
 
 <!-- 마우스 -->
@@ -26,6 +29,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	%>
 
 
 	<!-- 상단 고정 header -->
@@ -45,17 +52,23 @@
 					<!-- <li class="home"><a style="cursor: pointer"
 						href="mainHome.jsp">Home</a></li> -->
 
-					<!-- 비회원일때 -->
+					<%
+					if (vo == null) {
+					%>
 					<li><a href="#" class="btn-open signin signfont" id="p01"
-						onclick="javascript:popOpen();" >Sign in</a></li>
+						onclick="javascript:popOpen();">Sign in</a></li>
 					<li><a class="signup signfont" href="#" id="p02"
 						onclick="javascript:popOpen2();">Sign up</a></li>
-
+					<%
+					} else {
+					%>
 					<!-- 회원일떄 -->
-					<!--	<li><a href="#" class="">Tutorial</a></li>
-						<li><a class="" href="#"  onclick="">Price</a></li>
-						<li><a class="" href="#" onclick="">Logout</a></li>			 -->
-
+					<li><a href="mainHome-Real.jsp" class="">Tutorial</a></li>
+						<li><a class="" href="memberHome.jsp#price"  onclick="">Price</a></li>
+						<li><a class="" href="logoutService" onclick="">Logout</a></li>
+					<%
+					}
+					%>
 				</ul>
 			</nav>
 
@@ -87,16 +100,17 @@
 				<div id="tab-cont">
 					<!-- 로그인 -->
 					<div class="btnrange" id="ro11">
-						<h1 class="logo-login contfontB" style="    font-size: 25px;">SIGN IN</h1>
+						<h1 class="logo-login contfontB" style="font-size: 25px;">SIGN
+							IN</h1>
 						<form class="container">
-							<input type="text" placeholder="ID" id="id" class="account">
+							<input type="text" placeholder="ID" id="id" class="account" name="id">
 							<input type="password" placeholder="Password" id="password"
-								class="account">
+								class="account" name="pw">
 
 							<div class="btn-holder">
-								<button type="submit" class="btn btn-5 hover-border-11"
-									id="login-btn">
-									<span>S I G N  I N</span>
+								<button type="button" class="btn btn-5 hover-border-11"
+									id="login-btn" onclick="login()">
+									<span>S I G N I N</span>
 								</button>
 							</div>
 
@@ -107,19 +121,24 @@
 
 					<!-- 회원가입 -->
 					<div class="btnrange" id="ro22">
-						<h1 class="logo-login contfontB" style="    font-size: 25px;">SIGN UP</h1>
+						<h1 class="logo-login contfontB" style="font-size: 25px;">SIGN
+							UP</h1>
 						<form class="container">
-							<input type="text" placeholder="ID" id="id" class="account">
+							<input type="text" placeholder="ID" id="id" class="account" name="joindocid">
+							
+							<p id="resultId"></p>
+							<button type="button" onclick="idCheck()">중복 확인</button>
+							
 							<input type="password" placeholder="Password" id="password"
-								class="account"> <input type="text"
-								placeholder="Nick Name" id="nickName" class="account"> <input
+								class="account" name="joindocpw"> <input type="text"
+								placeholder="Nick Name" id="nickName" class="account" name="joindocname"> <input
 								type="text" placeholder="Hospital Name" id="hosName"
-								class="account">
+								class="account" name="joindochospital">
 
 
 							<div class="btn-holder">
-								<button class="btn btn-5 hover-border-11" id="login-btn">
-									<span>S I G N  U P</span>
+								<button type="button" class="btn btn-5 hover-border-11" id="login-btn" onclick="singUp()">
+									<span>S I G N U P</span>
 								</button>
 							</div>
 							<p id="alert" class="account"></p>
@@ -240,11 +259,10 @@
 				<label><input onclick="movepage('#movediv2');" class="iptxt"
 					type="radio" name="band" value="fm" checked><span
 					class="inputext">PRODUCT<br>EXPLAIN
-				</span></label> <label><input onclick="movepage('#temdiv1'); " class="iptxt"
-					type="radio" name="band" value="am" checked><span></span></label> 
-					<label><input
-					onclick="movepage('#movediv3');" class="iptxt" type="radio"
-					name="band" value="lw"><span class="inputext">HOW
+				</span></label> <label><input onclick="movepage('#temdiv1'); "
+					class="iptxt" type="radio" name="band" value="am" checked><span></span></label>
+				<label><input onclick="movepage('#movediv3');" class="iptxt"
+					type="radio" name="band" value="lw"><span class="inputext">HOW
 						IT<br>WORKS
 				</span></label>
 			</form>
@@ -255,17 +273,15 @@
 
 		</div>
 	</section>
-<!-- document.location.reload(); -->
+	<!-- document.location.reload(); -->
 
 
 
-	<section id="temdiv1">
-	
-	</section>
+	<section id="temdiv1"></section>
 
 
-<!-- 페이지 새로고침시 스크롤 고정 안되게 -->
-<script type="text/javascript">
+	<!-- 페이지 새로고침시 스크롤 고정 안되게 -->
+	<script type="text/javascript">
 	window.onload = function(){
 		setTimeout(function(){
 			scrollTo(0,0);
@@ -282,74 +298,78 @@
 		<div class="div2__content" id="div2-id">
 
 			<div class="contdiv ">
-			<!-- SPINNING SQUARES -->
-<div class="spinner-box">
-  <div class="configure-border-1">  
-    <div class="configure-core"></div>
-  </div>  
-  <div class="configure-border-2">
-    <div class="configure-core"></div>
-  </div> 
-</div>
+				<!-- SPINNING SQUARES -->
+				<div class="spinner-box">
+					<div class="configure-border-1">
+						<div class="configure-core"></div>
+					</div>
+					<div class="configure-border-2">
+						<div class="configure-core"></div>
+					</div>
+				</div>
 				<div class="contfontB txttitle">편리한 진료기록 관리</div>
-				<div  class="contfontL">직관적인 UX/UI 화면 설계로 환자별 X-ray 및 진료기록 관리에 용이하다</div>
+				<div class="contfontL">직관적인 UX/UI 화면 설계로 환자별 X-ray 및 진료기록 관리에
+					용이하다</div>
 			</div>
 
 			<div class="contdiv ">
-			<!-- GRADIENT SPINNER -->
-<div class="spinner-box">
-  <div class="circle-border">
-    <div class="circle-core"></div>
-  </div>  
-</div>
-			
-			
+				<!-- GRADIENT SPINNER -->
+				<div class="spinner-box">
+					<div class="circle-border">
+						<div class="circle-core"></div>
+					</div>
+				</div>
+
+
 				<div class="contfontB txttitle">학습 정확도 99%</div>
-				<div class="contfontL">dice coefficient 지표 최대 0.9903, mAP@0.5 지표 0.995로 높은 예측
-					정확도를 가집니다</div>
-			</div >
-
-
-			<div class="contdiv ">
-			<!-- SOLAR SYSTEM -->
-<div class="spinner-box">
-  <div class="solar-system">
-    <div class="earth-orbit orbit">
-      <div class="planet earth"></div>
-      <div class="venus-orbit orbit">
-        <div class="planet venus"></div>
-        <div class="mercury-orbit orbit">
-          <div class="planet mercury"></div>
-          <div class="sun"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-			
-			
-				<div class="contfontB txttitle">딥러닝 학습된 AI가 X-Ray 사진에서 측정에 필요한 LandMark를 자동으로 특정</div>
-				<div class="contfontL">자체 제작된 알고리즘으로 6개 특정 좌표를 추출함으로써 좌표 간의 길이를 측정하여 뼈와 다리의 길이를 알아낼 수 있다</div>
+				<div class="contfontL">dice coefficient 지표 최대 0.9903, mAP@0.5
+					지표 0.995로 높은 예측 정확도를 가집니다</div>
 			</div>
 
 
 			<div class="contdiv ">
-			
-			
+				<!-- SOLAR SYSTEM -->
+				<div class="spinner-box">
+					<div class="solar-system">
+						<div class="earth-orbit orbit">
+							<div class="planet earth"></div>
+							<div class="venus-orbit orbit">
+								<div class="planet venus"></div>
+								<div class="mercury-orbit orbit">
+									<div class="planet mercury"></div>
+									<div class="sun"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-<!-- LOADING DOTS... -->
-<div class="spinner-box">
-  <div class="pulse-container">  
-    <div class="pulse-bubble pulse-bubble-1"></div>
-    <div class="pulse-bubble pulse-bubble-2"></div>
-    <div class="pulse-bubble pulse-bubble-3"></div>
-  </div>
-</div>
 
-			
-			
+				<div class="contfontB txttitle">딥러닝 학습된 AI가 X-Ray 사진에서 측정에 필요한
+					LandMark를 자동으로 특정</div>
+				<div class="contfontL">자체 제작된 알고리즘으로 6개 특정 좌표를 추출함으로써 좌표 간의
+					길이를 측정하여 뼈와 다리의 길이를 알아낼 수 있다</div>
+			</div>
+
+
+			<div class="contdiv ">
+
+
+
+				<!-- LOADING DOTS... -->
+				<div class="spinner-box">
+					<div class="pulse-container">
+						<div class="pulse-bubble pulse-bubble-1"></div>
+						<div class="pulse-bubble pulse-bubble-2"></div>
+						<div class="pulse-bubble pulse-bubble-3"></div>
+					</div>
+				</div>
+
+
+
 				<div class="contfontB txttitle">객관적인 결과 도출 가능</div>
-				<div class="contfontL">object detection, image segmentation과 같은 딥러닝 학습 알고리즘을 기반으로 일관성 있는 결과를 도출한다</div>
+				<div class="contfontL">object detection, image segmentation과
+					같은 딥러닝 학습 알고리즘을 기반으로 일관성 있는 결과를 도출한다</div>
 			</div>
 
 
@@ -359,61 +379,59 @@
 
 
 
-<section id="temdiv2">
-	
-	</section>
+	<section id="temdiv2"></section>
 
 
 
 
 	<section class="div3" id="movediv3">
 
-		<div style="    padding: 0px 30px 0px 280px;">
-		<img alt="how it works" src="images/howimg.png" style="    width: 500px;">
+		<div style="padding: 0px 30px 0px 280px;">
+			<img alt="how it works" src="images/howimg.png" style="width: 500px;">
 		</div>
 		<div class="div3__content" id="div3-id">
-		
-		
-		
-		<div style="padding-bottom: 120px;text-align: justify;" class="contfontD">
-		하지 부동을 판단하는 데 도움을 주기 위한 소프트웨어로서 object detection, image segmentation 기법으로 학습된 AI 모델을 활용하여 이미지를 분석하고, 뼈의 길이를 정확하게 측정할 수 있다
-		</div>
-		
-		<div class="contfontD" style="text-align: justify;">
-		골반뼈부터 발목뼈까지 각 부위에 존재하는 6개의 관심 영역의 특정 좌표를 추출하여 좌우 좌표간의 길이 차이를 측정하여 하지 부동을 판단하는 데 도움을 준다
-		</div>
-		
-		
-		
-		
-		
+
+
+
+			<div style="padding-bottom: 120px; text-align: justify;"
+				class="contfontD">하지 부동을 판단하는 데 도움을 주기 위한 소프트웨어로서 object
+				detection, image segmentation 기법으로 학습된 AI 모델을 활용하여 이미지를 분석하고, 뼈의 길이를
+				정확하게 측정할 수 있다</div>
+
+			<div class="contfontD" style="text-align: justify;">골반뼈부터 발목뼈까지
+				각 부위에 존재하는 6개의 관심 영역의 특정 좌표를 추출하여 좌우 좌표간의 길이 차이를 측정하여 하지 부동을 판단하는 데
+				도움을 준다</div>
+
+
+
+
+
 		</div>
 	</section>
-	
+
 	<section class="div4" id="movediv4">
 
 		<div style="padding: 0px 150px 0px 0px;">
-		<img alt="healthhub" src="images/hh_logo.png">
+			<img alt="healthhub" src="images/hh_logo.png">
 		</div>
-		<div class="" >
-		
-		<img alt="team" src="images/hh.png">
-		<div>
-		LBBONES<br>
-		최재황  김용태  심가령  김현철  고정훈  김서진
-		</div>
-		
+		<div class="">
+
+			<img alt="team" src="images/hh.png">
+			<div>
+				LBBONES<br> 최재황 김용태 심가령 김현철 고정훈 김서진
+			</div>
+
 		</div>
 		<div class="" style="padding: 0px 0px 0px 150px;">
-		
-		<img style="    width: 200px;" alt="smhrd" src="images/smg_logo.png">
-		
+
+			<img style="width: 200px;" alt="smhrd" src="images/smg_logo.png">
+
 		</div>
-		
-		
-		
-		
-		
+
+
+
+
+
 	</section>
 
 
@@ -1104,7 +1122,137 @@ vec4 taylorInvSqrt(vec4 r)
 	
 	 
 	 
-	 
+	 function idCheck() {
+		let input_id = $('input[name=joindocid]');
+		let doc_id = $(input_id[0]).val();
+
+		// 2. ajax 통신
+		$.ajax({
+			url : 'idcheckService',
+			type : 'post',
+			data : {
+				"doc_id" : doc_id
+			},
+			success : function(res) {
+
+				if (res == "true") {
+					$('#resultId').html('')
+					$('#resultId').html('사용가능한 아이디입니다.').css('color',
+							'green');
+					// join 버튼의 disabled 속성을 제거
+					$('#join-btn').removeAttr('disabled');
+				} else {
+					$('#resultId').html('')
+					$('#resultId').html('중복된 아이디입니다.').css('color', 'red');
+				}
+
+			},
+			error : function() {
+				alert('에러발생');
+			}
+
+		});
+
+	}
+
+	function singUp() {
+
+		let joindocid = $('input[name=joindocid]');
+		let doc_id = $(joindocid[0]).val();
+		let joindocpw = $('input[name=joindocpw]');
+		let doc_pw = $(joindocpw[0]).val();
+		let joindocname = $('input[name=joindocname]');
+		let doc_name = $(joindocname[0]).val();
+		let joindochospital = $('input[name=joindochospital]');
+		let doc_hospital = $(joindochospital[0]).val();
+
+		// 2. ajax 통신
+		$.ajax({
+			url : 'joinService',
+			type : 'post',
+			data : {
+				"doc_id" : doc_id,
+				"doc_pw" : doc_pw,
+				"doc_name" : doc_name,
+				"doc_hospital" : doc_hospital
+			},
+			success : function(cnt) {
+
+				if (cnt > 0) {
+					$('.modal-wrap').show();
+
+					$("#tab-cont > div").hide().eq(0).show();
+					$("#tab-btn > ul > li").eq(0).addClass("active");
+					$("#tab-btn > ul > li").eq(1).removeClass("active");
+
+					alert("회원가입에 성공하였습니다.");
+					
+				/* 	$('.loginResult').html('')
+					$('.loginResult').html('회원가입에 성공하였습니다.').css('color',
+							'red'); */
+				} else {
+					$('.modal-wrap').show();
+
+					$("#tab-cont > div").hide().eq(1).show();
+					$("#tab-btn > ul > li").eq(1).addClass("active");
+					$("#tab-btn > ul > li").eq(0).removeClass("active");
+					
+					alert("회원가입에 실패하였습니다.");
+					
+					/* $('.joinResult').html('')
+					$('.joinResult').html('회원가입에 실패하였습니다.').css('color',
+							'red'); */
+				}
+
+			},
+			error : function() {
+				alert("에러 발생")
+			}
+
+		});
+	}
+
+	function login() {
+
+		let docid = $('input[name=id]');
+		let doc_id = $(docid[0]).val();
+		let docpw = $('input[name=pw]');
+		let doc_pw = $(docpw[0]).val();
+
+		// 2. ajax 통신
+		$.ajax({
+			url : 'loginService',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"doc_id" : doc_id,
+				"doc_pw" : doc_pw
+			},
+			success : function(data) {
+				if (!data) {
+					$('.modal-wrap').show();
+
+					$("#tab-cont > div").hide().eq(0).show();
+					$("#tab-btn > ul > li").eq(0).addClass("active");
+					$("#tab-btn > ul > li").eq(1).removeClass("active");
+
+					alert("로그인에 실패하였습니다.");
+					
+					/* $('.loginResult').html('')
+					$('.loginResult').html('로그인에 실패하였습니다..').css('color',
+							'red'); */
+				} else {
+					let doc_id = data.doc_id;
+					location.href = "docInfoService?doc_id="+doc_id;
+				}
+
+			},
+			error : function() {
+				alert("에러 발생")
+			}
+
+		});
+	}
 	 
 	 
 	 
@@ -1125,7 +1273,7 @@ vec4 taylorInvSqrt(vec4 r)
 	 
 	 
 	 /* 로그인 성공 실패 alert창 */
-	 const id = document.getElementById('id')
+/* 	 const id = document.getElementById('id')
 	 const password = document.getElementById('password')
 	 const login = document.getElementById('login-btn')
 	 let errStack = 0;
@@ -1147,7 +1295,7 @@ vec4 taylorInvSqrt(vec4 r)
 	     if (errStack >= 5) {
 	         alert('비밀번호를 5회 이상 틀리셨습니다. 비밀번호 찾기를 권장드립니다.')
 	     }
-	 })
+	 }) */
 	  /*  //로그인 성공 실패 alert창 */
 	 
 	  

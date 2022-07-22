@@ -1,3 +1,4 @@
+<%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,6 +43,10 @@
 </head>
 <body>
 
+	<%
+	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
+	%>
+
 
 	<div class="maintop">
 		<!-- 상단 고정 header -->
@@ -52,7 +57,7 @@
 	<label ><input onclick="movepage('mainHome-Real.jsp');" class="iptxt" type="radio" name="band" value="fm" ><span class="inputext">INTRO</span></label>
 	<label><input onclick="movepage('memberHome-Real.jsp');" class="iptxt" type="radio" name="band" value="am" checked><span class="inputext">TUTORIAL</span></label>
 	<label><input onclick="movepage('#price');" class="iptxt" type="radio" name="band" value="am" ><span class="inputext">PRICE</span></label>
-	<label ><input onclick="movepage('mainHome-Real.jsp');" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext"  >LOGOUT</span></label>
+	<label ><input onclick="location.href='logoutService'" class="iptxt"  type="radio" name="band" value="lw"><span class="inputext"  >LOGOUT</span></label>
 </form>
 
 <!-- 
@@ -109,7 +114,7 @@ return;
 
 			<div id="container-btn">
 
-				<div class="button-main leftbt" onClick="location.href='serviceMain.jsp'">
+				<div class="button-main leftbt" onClick="location.href='cusListService?doc_id=<%=vo.getDoc_id()%>'">
 					<div class="button-inside leftbt">
 						<h1 class="btn-name lefth">SERVICE<br>RUNNING</h1>
 					</div>
@@ -149,11 +154,11 @@ return;
 					<div class="btnrange" id="ro11">
 						<h1 class="logo-login">Profile</h1>
 						<form class="container">
-							<input type="text" placeholder="회원이름 : 김가나" id="username-mp" class="account" readonly>
-							<input type="text" placeholder="병원이름 : 대한병원" id="hospiname-mp" class="account" readonly>
-							<input type="text" placeholder="아이디 : kkk" id="id-mp" class="account" readonly>
-							<input type="text" placeholder="비밀번호 : 1234" id="pw-mp" class="account" readonly>
-							<input type="text" placeholder="가입날짜 : 2022.07.13" id="indate-mp" class="account" readonly>
+							<input type="text" placeholder="회원이름 : <%=vo.getDoc_name() %>" id="username-mp" class="account" readonly>
+							<input type="text" placeholder="병원이름 : <%=vo.getDoc_hospital() %>" id="hospiname-mp" class="account" readonly>
+							<input type="text" placeholder="아이디 : <%=vo.getDoc_id() %>" id="id-mp" class="account" readonly>
+							<input type="text" placeholder="비밀번호 : <%=vo.getDoc_pw() %>" id="pw-mp" class="account" readonly>
+							<input type="text" placeholder="가입날짜 : <%=vo.getDoc_date() %>" id="indate-mp" class="account" readonly>
 
 							<p id="alert" class="account"></p>
 						</form>
@@ -164,15 +169,15 @@ return;
 					<div class="btnrange" id="ro22">
 						<h1 class="logo-login">Edit</h1>
 						<form class="container">
-						
-						<input type="text" placeholder="변경할 회원 이름" id="hosName" class="account ccolor" name="updatedocname">
+						<input type="hidden" id="hosName" class="account ccolor" name="updatedocid" value="<%=vo.getDoc_id()%>"> 
+						<input type="text" placeholder="변경할 회원 이름" id="docName" class="account ccolor" name="updatedocname">
 						<input type="text" placeholder="변경할 병원 이름" id="hosName" class="account ccolor" name="updatedochospital">
 						<input type="text" placeholder="변경할 비밀번호" id="password" class="account ccolor" name="updatedocpw">
 							
 
 
 							<div class="btn-holder">
-								<button class="btn btn-5 hover-border-11" id="login-btn">
+								<button type="button" class="btn btn-5 hover-border-11" id="login-btn" onclick="updateDoc()">
 									<span>정보수정</span>
 								</button>
 							</div>
@@ -410,6 +415,57 @@ return;
 
 	}
 	 /*// 로그인 회원가입 팝업뜨는 js */ 
+	 
+	 
+	 
+	 
+	 
+	 function updateDoc() {
+
+			let updatedocid = $('input[name=updatedocid]');
+			let doc_id = $(updatedocid[0]).val();
+			let updatedocpw = $('input[name=updatedocpw]');
+			let doc_pw = $(updatedocpw[0]).val();
+			let updatedocname = $('input[name=updatedocname]');
+			let doc_name = $(updatedocname[0]).val();
+			let updatedochospital = $('input[name=updatedochospital]');
+			let doc_hospital = $(updatedochospital[0]).val();
+			console.log(doc_id);
+			console.log(doc_pw);
+			console.log(doc_name);
+			console.log(doc_hospital);
+
+			$.ajax({
+				url : 'docUpdateService',
+				type : 'post',
+				dataType : 'json',
+				data : {
+					"doc_id" : doc_id,
+					"doc_pw" : doc_pw,
+					"doc_name" : doc_name,
+					"doc_hospital" : doc_hospital
+				},
+				success : function(cnt) {
+					if (cnt > 0) {
+						$('.modal-wrap3').hide();
+						$('.modal-bg3').hide();
+						alert("회원 정보 수정 성공하였습니다.")
+					} else {
+						$('.modal-wrap3').show();
+
+						$("#tab-cont > div").hide().eq(1).show();
+						$("#tab-btn > ul > li").eq(1).addClass("active");
+						$("#tab-btn > ul > li").eq(0).removeClass("active");
+						alert("회원 정보 수정 실패하였습니다.")
+					}
+
+				},
+				error : function() {
+					alert("에러 발생")
+				}
+
+			});
+		}
 	
 	 
 	 

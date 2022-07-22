@@ -27,13 +27,9 @@ public class xrayListService extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int p_seq = Integer.parseInt(request.getParameter("p_seq"));
-		System.out.println(p_seq);
 		
 		XrayLandmarkDAO xdao = new XrayLandmarkDAO();
-		System.out.println(xdao);
 		List<XrayLandmarkVO> xrayList = xdao.selectXrayLm(p_seq);
-		System.out.println(xrayList);
-		
 		
 		CustomerDAO cdao = new CustomerDAO();
 		CustomerVO pvo = cdao.pvo(p_seq);
@@ -45,7 +41,7 @@ public class xrayListService extends HttpServlet {
 		session2.setAttribute("pvo", pvo);
 		
 		
-		response.sendRedirect("idHistoryList.jsp");
+		response.sendRedirect("idHistoryList-Real.jsp");
 
 	}
 

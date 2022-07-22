@@ -10,6 +10,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 public class XrayLandmarkVO {
 	
+	
 	private int xray_seq;
 	private int p_seq;
 	private String xray_img;

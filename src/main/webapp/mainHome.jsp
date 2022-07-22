@@ -123,15 +123,14 @@
 						<h1 class="logo-login">Sign up</h1>
 						<form class="container">
 							<input type="text" placeholder="ID" id="id" class="account"
-								name="joindocid"> 
-								
-								<!-- 아이디 중복 체크 -->
+								name="joindocid">
+
+							<!-- 아이디 중복 체크 -->
 							<p id="resultId"></p>
 							<button type="button" onclick="idCheck()">중복 확인</button>
-							
-							<input type="password"
-								placeholder="Password" id="password" class="account"
-								name="joindocpw"> <input type="text"
+
+							<input type="password" placeholder="Password" id="password"
+								class="account" name="joindocpw"> <input type="text"
 								placeholder="Nick Name" id="nickName" class="account"
 								name="joindocname"> <input type="text"
 								placeholder="Hospital Name" id="hosName" class="account"
@@ -998,7 +997,7 @@ function idCheck() {
 
 
 	<script src="assets/js/script.js"></script>
-	
+
 	<script type="text/javascript" src="assets/js/testest.js"></script>
 
 

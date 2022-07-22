@@ -19,8 +19,8 @@
 		<typeAlias type="model.LandmarkDAO" alias="LandmarkDAO" />
 		<typeAlias type="model.XrayCommentVO" alias="XrayCommentVO" />
 		<typeAlias type="model.XrayCommentDAO" alias="XrayCommentDAO" />
-		<typeAlias type="model.XrayCommentDAO" alias="XrayLandmarkVO" />
-		<typeAlias type="model.XrayCommentDAO" alias="XrayLandmarkDAO" />
+		<typeAlias type="model.XrayLandmarkVO" alias="XrayLandmarkVO" />
+		<typeAlias type="model.XrayLandmarkDAO" alias="XrayLandmarkDAO" />
 
 	</typeAliases>
 

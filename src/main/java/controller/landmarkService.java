@@ -83,7 +83,11 @@ public class landmarkService extends HttpServlet {
 		XrayCommentVO xcvo = new XrayCommentVO();
 		xcvo.setXray_seq(xray_seq);
 		xcvo.setDoc_id(doc_id);
-		xcvo.setCmt_content(cmt_content);
+		if(cmt_content.equals("")) {
+			xcvo.setCmt_content("ºóÄ­ÀÔ´Ï´Ù.");
+		}else {
+			xcvo.setCmt_content(cmt_content);
+		}
 		
 		XrayCommentDAO xcdao = new XrayCommentDAO();
 		System.out.println("xcvo:" + xcvo);

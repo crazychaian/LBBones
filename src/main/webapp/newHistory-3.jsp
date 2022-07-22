@@ -1,3 +1,4 @@
+<%@page import="model.XrayLandmarkVO"%>
 <%@page import="model.XrayVO"%>
 <%@page import="java.util.List"%>
 <%@page import="model.CustomerVO"%>
@@ -120,7 +121,7 @@
 	<%
 	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
 	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
-	List<XrayVO> xrayList = (List<XrayVO>) session.getAttribute("xrayList");
+	List<XrayLandmarkVO> xrayList = (List<XrayLandmarkVO>) session.getAttribute("xrayList");
 	%>
 
 
@@ -155,7 +156,7 @@
 			%>
 
 			<%
-			for (XrayVO xvo : xrayList) {
+			for (XrayLandmarkVO xvo : xrayList) {
 			%>
 
 			<!-- 사진등록하면 추가되는 부분 -->
@@ -920,9 +921,6 @@
 			// db에서 수신한 데이터 처리
 
 			function dataprc(data) {
-				
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
 				
 				// 기본변수처리
 				l_top_x = data[0].x
