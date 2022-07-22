@@ -131,7 +131,7 @@ return;
 
 					<button class="button-main ser-main" type="submit">
 						<div class="button-inside ser-inside">
-							<h1 class="btn-name">SERCH</h1>
+							<h1 class="btn-name">SEARCH</h1>
 						</div>
 					</button>
 				</form>
@@ -174,7 +174,7 @@ return;
 				<ul class="info-listname-rp">
 					<li><span>VISIT DATE</span></li>
 					<li><span>X-ray</span></li>
-					<li><span>RANDMARK INFO</span></li>
+					<li><span>LANDMARK INFO</span></li>
 					<li><span>RECORD</span></li>
 					<li><span>EDIT</span></li>
 

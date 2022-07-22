@@ -126,7 +126,7 @@
 
 				<div class="button-main ser-main" onclick="cusSearch()">
 					<div class="button-inside ser-inside">
-						<h1 class="btn-name">SERCH</h1>
+						<h1 class="btn-name">SEARCH</h1>
 					</div>
 				</div>
 

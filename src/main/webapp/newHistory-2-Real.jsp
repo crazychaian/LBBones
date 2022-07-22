@@ -112,7 +112,7 @@
 	top: -40px;
 }
 
-.fimg {
+/* .fimg {
 	width: 327px;
 	height: 891px;
 }
@@ -120,7 +120,7 @@
 .fimgbig {
 	width: 809px;
 	height: 916px;
-}
+} */
 </style>
 </head>
 
@@ -191,7 +191,7 @@
 
 			<div class="miniframe1">
 				<div class="miniframe2">
-					<img src="images/rex.png" id="minimap" class="fimg">
+					<img src="" id="minimap" class="fimg">
 					<div class="lineContainermini"></div>
 					<div class="point" id="pointm0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -245,7 +245,7 @@
 		<div class="div-main-middle">
 			<div class="frame1">
 				<div class="frame2">
-					<img src="images/rex.png" id="image" class="fimgbig">
+					<img src="" id="image" class="fimgbig">
 					<div class="lineContainer"></div>
 					<div class="point" id="point0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -464,8 +464,8 @@
 
 
 			<div class="div-cm">
-				<input id="result-write" type="textarea" name="chart" cols="30"
-					rows="12"></input>
+				<input id="result-write" type="textarea" cols="30"
+					rows="12" name="cmt_content"></input>
 			</div>
 
 
@@ -1578,8 +1578,9 @@ function lmjoin() {
 		let inputdoc_id = $('input[name=doc_id]');
 		let doc_id = $(inputdoc_id[0]).val();
 		
-		let textareacontent = $('textarea[name=cmt_content]');
+		let textareacontent = $('input[name=cmt_content]');
 		let cmt_content = $(textareacontent[0]).val();
+		console.log(cmt_content);
 		
 		$.ajax({
 			url : 'landmarkService',

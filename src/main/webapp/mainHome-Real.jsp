@@ -63,8 +63,8 @@
 					} else {
 					%>
 					<!-- 회원일떄 -->
-					<li><a href="mainHome-Real.jsp" class="">Tutorial</a></li>
-						<li><a class="" href="memberHome.jsp#price"  onclick="">Price</a></li>
+					<li><a href="memberHome-Real.jsp" class="">Tutorial</a></li>
+						<li><a class="" href="memberHome-Real.jsp#price"  onclick="">Price</a></li>
 						<li><a class="" href="logoutService" onclick="">Logout</a></li>
 					<%
 					}
