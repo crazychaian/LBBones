@@ -460,7 +460,7 @@
 	
 	function cusSearch() {
 		let inputSearchId = $('input[name=SearchId]');
-		let SearchId = $(inputSearchId[0]).val();
+		let doc_id = $(inputSearchId[0]).val();
 		let inputpSearch = $('input[name=pSearch]');
 		let search = $(inputpSearch[0]).val();
 
@@ -470,6 +470,7 @@
 			type : 'post',
 			dataType : 'json',
 			data : {
+				"doc_id" : doc_id,
 				"search" : search
 			},
 			success : function(data) {

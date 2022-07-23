@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 
 import model.CustomerDAO;
 import model.CustomerVO;
+import model.SearchVO;
 
 @WebServlet("/cusSearchService")
 public class cusSearchService extends HttpServlet {
@@ -24,10 +25,19 @@ public class cusSearchService extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 
-		String search = request.getParameter("search");
+		String p_name = request.getParameter("search");
+		String doc_id = request.getParameter("doc_id");
+		System.out.println(p_name);
+		System.out.println(doc_id);
+		
 
+		
+		SearchVO svo = new SearchVO(doc_id, "%" + p_name + "%");
+		System.out.println(svo);
 		CustomerDAO dao = new CustomerDAO();
-		List<CustomerVO> cuslist = dao.pSearch("%" + search + "%");
+		System.out.println(dao);
+		List<SearchVO> cuslist = dao.pSearch(svo);
+		System.out.println(cuslist);
 		
 		Gson gson = new Gson();
 		

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.CustomerDAO;
 import model.CustomerVO;
+import model.SearchVO;
 
 @WebServlet("/cusSearchService2")
 public class cusSearchService2 extends HttpServlet {
@@ -23,10 +24,13 @@ public class cusSearchService2 extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 
-		String search = request.getParameter("pSearch");
+		String p_name = request.getParameter("pSearch");
+		String doc_id = request.getParameter("doc_id");
 
+		
+		SearchVO svo = new SearchVO(doc_id, "%" + p_name + "%");
 		CustomerDAO dao = new CustomerDAO();
-		List<CustomerVO> pList2 = dao.pSearch("%" + search + "%");
+		List<SearchVO> pList2 = dao.pSearch(svo);
 		
 		System.out.println(pList2);
 		request.setAttribute("pList", pList2);

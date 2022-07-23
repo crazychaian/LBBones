@@ -19,12 +19,13 @@
 
 	</insert>
 
-	<select id="pSearch" resultType="CustomerVO">
+	<select id="pSearch" resultType="SearchVO">
 		select *
 		from tbl_patient
 		where
-		p_name like #{search}
-		or p_seq like #{search}
+		(p_name like #{p_name}
+		or p_seq like #{p_name})
+		and doc_id = #{doc_id}
 		order by p_name asc
 	</select>
 

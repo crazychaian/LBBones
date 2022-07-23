@@ -13,6 +13,7 @@
 		<typeAlias type="model.DoctorDAO" alias="DoctorDAO" />
 		<typeAlias type="model.CustomerVO" alias="CustomerVO" />
 		<typeAlias type="model.CustomerDAO" alias="CustomerDAO" />
+		<typeAlias type="model.SearchVO" alias="SearchVO" />
 		<typeAlias type="model.XrayVO" alias="XrayVO" />
 		<typeAlias type="model.XrayDAO" alias="XrayDAO" />
 		<typeAlias type="model.LandmarkVO" alias="LandmarkVO" />

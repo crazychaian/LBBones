@@ -48,11 +48,11 @@ public class CustomerDAO {
 
 	}
 	
-	public List<CustomerVO> pSearch(String search) {
+	public List<SearchVO> pSearch(SearchVO svo) {
 		
 		SqlSession session = sqlSessionFactory.openSession(true);
 		
-		List<CustomerVO> list = session.selectList("pSearch", search);
+		List<SearchVO> list = session.selectList("pSearch", svo);
 		
 		session.close();
 		
