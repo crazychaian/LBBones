@@ -19,7 +19,13 @@ body {
     justify-content: center;
 }
 
-
+.pri-page{
+	border: 2px solid gray;
+    width: 100%;
+    margin: 50px;
+    border-radius: 25px;
+    height: 100%;
+}
 
 .maintop{
 	width: 100%;
@@ -51,9 +57,13 @@ body {
 
 
 .fontColor{
-	color: #ffffff;
-    top: 14px;
-    position: relative;	
+	position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 45px;
+    color: #f2f2f2;
+    text-align: center;
+    top: 41px;
+    text-shadow: -0.02em 0.02em 0 #666, -0.05em 0.05em 0 #666, -0.1em 0.1em 0 #666, -0.04em 0.04em 0 #666, -0.05em 0.05em 0 #666, -0.06em 0.06em 0 #999, -0.07em 0.07em 0 #999, -0.08em 0.08em 0 #999, -0.09em 0.09em 0 #999, -0.1em 0.1em 0 #999, -0.11em 0.11em 0 #999;
 }
 
 
@@ -68,7 +78,7 @@ body {
     /* border: 1px solid; */
     border-radius: 50px;
     margin-bottom: 115px;
-    height: 447px;
+    height: 100%;
     background-color: #8d8d8d;
     background-image: linear-gradient(180deg, #727272, #424242);
     box-shadow: inset -3px 3px 3px 0px #3e3d3d, inset 0.2em -0.2em 0 #bdbcbc;

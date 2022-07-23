@@ -264,33 +264,48 @@ return;
 
 			<h1 class="fontColor">TUTORIAL</h1>
 
-			<div  id='article'>
+			<div  id='article' style="    margin: 50px;">
 				<div class='img'>
-					<img class='otani' alt=""
-						src="images/lmpage.jpg">
+					<img class='tutorial001' alt=""
+						src="images/page001.png">
 				</div>
 
 
 			</div>
-
-			<div id='article'>
+			<div  id='article' style="    margin: 50px;">
 				<div class='img'>
-					<img class='otani' alt=""
+					<img class='tutorial002' alt=""
+						src="images/page002.png">
+				</div>
+
+
+			</div>
+			<div  id='article' style="    margin: 50px;">
+				<div class='img'>
+					<img class='tutorial003' alt=""
+						src="images/page003.png">
+				</div>
+
+
+			</div>
+			<div  id='article' style="    margin: 50px;">
+				<div class='img'>
+					<img class='tutorial004' alt=""
+						src="images/page004.png">
+				</div>
+
+
+			</div>
+			<div  id='article' style="    margin: 50px;">
+				<div class='img'>
+					<img class='tutorial005' alt=""
 						src="images/lm.png">
 				</div>
 
 
 			</div>
 
-			<div id='article'>
-				<div class='img'>
-					<img class='otani' alt=""
-						src="images/lmpage.jpg">
-				</div>
-
-
-			</div>
-
+			
 
 
 
@@ -304,25 +319,34 @@ return;
 
 			<h1 class="fontColor">PRICE</h1>
 
-			<div id='article'>
+			<div id='article' class="pri-page">
 				<div class='img'>
-					<img class='otani' alt="" src="images/LBB01.png">
+				<br>
+				     서비스 준비중입니다
+				<br>
+					<img class='otani' alt="" src="">
 				</div>
 
 
 			</div>
 
-			<div id='article'>
+			<div id='article' class="pri-page">
 				<div class='img'>
-					<img class='otani' alt="" src="images/LBB01.png">
+				<br>
+				     서비스 준비중입니다
+				<br>
+					<img class='otani' alt="" src="">
 				</div>
 
 
 			</div>
 
-			<div id='article'>
+			<div id='article' class="pri-page">
 				<div class='img'>
-					<img class='otani' alt="" src="images/LBB01.png">
+				<br>
+				     서비스 준비중입니다
+				<br>
+					<img class='otani' alt="" src="">
 				</div>
 
 
