@@ -77,9 +77,29 @@
 
 
 
-	<!-- 로그인 회원가입 버튼 누르면 보여지는 창 -->
+	<!-- 화면 젤 위로 밑으로 -->
+<div class="scroll-t-b">
+<a href="#" class="top-s" style="color: #8da5a9; cursor: pointer;"><ion-icon name="arrow-up-circle-outline"></ion-icon></a>
 
+<a id="bt-s" style="color: #8da5a9; cursor: pointer;"><ion-icon  name="arrow-down-circle-outline"></ion-icon></a>
+</div>
 
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $( document ).ready( function() {
+        $( window ).scroll( function() {
+          if ( $( this ).scrollTop() > 200 ) {
+            $( '.top-s' ).fadeIn();
+          } else {
+            $( '.top-s' ).fadeOut();
+          }
+        } );
+        $( '.top-s' ).click( function() {
+          $( 'html, body' ).animate( { scrollTop : 0 }, 800 );
+          return false;
+        } );
+      } );
+    </script>
 
 
 
@@ -475,6 +495,15 @@ $(document).ready(function(){
 		var offset = $('#movediv3').offset(); //선택한 태그의 위치를 반환
 		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
 		 	        $('html').animate({scrollTop : offset.top}, 400);
+		});	});
+
+</script>
+<script>	
+$(document).ready(function(){
+	$('#bt-s').click(function(){
+		var offset = $('#movediv4').offset(); //선택한 태그의 위치를 반환
+		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
+		 	        $('html').animate({scrollTop : offset.top}, 800);
 		});	});
 
 </script>

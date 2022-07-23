@@ -68,9 +68,22 @@
 }
 
 
+.scroll-t-b{
+	position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 97%;
+}
 
-
-
+.top-s:hover{
+	color: gray;
+	
+}
+#bt-s:hover{
+	color: gray;
+	
+}
 
 
 

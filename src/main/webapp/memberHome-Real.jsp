@@ -134,8 +134,42 @@ return;
 		</div> 
 	</div>
 
+<!-- 화면 젤 위로 밑으로 -->
+<div class="scroll-t-b">
+<a href="#" class="top-s" style="color: #ffffff;; cursor: pointer;"><ion-icon name="arrow-up-circle-outline"></ion-icon></a>
 
+<a id="bt-s" style="color:#ffffff;; cursor: pointer;"><ion-icon  name="arrow-down-circle-outline"></ion-icon></a>
+</div>
 
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      $( document ).ready( function() {
+        $( window ).scroll( function() {
+          if ( $( this ).scrollTop() > 200 ) {
+            $( '.top-s' ).fadeIn();
+          } else {
+            $( '.top-s' ).fadeOut();
+          }
+        } );
+        $( '.top-s' ).click( function() {
+          $( 'html, body' ).animate( { scrollTop : 0 }, 800 );
+          return false;
+        } );
+      } );
+    </script>
+
+<!-- 스크롤 부드럽게 이동 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    
+<script>	
+$(document).ready(function(){
+	$('#bt-s').click(function(){
+		var offset = $('#movediv4').offset(); //선택한 태그의 위치를 반환
+		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
+		 	        $('html').animate({scrollTop : offset.top}, 800);
+		});	});
+
+</script>
 
 
 	<!-- modal 영역 회원정보수정 팝-->
@@ -358,7 +392,30 @@ return;
 
 	</div>
 
+<section class="div4" id="movediv4">
 
+		<div style="padding: 0px 150px 0px 0px;">
+			<img alt="healthhub" src="images/hh_logo.png">
+		</div>
+		<div class="">
+
+			<img alt="team" src="images/lbblogo.png" style="    width: 300px;" class="contfontB">
+			<div>
+				<br> 최재황   김용태   심가령   김현철   고정훈   김서진
+			</div>
+
+		</div>
+		<div class="" style="padding: 0px 0px 0px 150px;">
+
+			<img style="width: 200px;" alt="smhrd" src="images/smg_logo.png">
+
+		</div>
+
+
+
+
+
+	</section>
 
 
 
