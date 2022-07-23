@@ -174,19 +174,18 @@
 			<%
 			for (CustomerVO cvo : pList) {
 			%>
-			<div class="info-cont">
+			<div class="info-cont" >
 				<ul class="info-cont-rp">
-					<li><span><a
-							href="xrayListService?p_seq=<%=cvo.getP_seq()%>"><%=cvo.getP_seq()%></a></span></li>
-					<li><span><a
-							href="xrayListService?p_seq=<%=cvo.getP_seq()%>"><%=cvo.getP_name()%></a></span></li>
-					<li><span><%=cvo.getP_birth()%></span></li>
-					<li><span><%=cvo.getP_gender()%></span></li>
+					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span><%=cvo.getP_seq()%></span></li>
+					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span>
+							<%=cvo.getP_name()%></span></li>
+					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span><%=cvo.getP_birth()%></span></li>
+					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span><%=cvo.getP_gender()%></span></li>
 					<li><span>
-							<button type="button"
+							<button type="button" class="two-btn"
 								onclick="javascript:popOpen2(<%=cvo.getP_seq()%>);">EDIT</button>
-							/ <a href=""
-							onclick="javascript:removeCheck(<%=cvo.getP_seq()%>);">DEL</a>
+							 <button type="button"  href="" class="two-btn"
+							onclick="javascript:removeCheck(<%=cvo.getP_seq()%>);">DEL</button>
 					</span></li>
 
 				</ul>
@@ -407,7 +406,7 @@
 			$('#updateP_seq').html(`<span name="re_caseid">`+a+`</span>`);
 			
 			$('.update-btn').html(`<button type="button" class="form-btn2" id=""
-					onclick="cusUpdate(`+a+`)"><span>정보 수정</span>
+					onclick="cusUpdate(`+a+`)"><span>SAVE</span>
 					</button>`);
 
 		}

@@ -53,6 +53,9 @@ font-size: 15px;
 	 text-decoration: none;
 	 color: #565656;
 }
+.memfont:hover {
+        color: #85f3bc;
+}
 
 .home a{
 	 text-decoration: none;

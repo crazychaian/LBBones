@@ -110,7 +110,7 @@ return;
 		<div class="container-sm">
 
 
-			<div id="container-btn">
+			<div id="container-btn" style="    display: flex;    align-items: center;">
 
 				<form action="cusSearchService2" method="post">
 					<input type="hidden" class="SearchId" name="SearchId"
@@ -129,8 +129,8 @@ return;
 					</div>
 				</div> -->
 
-					<button class="button-main ser-main" type="submit">
-						<div class="button-inside ser-inside">
+					<button class="button-main ser-main  btn-css-real" type="submit">
+						<div class="button-inside ser-inside ins-btn-real">
 							<h1 class="btn-name">SEARCH</h1>
 						</div>
 					</button>
@@ -142,9 +142,9 @@ return;
 					</div>
 				</div> -->
 
-				<div class="button-main record-main"
+				<div class="button-main record-main btn2-css-real"
 					onclick="window.open('newHistory-2-Real.jsp','newhistroy-Real','resizable=no width=1800 height=1000');return false">
-					<div class="button-inside record-inside">
+					<div class="button-inside record-inside ins-btn2-real">
 						<h1 class="btn-name">ADD MEDICAL RECORDS</h1>
 					</div>
 				</div>

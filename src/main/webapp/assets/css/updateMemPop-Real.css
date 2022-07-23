@@ -46,12 +46,14 @@
 }
 
 .logo-login {
-	font-size: 28px;
-	top: -5px;
-	position: relative;
-	margin-bottom: 29px;
-	display: flex;
-	justify-content: center;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    top: -5px;
+    position: relative;
+    margin-bottom: 29px;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
@@ -130,7 +132,7 @@
 }
 
 #tab-btn li.active a {
-	color: #ffce00;
+	color: #85f3bc;
 }
 
 #tab-cont {
@@ -155,11 +157,14 @@
 
 
 .ccolor{
-	border-color: #7cff86;
+	border-color: #525252;
+    border-radius: 10px;
 }
 
 
-
+.ccolor:hover {
+    border-color: #85f3bc;
+}
 
 
 
@@ -224,7 +229,7 @@
 /*--- btn-5 ---*/
 .btn-5 span {
 	color: rgb(28, 31, 30);
-	border: 2px solid rgb(249, 211, 27);
+border: 2px solid rgb(128 231 179);
 	transition: 0.2s;
 }
 

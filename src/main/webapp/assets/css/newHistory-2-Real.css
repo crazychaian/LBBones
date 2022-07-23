@@ -156,6 +156,7 @@ ion-icon {
 
 /* Metal ------------------------- */
 .metal {
+	cursor: pointer;
 	position: relative;
 	/* margin: 40px auto; */
 	outline: none;
@@ -174,6 +175,17 @@ ion-icon {
 		 hsla(0, 0%, 40%, 0.3) 0 2px 2px 2px;
 	transition: color 0.2s;
 }
+
+.metal:hover {
+  box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #777777, -0.1em 0.1em 0 #333,
+    -0.2em 0.2em 0 #777777, -0.3em 0.3em 0 #777777, inset -0.1em -0.1em 2em #fff,
+    -0.1em -0.1em 2em #777777;
+  border-top: 5px solid #666;
+  border-right:5px solid #666;
+} 
+
+
+
 
 /* Radial ------------------------- */
 .radial.metal {
@@ -373,7 +385,8 @@ ion-icon {
 
 #result-write {
 	width: 97%;
-	padding: 5px;
+	padding: 5px;    
+	height: 176px;
 	border-radius: 8px;
 }
 

@@ -7,6 +7,7 @@ body {
 
 .clickMem{
 	color: white;
+	    margin-right: 10px;
 }
 
 .clickMem-div{
@@ -60,6 +61,7 @@ body {
 
 .info-cont{
 	display: flex;
+	cursor: pointer;
     height: 200px;
     width: 100%;
     position: relative;
@@ -139,6 +141,8 @@ body {
     background-color: #565656;
     padding: 11px;
     height: 140px;
+        width: 280px;
+    line-height: 11px;
 }
 
 
@@ -244,11 +248,12 @@ body {
 
 .serch-patient{
 	width: 250px;
-    height: 25px;
-    border-radius: 9px;
+    height: 32px;
+    border-radius: 12px;
+    border-radius: 12px;
     margin-right: 10px;
-    left: 9px;
-    top: 16.5px;
+    top: 15px;
+    left: 10px;
     position: absolute;
     font-family: 'IBM Plex Sans KR', sans-serif;
     font-weight: 300;
@@ -289,15 +294,15 @@ body {
 
 
 .new-inside{
-	width: 275px;
+	width: 235px;
 }
 
 
 
 
 .record-main{
-	    width: 267px;
-    margin: 9px 0px;
+	  /*   width: 235px;
+    margin: 9px 0px; */
 }
 
 
@@ -306,8 +311,69 @@ body {
 	    width: 235px;
 }
 
+.ins-btn-real{
+	height: 32.9px;
+    top: 5px;
+        margin: 13px 0px 0px 0px;
+    border-radius: 0.7em;
+    background-color: #ccc;
+    background-image: linear-gradient(30deg, #ccc, #999);
+    box-shadow: inset -0.15em 0.15em #2d2e2e, inset 0.2em -0.2em 0 #ccc;
+}
+.ins-btn2-real{
+	height: 32.9px;
+    top: -11px;
+    left: 11px;
+    position: relative;
+    margin: 18px 0px 0px 0px;
+    border-radius: 0.7em;
+    background-color: #ccc;
+    background-image: linear-gradient(30deg, #ccc, #999);
+    box-shadow: inset -0.15em 0.15em #2d2e2e, inset 0.2em -0.2em 0 #ccc;
+    }
 
 
+
+
+
+.btn-css-real{
+	cursor: pointer;
+    height: 55px;
+    background-color: #999;
+    background-image: linear-gradient(180deg, #ccc, #999);
+    border-top: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    border-left: 4px solid #666;
+    border-bottom: 4px solid #666;
+    border-radius: 18px;
+    float: left;
+    margin-right: 12px;
+    text-decoration: none;
+    /* box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a; */
+    transition: box-shadow 0.3s, border-top 0.3s, border-right 0.3s;
+}
+.btn2-css-real{
+	
+	cursor: pointer;
+    height: 49px;
+    width: 256px;
+    background-color: #999;
+    background-image: linear-gradient(180deg, #ccc, #999);
+    border-top: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    border-left: 4px solid #666;
+    border-bottom: 4px solid #666;
+    border-radius: 18px;
+    float: left;
+    margin-right: 12px;
+    text-decoration: none;
+    /* box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a; */
+    transition: box-shadow 0.3s, border-top 0.3s, border-right 0.3s;
+	
+	
+	
+	}
+ 
 
 
 
@@ -316,7 +382,7 @@ body {
 
 
 .button-main {
-	cursor: pointer;
+	/* cursor: pointer;
     height: 2.6em;
     background-color: #999;
     background-image: linear-gradient(180deg, #ccc, #999);
@@ -326,10 +392,11 @@ body {
     border-bottom: 4px solid #666;
     border-radius: 1em;
     float: left;
+    height: 49px;
     text-decoration: none;
-   /*  box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a; */
+    box-shadow: -0.1em 0.1em 0 #000000, -0.2em 0.2em 0 #000000, -0.3em 0.3em 0 #000000, -0.4em 0.4em 0 #7a7a7a;
     transition: box-shadow 0.3s, border-top 0.3s, border-right 0.3s;
-}
+ */}
 
 .button-main:hover {
   box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0 #333,
@@ -337,7 +404,7 @@ body {
     -0.1em -0.1em 2em #666;
   border-top: 5px solid #666;
   border-right:5px solid #666;
-}
+} 
 
 .button-main:focus {
   box-shadow: 0.1em -0.1em 0 #333, 0.2em -0.2em 0 #333, -0.1em 0.1em 0 #333,
@@ -346,17 +413,23 @@ body {
   border-top: 5px solid #666;
   border-right: 5px solid #666;
 }
-
+/* 
 .button-inside {
- 
-    height: 1.9em;
-    margin: 0.3em auto;
+ height: 25.9px;
+    top: 12px;
+    margin: 7px auto;
     border-radius: 0.7em;
     background-color: #ccc;
     background-image: linear-gradient(30deg, #ccc, #999);
     box-shadow: inset -0.15em 0.15em #2d2e2e, inset 0.2em -0.2em 0 #ccc;
  
  }
+
+ */
+
+
+
+
 
 .btn-name {
 
@@ -366,7 +439,7 @@ font-family: Arial, Helvetica, sans-serif;
     color: #f2f2f2;
     text-align: center;
     line-height: 1.8em;
-    margin: 0 auto;
+        margin: 4.5px;
     text-shadow: -0.02em 0.02em 0 #666, -0.05em 0.05em 0 #666, -0.1em 0.1em 0 #666, -0.04em 0.04em 0 #666, -0.05em 0.05em 0 #666, -0.06em 0.06em 0 #999, -0.07em 0.07em 0 #999, -0.08em 0.08em 0 #999, -0.09em 0.09em 0 #999, -0.1em 0.1em 0 #999, -0.11em 0.11em 0 #999;
   
   }

@@ -52,10 +52,19 @@ body{
 	color: white;
 }
 
-
-
-
-
+.two-btn{
+background-color: #727272;
+    cursor: pointer;
+    width: 68px;
+    height: 33px;
+    border-radius: 42px;
+        color: #cfcfcf;
+    border: 0px;
+    box-shadow: 2px 2px 6px 1px black, -1.2px -1.2px 0.2px #c5c0c0;
+}
+.two-btn:hover{
+	background-color: #424242;
+}
 
 .info-cont{
 	font-family: 'IBM Plex Sans KR', sans-serif;
@@ -73,7 +82,8 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    transition: background-color 0.15s;
+    transition: background-color 0.25s;
+        cursor: pointer;
 }
 
 

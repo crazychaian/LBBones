@@ -80,12 +80,14 @@ position: relative;
 
 
 .form-btn2{
-	    margin: 0px 5px;
-    background-color: #727272;
+	 background-color: #787878;
     cursor: pointer;
-    width: 104px;
-    border-radius: 59px;
-    height: 30px;
+    width: 217px;
+    margin-top: 8px;
+    height: 42px;
+    border: none;
+    box-shadow: 2px 2px 6px 1px #000000, -1.2px -1.2px 0.2px #818181;
+    border-radius: 42px;
 }
 
 .m-name2{

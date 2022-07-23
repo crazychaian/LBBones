@@ -70,9 +70,19 @@
 					</li>
 				
 					
-				<li><textarea class="part-h txtarea" name="randmark-view" cols="30" rows="10" readonly   disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+				<li><textarea class="part-h txtarea" name="randmark-view" cols="30" rows="10" readonly   disabled>
+				왼쪽 대퇴골의 길이 : 513.31 mm
+							왼쪽 경골의 길이 : 392.46 mm
+							왼쪽 다리 전체의 길이 : 902.25 mm
+							오른쪽 대퇴골의 길이 : 517.85 mm
+							오른쪽 경골의 길이 : 394.68 mm
+							오른쪽 다리 전체의 길이 : 908.73 mm
+							대퇴골의 길이 차이 : 4.54 mm
+							경골의 길이 차이 : 2.22 mm
+							다리 전체의 길이 차이 : 6.48 mm
+				</textarea></li>
 				<li><textarea   class="part-h txtarea" name="today-chart-view" cols="30" rows="10"
-						readonly   disabled>여기서는 수정 안되용~~~~~~~~</textarea></li>
+						readonly   disabled>길이 차이는 크지 않지만 오른쪽 무릎이 안쪽으로 들어옴</textarea></li>
 
 
 			</ul>
@@ -99,7 +109,7 @@
 						<li><textarea class="part-h txtarea2" id="rm-mark" name="randmark" cols="30"
 								rows="10">x축은 1321324 y축은 15468432121</textarea></li> -->
 						<li><textarea class="part-h txtarea2" id="today-chart" name="chart" cols="30"
-								rows="10">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea></li>
+								rows="10">수정사항을 입력해주세요</textarea></li>
 
 					</ul>
 				</div>

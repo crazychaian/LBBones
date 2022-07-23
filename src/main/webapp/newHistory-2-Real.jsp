@@ -465,7 +465,7 @@
 
 			<div class="div-cm">
 				<input id="result-write" type="textarea" cols="30"
-					rows="12" name="cmt_content"></input>
+					rows="12" name="cmt_content" placeholder="오늘 진료 내용을 입력해주세요"></input>
 			</div>
 
 

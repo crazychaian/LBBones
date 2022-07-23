@@ -55,17 +55,17 @@
 					<%
 					if (vo == null) {
 					%>
-					<li><a href="#" class="btn-open signin signfont" id="p01"
-						onclick="javascript:popOpen();">Sign in</a></li>
-					<li><a class="signup signfont" href="#" id="p02"
-						onclick="javascript:popOpen2();">Sign up</a></li>
+					<li><a type="button" href="#" class="btn-open signin signfont" id="p01"
+						onclick="popOpen()">Sign in</a></li>
+					<li><a type="button" class="signup signfont" href="#" id="p02"
+						onclick="popOpen2()">Sign up</a></li>
 					<%
 					} else {
 					%>
 					<!-- 회원일떄 -->
-					<li><a href="memberHome-Real.jsp" class="">Tutorial</a></li>
-						<li><a class="" href="memberHome-Real.jsp#price"  onclick="">Price</a></li>
-						<li><a class="" href="logoutService" onclick="">Logout</a></li>
+					<li><a href="memberHome-Real.jsp" class="memfont" >Tutorial</a></li>
+						<li><a class="memfont" href="memberHome-Real.jsp#price"  onclick="">Price</a></li>
+						<li><a class="memfont" href="logoutService" onclick="">Logout</a></li>
 					<%
 					}
 					%>
@@ -524,7 +524,6 @@ return;
                 listCnt = 0
             }
 
-            console.log(listCnt)
         }, 5000);
 
 
@@ -602,7 +601,6 @@ return;
                 listCnt2 = 0
             }
 
-            console.log(listCnt2)
         },  5000);
 
 
@@ -686,7 +684,6 @@ return;
                 listCnt3 = 0
             }
 
-            console.log(listCnt3)
         },  5000);
 
 
@@ -1315,7 +1312,7 @@ vec4 taylorInvSqrt(vec4 r)
 	<script src="assets/js/script.js"></script>
 
 
-	<script type="text/javascript" src="assets/js/testest.js"></script>
+	<script type="text/javascript" src="assets/js/testest.js"></script> 
 
 
 
