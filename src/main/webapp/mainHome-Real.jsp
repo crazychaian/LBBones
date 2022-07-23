@@ -253,15 +253,15 @@
 
 			</div>
 
-
+<!--  onclick="movepage('#movediv2');" -->
 			<!-- 버튼 -->
 			<form class="btn-two">
-				<label><input onclick="movepage('#movediv2');" class="iptxt"
-					type="radio" name="band" value="fm" checked><span
+				<label><input  id="pe" class="iptxt"
+					type="radio" name="band" value="fm" ><span
 					class="inputext">PRODUCT<br>EXPLAIN
-				</span></label> <label><input onclick="movepage('#temdiv1'); "
+				</span></label> <label><input id="toph"
 					class="iptxt" type="radio" name="band" value="am" checked><span></span></label>
-				<label><input onclick="movepage('#movediv3');" class="iptxt"
+				<label><input  class="iptxt" id="hiw"
 					type="radio" name="band" value="lw"><span class="inputext">HOW
 						IT<br>WORKS
 				</span></label>
@@ -443,6 +443,40 @@ function movepage(page)
 window.document.location.href=page; 
 return; 
 } 
+</script>
+
+
+
+
+
+<!-- 스크롤 부드럽게 이동 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>	
+$(document).ready(function(){
+	$('#pe').click(function(){
+		var offset = $('#movediv2').offset(); //선택한 태그의 위치를 반환
+		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
+		 	        $('html').animate({scrollTop : offset.top}, 400);
+		});	});
+
+</script>
+<script>	
+$(document).ready(function(){
+	$('#toph').click(function(){
+		var offset = $('#temdiv1').offset(); //선택한 태그의 위치를 반환
+		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
+		 	        $('html').animate({scrollTop : offset.top}, 400);
+		});	});
+
+</script>
+<script>	
+$(document).ready(function(){
+	$('#hiw').click(function(){
+		var offset = $('#movediv3').offset(); //선택한 태그의 위치를 반환
+		                //animate()메서드를 이용해서 선택한 태그의 스크롤 위치를 지정해서 0.4초 동안 부드럽게 해당 위치로 이동함
+		 	        $('html').animate({scrollTop : offset.top}, 400);
+		});	});
+
 </script>
 
 
