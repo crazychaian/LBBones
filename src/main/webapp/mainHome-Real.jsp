@@ -40,7 +40,7 @@
 		<div class="wrapper">
 
 			<div class="logo">
-				<img id="LBBimg" src="images/LBB01.png" alt="Logo">
+				<img id="LBBimg" src="images/lbblogo.png" alt="Logo">
 			</div>
 			<ul class="menuList2">
 				<!-- <li class="s-btn"><label class="switch s-btn"> <input
@@ -126,8 +126,8 @@
 						<form class="container">
 							<input type="text" placeholder="ID" id="id" class="account" name="joindocid">
 							
-							<p id="resultId"></p>
-							<button type="button" onclick="idCheck()">중복 확인</button>
+							<button type="button" onclick="idCheck()" class="multi" >중복 확인</button>
+							<p id="resultId" style="color: relative; position: relative; top: -20px;text-align: center;"></p>
 							
 							<input type="password" placeholder="Password" id="password"
 								class="account" name="joindocpw"> <input type="text"
@@ -319,9 +319,9 @@
 						<div class="circle-core"></div>
 					</div>
 				</div>
+				<img alt="" src="images/99.png" style="   position: absolute;    width: 91px;    top: 142px;    margin-left: 6px;">
 
-
-				<div class="contfontB txttitle">학습 정확도 99%</div>
+				<div class="contfontB txttitle">학습 정확도 99.5%</div>
 				<div class="contfontL">dice coefficient 지표 최대 0.9903, mAP@0.5
 					지표 0.995로 높은 예측 정확도를 가집니다</div>
 			</div>
@@ -416,9 +416,9 @@
 		</div>
 		<div class="">
 
-			<img alt="team" src="images/hh.png">
+			<img alt="team" src="images/lbblogo.png" style="    width: 300px;" class="contfontB">
 			<div>
-				LBBONES<br> 최재황 김용태 심가령 김현철 고정훈 김서진
+				<br> 최재황   김용태   심가령   김현철   고정훈   김서진
 			</div>
 
 		</div>

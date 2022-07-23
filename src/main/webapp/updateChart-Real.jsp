@@ -70,8 +70,7 @@
 					</li>
 				
 					
-				<li><textarea class="part-h txtarea" name="randmark-view" cols="30" rows="10" readonly   disabled>
-				왼쪽 대퇴골의 길이 : 513.31 mm
+				<li><textarea class="part-h txtarea" name="randmark-view" cols="30" rows="10" readonly   disabled>왼쪽 대퇴골의 길이 : 513.31 mm
 							왼쪽 경골의 길이 : 392.46 mm
 							왼쪽 다리 전체의 길이 : 902.25 mm
 							오른쪽 대퇴골의 길이 : 517.85 mm
@@ -81,7 +80,7 @@
 							경골의 길이 차이 : 2.22 mm
 							다리 전체의 길이 차이 : 6.48 mm
 				</textarea></li>
-				<li><textarea   class="part-h txtarea" name="today-chart-view" cols="30" rows="10"
+				<li><textarea  style="    line-height: 20px;" class="part-h txtarea" name="today-chart-view" cols="30" rows="10"
 						readonly   disabled>길이 차이는 크지 않지만 오른쪽 무릎이 안쪽으로 들어옴</textarea></li>
 
 

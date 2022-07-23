@@ -71,7 +71,7 @@
 }
 
 .button-inside-pop {
-	height: 428px;
+	height:  430px;
 	width: 284px;
 	margin: 18px auto;
 	border-radius: 20px;
@@ -137,16 +137,15 @@
 
 .form-btn:hover{
 	background-color: #c9c9c9;
-	color:  #787878;
+	color: #e2e2e2;
+	
 }
 
 .sub-btn-txt{
 	font-family: Arial, Helvetica, sans-serif;
     color: #262626;
 }
-.sub-btn-txt:hover{
-	color: #e2e2e2;
-}
+
 
 .m-name {
 	padding: 7px;

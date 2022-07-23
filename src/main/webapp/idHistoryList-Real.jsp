@@ -227,7 +227,7 @@ return;
 							경골의 길이 차이 : <%=xlvo.getLr_tibia_gap()%> mm
 							다리 전체의 길이 차이 : <%=xlvo.getLr_total_gap()%> mm
 							</textarea></li>
-					<li><textarea class="txtarea" name="today-chart-view"
+					<li><textarea class="txtarea" style="    line-height: 20px;" name="today-chart-view"
 							cols="30" rows="10" readonly disabled><%=xlvo.getCmt_content()%></textarea></li>
 					<li>
 						<div class="btn btn__secondary" 

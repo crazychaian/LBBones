@@ -144,21 +144,21 @@
 
 
 
+			<!-- 목록 이름  -->
+			<div class="info-listname">
+				<ul class="info-listname-rp">
+					<li><span style="    margin-left: 46px;">CASE ID</span></li>
+					<li><span style="    margin-left: 25px;">NAME</span></li>
+					<li><span>YYYY-MM-DD</span></li>
+					<li><span style="    margin-right: 26px;">GENDER</span></li>
+					<li><span style="    margin-right: 52px;">EDIT / DEL</span></li>
+
+				</ul>
+			</div>
 
 		<!-- 환자리스트 -->
 		<div class="wrap">
 
-			<!-- 목록 이름  -->
-			<div class="info-listname">
-				<ul class="info-listname-rp">
-					<li><span>CASE ID</span></li>
-					<li><span>NAME</span></li>
-					<li><span>YYYY-MM-DD</span></li>
-					<li><span>GENDER</span></li>
-					<li><span>EDIT / DEL</span></li>
-
-				</ul>
-			</div>
 
 			<!-- 각각의 환자 정보 추가될부분 -->
 			<%
@@ -171,10 +171,10 @@
 
 
 			<!-- 환자정보 업데이트 추가될부분  예시,,-->
-			<div class="info-cont" >
 			<%
 			for (CustomerVO cvo : pList) {
 			%>
+			<div class="info-cont" >
 				<ul class="info-cont-rp">
 					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span><%=cvo.getP_seq()%></span></li>
 					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span>
@@ -189,10 +189,10 @@
 					</span></li>
 
 				</ul>
+			</div>
 			<%
 			}
 			%>
-			</div>
 			<%
 			}
 			%>
@@ -279,7 +279,7 @@
 	<div class="modal-bg2" onclick="javascript:popClose2();"></div>
 	<div class="modal-wrap2">
 
-		<div class="button-inside-pop ">
+		<div class="button-inside-pop2 ">
 			<h1 class="btn-name-pop form-title">EDIT PATIENT INFO</h1>
 			<div class="add-member">
 
@@ -289,7 +289,7 @@
 
 						<!-- case id -->
 						<li class="ttt2">CASE ID</li>
-						<li class="ttt2"><span> </span></li>
+						<li class="ttt2" id="updateP_seq"><span> </span></li>
 
 
 						<li class="ttt2">BIRTHDATE</li>
@@ -473,7 +473,7 @@
 				"search" : search
 			},
 			success : function(data) {
-				$('div.info-cont').html("");
+				$('div.wrap').html("");
 				
 				for (var i = 0; i < data.length; i++) {
 					let doc_id = data[i].doc_id;
@@ -483,7 +483,8 @@
 					let p_gender = data[i].p_gender;
 
 					ul=
-						`<ul class="info-cont-rp">
+						`<div class="info-cont" >
+						<ul class="info-cont-rp">
 					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>`+p_seq+`</span></li>
 					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>
 							`+p_name+`</span></li>
@@ -494,12 +495,12 @@
 								onclick="javascript:popOpen2(`+p_seq+`);">EDIT</button>
 							 <button type="button"  href="" class="two-btn"
 							onclick="javascript:removeCheck(`+p_seq+`);">DEL</button>
-					</span></li></ul>
+					</span></li></ul></div>
 						`;
 						
 						
 				
-				$('div.info-cont').append(ul);
+				$('div.wrap').append(ul);
 				
 				}
 
