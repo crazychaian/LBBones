@@ -1,3 +1,5 @@
+<%@page import="model.XrayLandmarkVO"%>
+<%@page import="java.util.List"%>
 <%@page import="model.CustomerVO"%>
 <%@page import="model.DoctorVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="assets/css/addImgPop.css" />
-<link rel="stylesheet" href="assets/css/newHistory-2.css" />
+<link rel="stylesheet" href="assets/css/newHistory-2-Real.css" />
 
 
 
@@ -109,6 +111,16 @@
 	left: -40px;
 	top: -40px;
 }
+
+/* .fimg {
+	width: 327px;
+	height: 891px;
+}
+
+.fimgbig {
+	width: 809px;
+	height: 916px;
+} */
 </style>
 </head>
 
@@ -118,6 +130,7 @@
 	<%
 	DoctorVO vo = (DoctorVO) session.getAttribute("vo");
 	CustomerVO pvo = (CustomerVO) session.getAttribute("pvo");
+	List<XrayLandmarkVO> xrayList = (List<XrayLandmarkVO>) session.getAttribute("xrayList");
 	%>
 
 
@@ -131,37 +144,44 @@
 	<div class="underview">
 
 
-		<%-- 	
-없애지 말아줭~
-	<input type="text" name="p_seq" value="<%= pvo.getP_seq() %>"></input> --%>
-
+		<div id="inputhidden">
+			<input type="hidden" name="p_seq" value="<%=pvo.getP_seq()%>"></input>
+			<input type="hidden" name="doc_id" value="<%=vo.getDoc_id()%>"></input>
+		</div>
+		
+		<div id="inputhidden2">
+		</div>
 
 
 
 
 		<div class="imgdiv " id="height">
 
-			<!-- 사진등록하면 추가되는 부분 -->
+
+			<%
+			if (xrayList == null) {
+			%>
+			<div class="plus-img"></div>
+
+			<%
+			} else {
+			%>
+			<%
+			for (XrayLandmarkVO xvo : xrayList) {
+			%>
 			<div class="plus-img">
 				<div class="listimg">
-					<span>2018-10-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
+					<span><%=xvo.getXray_date()%></span> <img class="day-img"
+						alt="오늘진료이미지등록" src="img/<%=xvo.getXray_img()%>">
 				</div>
 			</div>
-			<!-- 사진등록하면 추가되는 부분 -->
-			<div class="plus-img">
-				<div class="listimg">
-					<span>2018-11-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
-				</div>
-			</div>
-			<!-- 사진등록하면 추가되는 부분 -->
-			<div class="plus-img">
-				<div class="listimg">
-					<span>2018-12-18</span> <img class="day-img" alt="오늘진료이미지등록"
-						src="images/1.png">
-				</div>
-			</div>
+
+			<%
+			}
+			%>
+			<%
+			}
+			%>
 		</div>
 
 
@@ -172,10 +192,9 @@
 
 		<div class="mainImg">
 
-			<div class="img-date">2018-10-18</div>
 			<div class="miniframe1">
 				<div class="miniframe2">
-					<img src="./img/bono.png" id="minimap">
+					<img src="" id="minimap" class="fimg">
 					<div class="lineContainermini"></div>
 					<div class="point" id="pointm0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -229,7 +248,7 @@
 		<div class="div-main-middle">
 			<div class="frame1">
 				<div class="frame2">
-					<img src="./img/bono.png" id="image">
+					<img src="" id="image" class="fimgbig">
 					<div class="lineContainer"></div>
 					<div class="point" id="point0">
 						<svg class="pointsvg" viewBox="-25 -25 50 50"
@@ -284,7 +303,7 @@
 						readonly disabled> <label for="file"></label>  -->
 					<input type="file" id="file" name="file"
 						style="border-radius: 92px; background: gray; width: 254px;">
-					<button class="metal linear"
+					<button class="metal linear disdis"
 						style="width: 184px; margin-left: 5px;" type="button"
 						id="btnSend_img" value="">X-ray upload</button>
 
@@ -295,7 +314,7 @@
 
 						$("#file").on('change',function(){
 							  var fileName = $("#file").val();
-							  $(".upload-name").val(fileName);
+							  $(".upload-nam	e").val(fileName);
 							});
 					</script> -->
 
@@ -304,18 +323,20 @@
 
 				<div class="topbtn">
 
-					<button class="metal linear" style="width: 183px;" type="button"
-						id="btnSend" value="랜드마크분석">Landmark Analysis</button>
+					<button class="metal linear disdis" style="width: 257px;"
+						type="button" disabled id="btnSend" value="랜드마크분석">Landmark
+						Analysis</button>
 					<img src="./img/loding.gif" height="15" id="loading"
-						style="display: none;" />
+						style="z-index: 20; left: -33px; position: relative; display:none;" />
 
 
 					<!-- <div class="llreset"> -->
-					<button style="width: 130px;" id="btn1" class="metal linear">
+					<button style="width: 80px; left: -6px;" id="btn1"
+						class="metal linear">
 						<ion-icon name="sunny-outline"></ion-icon>
 						<ion-icon name="refresh-outline"></ion-icon>
 					</button>
-					<button style="width: 130px;" id="btn2" class="metal linear">
+					<button style="width: 80px;" id="btn2" class="metal linear">
 						<ion-icon name="contrast-outline"></ion-icon>
 						<ion-icon name="refresh-outline"></ion-icon>
 					</button>
@@ -392,44 +413,47 @@
 				<div class="dididi">
 					<div>femur head L / R</div>
 					<input readonly="" disabled="" type="text"
-						class="class0 xy  ipsize" id="test1"> <input readonly=""
-						disabled="" type="text" class="class1 xy ipsize">
+						class="class0 xy  ipsize" id="test1" name="class0xy"> <input
+						readonly="" disabled="" type="text" class="class1 xy ipsize"
+						name="class1xy">
 
 				</div>
 				<div class="dididi">
 					<div>femur medial condyle L / R</div>
-					<input readonly="" disabled="" type="text" class="class2 xy ipsize">
-
-					<input readonly="" disabled="" type="text" class="class3 xy ipsize">
+					<input readonly="" disabled="" type="text" class="class2 xy ipsize"
+						name="class2xy"> <input readonly="" disabled=""
+						type="text" class="class3 xy ipsize" name="class3xy">
 				</div>
 				<div class="dididi">
 					<div>ankle talus L / R</div>
-					<input readonly="" disabled="" type="text" class="class4 xy ipsize">
-
-					<input readonly="" disabled="" type="text" class="class5 xy ipsize">
+					<input readonly="" disabled="" type="text" class="class4 xy ipsize"
+						name="class4xy"> <input readonly="" disabled=""
+						type="text" class="class5 xy ipsize" name="class5xy">
 				</div>
 				<div class="dididi">
 					<div>femur L / R / GAP</div>
-					<input readonly="" disabled="" type="text" class="class6 l ipsize">
-					<input readonly="" disabled="" type="text" class="class6 r ipsize">
-					<input readonly="" disabled="" type="text" class="class6 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" class="class6 l ipsize"
+						name="class6fel"> <input readonly="" disabled=""
+						type="text" class="class6 r ipsize" name="class6fer"> <input
+						readonly="" disabled="" type="text" class="class6 d ipsize"
+						name="class6feg" style="background-color: #ffffff;">
 				</div>
 				<div class="dididi">
 					<div>tibia L / R / GAP</div>
-					<input readonly="" disabled="" type="text" class="class7 l ipsize">
-					<input readonly="" disabled="" type="text" class="class7 r ipsize">
-					<input readonly="" disabled="" type="text" class="class7 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" class="class7 l ipsize"
+						name="class7til"> <input readonly="" disabled=""
+						type="text" class="class7 r ipsize" name="class7tir"> <input
+						readonly="" disabled="" type="text" class="class7 d ipsize"
+						name="class7tig" style="background-color: #ffffff;">
 				</div>
 
 				<div class="dididi">
 					<div>Total L / R / GAP</div>
-					<input readonly="" disabled="" type="text" class="class8 l ipsize">
-					<input readonly="" disabled="" type="text" class="class8 r ipsize">
-
-					<input readonly="" disabled="" type="text" class="class8 d ipsize"
-						style="background-color: #ffffff;">
+					<input readonly="" disabled="" type="text" class="class8 l ipsize"
+						name="class8ttl"> <input readonly="" disabled=""
+						type="text" class="class8 r ipsize" name="class8ttr"> <input
+						readonly="" disabled="" type="text" class="class8 d ipsize"
+						name="class8ttg" style="background-color: #ffffff;">
 				</div>
 
 
@@ -443,7 +467,8 @@
 
 
 			<div class="div-cm">
-				<textarea id="result-write" name="chart" cols="30" rows="12">무슨 처방내리고 무슨치료하고 어찌구리 저찌구리</textarea>
+				<input id="result-write" type="textarea" cols="30"
+					rows="12" name="cmt_content"></input>
 			</div>
 
 
@@ -451,9 +476,9 @@
 
 
 
-			<button type="submit" id="" class="btn-allsave metal linear"
-				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;">진료내용저장
-				및 제출</button>
+			<button type="button" id="btn_upload" class="btn-allsave metal linear" disabled
+				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;"
+				onclick="lmjoin()">진료내용저장 및 제출</button>
 
 
 		</div>
@@ -779,7 +804,7 @@
 			)
 
 			var LMtoggle = 0;
-			document.querySelector('#btn6').addEventListener('click', function () {
+			document.getElementById('btn6').addEventListener('click', function () {
 				const line = $(".line");
 				if (LMtoggle == 0) {
 					LMtoggle = 1;
@@ -801,6 +826,7 @@
 			// 파일전송
 			const btnSend = document.getElementById("btnSend");
 			const btnSend_img = document.getElementById("btnSend_img");
+			const btn_upload = document.getElementById("btn_upload");
 			const input = document.querySelector("input[type='file']");
 
 			btnSend.disabled = true;  // send 버튼 초기 비활성화
@@ -824,7 +850,10 @@
 					body: formData
 				}).then((response) => response.json())
 					.then((data) => {
+						btnSend_img.disabled = true;
 						btnSend.disabled = false;
+						btn_upload.disabled = true;
+						
 						document.getElementById('loading').style.display = "none";
 						$('#image').attr('src', "./img/" + data.name);
 						$('#minimap').attr('src', "./img/" + data.name);
@@ -846,6 +875,11 @@
 
 
 						allpoint.css('display', 'none');
+						
+						$('div#inputhidden2').html("");
+						XraySeqinput = `<input type="hidden" name="xray_seq" value="`+data.thisXray_seq+`"></input>`
+						$('div#inputhidden2').append(XraySeqinput);
+				
 					}
 					)
 					.catch((error) => {
@@ -861,7 +895,9 @@
 				
 			btnSend.addEventListener("click", function () {
 
+				btnSend_img.disabled = true;
 				btnSend.disabled = true;
+				btn_upload.disabled = false;
 
 				//        	openLoading();
 				document.getElementById('loading').style.display = "inline";
@@ -899,9 +935,6 @@
 
 			function dataprc(data) {
 				
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
-				
 				// 기본변수처리
 				l_top_x = data[0].x
 				l_top_y = data[0].y
@@ -925,6 +958,7 @@
 				lr_femur_gap = Math.abs(l_femur_len - r_femur_len)
 				lr_tibia_gap = Math.abs(l_tibia_len - r_tibia_len)
 				lr_total_gap = Math.abs(l_total_len - r_total_len)
+				
 				for (var i = 0; i < data.length; i++) {
 					var input_xy = document.querySelector(".class" + i + ".xy")
 					input_xy.value = data[i].x + "," +data[i].y;
@@ -1017,9 +1051,6 @@
 			
 			const firstevent = (e) => {
 				
-				let checkedpixlength = $('input[name=pixlength]:checked');
-				let pl = $(checkedpixlength[0]).val();
-					
 					$('.lineContainermini').html('');
 					$('.lineContainer').html('');
 					$('#point0').html('');
@@ -1074,9 +1105,6 @@
 					};
 					
 					const secondevent = (e) => {
-						
-						let checkedpixlength = $('input[name=pixlength]:checked');
-						let pl = $(checkedpixlength[0]).val();
 						
 						$('.lineContainermini').html('');
 						$('.lineContainer').html('');
@@ -1133,9 +1161,6 @@
 					
 					const thirdevent = (e) => {
 						
-						let checkedpixlength = $('input[name=pixlength]:checked');
-						let pl = $(checkedpixlength[0]).val();
-						
 						$('.lineContainermini').html('');
 						$('.lineContainer').html('');
 						$('#point2').html('');
@@ -1188,9 +1213,6 @@
 					}
 					
 					const fourthevent = (e) => {
-						
-						let checkedpixlength = $('input[name=pixlength]:checked');
-						let pl = $(checkedpixlength[0]).val();
 						
 						$('.lineContainermini').html('');
 						$('.lineContainer').html('');
@@ -1246,9 +1268,6 @@
 					
 					const fifthevent = (e) => {
 						
-						let checkedpixlength = $('input[name=pixlength]:checked');
-						let pl = $(checkedpixlength[0]).val();
-						
 						$('.lineContainermini').html('');
 						$('.lineContainer').html('');
 						$('#point4').html('');
@@ -1302,9 +1321,6 @@
 					}
 					
 					const sixthevent = (e) => {
-						
-						let checkedpixlength = $('input[name=pixlength]:checked');
-						let pl = $(checkedpixlength[0]).val();
 						
 						$('.lineContainermini').html('');
 						$('.lineContainer').html('');
@@ -1493,7 +1509,149 @@
 			// strAtrry[0]
 			// strAtrry[1]
 
+function lmjoin() {
+				
+	const btnSend = document.getElementById("btnSend");
+	const btnSend_img = document.getElementById("btnSend_img");
+	const btn_upload = document.getElementById("btn_upload");
+	const input = document.querySelector("input[type='file']");
+	
+	btnSend_img.disabled = false;
+	btnSend.disabled = true;
+	btn_upload.disabled = true;
+	
+				
+		let class0xy = $('input[name=class0xy]');
+		let ltopxy = $(class0xy[0]).val();
+		let ltopxyArray = ltopxy.split(',');
+		let l_top_x = ltopxyArray[0]
+		let l_top_y = ltopxyArray[1]
+		
+		let class1xy = $('input[name=class1xy]');
+		let rtopxy = $(class1xy[0]).val();
+		let rtopxyArray = rtopxy.split(',');
+		let r_top_x = rtopxyArray[0]
+		let r_top_y = rtopxyArray[1]
+		
+		let class2xy = $('input[name=class2xy]');
+		let lmidxy = $(class2xy[0]).val();
+		let lmidxyArray = lmidxy.split(',');
+		let l_mid_x = lmidxyArray[0]
+		let l_mid_y = lmidxyArray[1]
+		
+		let class3xy = $('input[name=class3xy]');
+		let rmidxy = $(class3xy[0]).val();
+		let rmidxyArray = rmidxy.split(',');
+		let r_mid_x = rmidxyArray[0]
+		let r_mid_y = rmidxyArray[1]
+		
+		let class4xy = $('input[name=class4xy]');
+		let lbotxy = $(class4xy[0]).val();
+		let lbotxyArray = lbotxy.split(',');
+		let l_bot_x = lbotxyArray[0]
+		let l_bot_y = lbotxyArray[1]
+		
+		let class5xy = $('input[name=class5xy]');
+		let rbotxy = $(class5xy[0]).val();
+		let rbotxyArray = rbotxy.split(',');
+		let r_bot_x = rbotxyArray[0]
+		let r_bot_y = rbotxyArray[1]
+		
+		let class6fel = $('input[name=class6fel]');
+		let lfemurlen = $(class6fel[0]).val();
+		let l_femur_len = lfemurlen.replace(' mm','');
+		
+		let class6fer = $('input[name=class6fer]');
+		let rfemurlen = $(class6fer[0]).val();
+		let r_femur_len = rfemurlen.replace(' mm','');
+		
+		let class6feg = $('input[name=class6feg]');
+		let lrfemurgap = $(class6feg[0]).val();
+		let lr_femur_gap = lrfemurgap.replace(' mm','');
+		
+		let class7til = $('input[name=class7til]');
+		let ltibialen = $(class7til[0]).val();
+		let l_tibia_len = ltibialen.replace(' mm','');
+		
+		let class7tir = $('input[name=class7tir]');
+		let rtibialen = $(class7tir[0]).val();
+		let r_tibia_len = rtibialen.replace(' mm','');
+		
+		let class7tig = $('input[name=class7tig]');
+		let lrtibiagap = $(class7tig[0]).val();
+		let lr_tibia_gap = lrtibiagap.replace(' mm','');
+		
+		let class8ttl = $('input[name=class8ttl]');
+		let ltotallen = $(class8ttl[0]).val();
+		let l_total_len = ltotallen.replace(' mm','');
+		
+		let class8ttr = $('input[name=class8ttr]');
+		let rtotallen = $(class8ttr[0]).val();
+		let r_total_len = rtotallen.replace(' mm','');
+		
+		let class8ttg = $('input[name=class8ttg]');
+		let lrtotalgap = $(class8ttg[0]).val();
+		let lr_total_gap = lrtotalgap.replace(' mm','');
+		
+		let inputxray_seq = $('input[name=xray_seq]');
+		let xray_seq = $(inputxray_seq[0]).val();
+		
+		let inputdoc_id = $('input[name=doc_id]');
+		let doc_id = $(inputdoc_id[0]).val();
+		
+		let textareacontent = $('input[name=cmt_content]');
+		let cmt_content = $(textareacontent[0]).val();
+		console.log(cmt_content);
+		
+		$.ajax({
+			url : 'landmarkService',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"xray_seq" : xray_seq,
+				"l_top_x" : l_top_x,
+				"l_top_y" : l_top_y,
+				"l_mid_x" : l_mid_x,
+				"l_mid_y" : l_mid_y,
+				"l_bot_x" : l_bot_x,
+				"l_bot_y" : l_bot_y,
+				"r_top_x" : r_top_x,
+				"r_top_y" : r_top_y,
+				"r_mid_x" : r_mid_x,
+				"r_mid_y" : r_mid_y,
+				"r_bot_x" : r_bot_x,
+				"r_bot_y" : r_bot_y,
+				"l_femur_len" : l_femur_len,
+				"l_tibia_len" : l_tibia_len,
+				"l_total_len" : l_total_len,
+				"r_femur_len" : r_femur_len,
+				"r_tibia_len" : r_tibia_len,
+				"r_total_len" : r_total_len,
+				"lr_femur_gap" : lr_femur_gap,
+				"lr_tibia_gap" : lr_tibia_gap,
+				"lr_total_gap" : lr_total_gap,
+				"doc_id" : doc_id,
+				"cmt_content" : cmt_content
+				
+			},
+			success : function(res) {
+				if(res==true){
+					alert("성공");
+				} else {
+					alert("실패");
+				}
 
+			},
+			error : function() {
+				alert("에러 발생")
+			}
+
+		});
+	}
+			
+			
+			
+			
 
 
 		</script>

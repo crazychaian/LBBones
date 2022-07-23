@@ -32,7 +32,7 @@ public class cusSearchService2 extends HttpServlet {
 		request.setAttribute("pList", pList2);
 		
 
-		RequestDispatcher rd = request.getRequestDispatcher("serviceMain.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("serviceMain-Real.jsp");
 		rd.forward(request, response);
 		
 

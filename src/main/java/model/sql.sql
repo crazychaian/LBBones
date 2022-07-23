@@ -410,5 +410,21 @@ select a.xray_seq as xray_seq,
       b.lr_tibia_gap as lr_tibia_gap, 
       b.lr_total_gap as lr_total_gap, 
       c.cmt_content as cmt_content
-      from tbl_xray a left join tbl_landmark b on a.xray_seq = b.xray_seq left join tbl_xray_cmt c on a.xray_seq = c.xray_seq
-      where a.p_seq = 40 
+	  from tbl_xray a ,tbl_landmark b, tbl_xray_cmt c
+	  where a.xray_seq = b.xray_seq and b.xray_seq = c.xray_seq
+      and a.p_seq = 40 
+      
+      
+      
+      
+      
+DELETE TABLE tbl_xray;
+      
+      
+      
+      
+      
+      
+      
+      
+      

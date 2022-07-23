@@ -171,10 +171,10 @@
 
 
 			<!-- 환자정보 업데이트 추가될부분  예시,,-->
+			<div class="info-cont" >
 			<%
 			for (CustomerVO cvo : pList) {
 			%>
-			<div class="info-cont" >
 				<ul class="info-cont-rp">
 					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span><%=cvo.getP_seq()%></span></li>
 					<li onclick="location.href='xrayListService?p_seq=<%=cvo.getP_seq()%>'"><span>
@@ -189,10 +189,10 @@
 					</span></li>
 
 				</ul>
-			</div>
 			<%
 			}
 			%>
+			</div>
 			<%
 			}
 			%>
@@ -484,18 +484,22 @@
 
 					ul=
 						`<ul class="info-cont-rp">
-						<li><a href="xrayListService?p_seq=`+p_seq+`">`+p_seq+`</a></li>
-						<li><a href="xrayListService?p_seq=`+p_seq+`">`+p_name+`</a></li>
-						<li><span>`+p_birth+`</span></li>
-						<li><span>`+p_gender+`</span></li>
-						<li><span> <button type="button" onclick="popOpen2(`+p_seq+`)">수정</button> / <button type="button" onclick="removeCheck(`+p_seq+`)">삭제</button>
-						</span></li></ul>
+					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>`+p_seq+`</span></li>
+					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>
+							`+p_name+`</span></li>
+					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>`+p_birth+`</span></li>
+					<li onclick="location.href='xrayListService?p_seq=`+p_seq+`'"><span>`+p_gender+`</span></li>
+					<li><span>
+							<button type="button" class="two-btn"
+								onclick="javascript:popOpen2(`+p_seq+`);">EDIT</button>
+							 <button type="button"  href="" class="two-btn"
+							onclick="javascript:removeCheck(`+p_seq+`);">DEL</button>
+					</span></li></ul>
 						`;
 						
 						
 				
 				$('div.info-cont').append(ul);
-				
 				
 				}
 

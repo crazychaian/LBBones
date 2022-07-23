@@ -148,6 +148,9 @@
 			<input type="hidden" name="p_seq" value="<%=pvo.getP_seq()%>"></input>
 			<input type="hidden" name="doc_id" value="<%=vo.getDoc_id()%>"></input>
 		</div>
+		
+		<div id="inputhidden2">
+		</div>
 
 
 
@@ -324,7 +327,7 @@
 						type="button" disabled id="btnSend" value="랜드마크분석">Landmark
 						Analysis</button>
 					<img src="./img/loding.gif" height="15" id="loading"
-						style="z-index: 20; left: -33px; position: relative;" />
+						style="z-index: 20; left: -33px; position: relative; display:none;" />
 
 
 					<!-- <div class="llreset"> -->
@@ -465,7 +468,7 @@
 
 			<div class="div-cm">
 				<input id="result-write" type="textarea" cols="30"
-					rows="12" name="cmt_content" placeholder="오늘 진료 내용을 입력해주세요"></input>
+					rows="12" name="cmt_content"></input>
 			</div>
 
 
@@ -473,7 +476,7 @@
 
 
 
-			<button type="button" id="" class="btn-allsave metal linear"
+			<button type="button" id="btn_upload" class="btn-allsave metal linear" disabled
 				style="width: 60%; left: 20%; display: flex; align-items: center; height: 56px; top: 4px; justify-content: center;"
 				onclick="lmjoin()">진료내용저장 및 제출</button>
 
@@ -823,6 +826,7 @@
 			// 파일전송
 			const btnSend = document.getElementById("btnSend");
 			const btnSend_img = document.getElementById("btnSend_img");
+			const btn_upload = document.getElementById("btn_upload");
 			const input = document.querySelector("input[type='file']");
 
 			btnSend.disabled = true;  // send 버튼 초기 비활성화
@@ -846,7 +850,10 @@
 					body: formData
 				}).then((response) => response.json())
 					.then((data) => {
+						btnSend_img.disabled = true;
 						btnSend.disabled = false;
+						btn_upload.disabled = true;
+						
 						document.getElementById('loading').style.display = "none";
 						$('#image').attr('src', "./img/" + data.name);
 						$('#minimap').attr('src', "./img/" + data.name);
@@ -869,8 +876,10 @@
 
 						allpoint.css('display', 'none');
 						
+						$('div#inputhidden2').html("");
 						XraySeqinput = `<input type="hidden" name="xray_seq" value="`+data.thisXray_seq+`"></input>`
-						$('div#inputhidden').append(XraySeqinput);
+						$('div#inputhidden2').append(XraySeqinput);
+				
 					}
 					)
 					.catch((error) => {
@@ -886,7 +895,9 @@
 				
 			btnSend.addEventListener("click", function () {
 
+				btnSend_img.disabled = true;
 				btnSend.disabled = true;
+				btn_upload.disabled = false;
 
 				//        	openLoading();
 				document.getElementById('loading').style.display = "inline";
@@ -1500,6 +1511,16 @@
 
 function lmjoin() {
 				
+	const btnSend = document.getElementById("btnSend");
+	const btnSend_img = document.getElementById("btnSend_img");
+	const btn_upload = document.getElementById("btn_upload");
+	const input = document.querySelector("input[type='file']");
+	
+	btnSend_img.disabled = false;
+	btnSend.disabled = true;
+	btn_upload.disabled = true;
+	
+				
 		let class0xy = $('input[name=class0xy]');
 		let ltopxy = $(class0xy[0]).val();
 		let ltopxyArray = ltopxy.split(',');
@@ -1619,6 +1640,10 @@ function lmjoin() {
 				} else {
 					alert("실패");
 				}
+				
+				
+				
+				$('#result-write').html("");
 
 			},
 			error : function() {

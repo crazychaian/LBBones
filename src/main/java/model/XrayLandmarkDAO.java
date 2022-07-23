@@ -40,4 +40,16 @@ public class XrayLandmarkDAO {
 
 	}
 	
+	public List<XrayLandmarkVO> xraySelect(int xray_seq) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+
+		List<XrayLandmarkVO> xrayList = session.selectOne("xraySelect", xray_seq);
+
+		session.close();
+
+		return xrayList;
+
+	}
+	
 }
